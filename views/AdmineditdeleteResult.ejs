@@ -1,0 +1,413 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+	<div class="container">
+		<form action='/result/adminresult' method='post' class="my-4">
+			<input style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="classname" placeholder="ClassName..">
+
+			<input class="mx-2" style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="roll" placeholder="Class Roll..">
+
+			<select name='exatram' style="width:175px;height:38px;border-radius:5px;border:1px solid #ddd">
+				<option selected>Selected Your Exam...</option>
+				<option value="First Exam">First Examination</option>
+				<option value="Second Exam">Second Examination</option>
+				<option value="Final">Final Examination</option>
+			</select>
+
+			<select name='year' class="mx-2" style="width:175px;height:38px;border-radius:5px;border:1px solid #ddd">
+				<option selected>Selected Your Examination Year</option>
+				<option value=2021>2021</option>
+				<option value=2022>2022</option>
+				<option value=2023>2023</option>
+			</select>
+
+			<input style="width:150px;height:40px;border-radius:5px;border:1px solid #ddd" type="submit"  class="btn btn-outline-primary" value='Preview'>
+		</form>
+		<div class="row mt-3">
+			<div class="col-md-6">
+				<%if(edit){%>
+					 <div class="alert alert-success alert-dismissible fade show" role="alert">
+		                <strong><%=edit%></strong>
+		                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		            </div>
+				<%}%>
+
+				<%if(addminpreview){%>
+					<div>
+						<center>
+							<a href="/result/edit/<%=st._id%>" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editresult">Edit</a>
+							<a href="/result/delete/<%=st._id%>" class="btn btn-danger mx-2">Delete</a>
+						</center>
+						<p><strong>Name : </strong><span><%=st.name%></span></p>
+						<p> <strong> ClasName : </strong><span><%=st.classname%></span> </p>
+						<p> <strong> Roll : </strong><span><%=st.roll%></span></p>
+						<p> <strong> Examination Name: </strong><span><%=st.exatram%></span> </p> 
+						<p> <strong> Examination Year: </strong><span><%=st.year%></span></p> 
+					</div>
+
+					<!-- Edit Modal -->
+
+					<div class="modal fade" id="editresult" tabindex="-1" aria-labelledby="editresult" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					      </div>
+					      <div class="modal-body">
+					       	<form action="/result/edit/<%=st._id%>" method='post'>
+					       		<div class="row">
+						       		<div class="col-md-8">
+						       			<div class="form-group">
+						       				<label for='name'>Edit Name:</label>
+						       				<input type="text" name="name" value='<%=st.name%>' class='form-control'>
+						       			</div>
+
+						       			<div class="form-group">
+						       				<label for='clasname'>Edit Classname:</label>
+						       				<input type="Number" name="classname" value='<%=st.classname%>' class='form-control'>
+						       			</div>
+
+						       			<div class="form-group">
+						       				<label for='roll'>Edit Roll:</label>
+						       				<input type="Number" name="roll" value='<%=st.roll%>' class='form-control'>
+						       			</div>
+
+										  <div class="form-group mt-2">
+											<select class="form-control" name='year'>
+												<option value="<%=st.year%>"><%=st.year%></option>
+												<option value=202>2021</option>
+												<option value=2022>2022</option>
+												<option value=2023>2023</option>
+											</select>
+										</div>
+
+										<div class="form-group my-2">
+											<select id='Extram' name='exatram' class="form-control">
+			         							<option value="First Exam">First Exam</option>
+			         							<option value="Second Exam">Second Exam</option>
+			         							<option value='Final'>Final Exam</option>
+		         							</select>
+										</div>
+
+										<div class="form-group">
+											<select name='section' class="form-control">
+			         							<option value='A'>Grils</option>
+			         							<option value='B'>Boys</option>
+			         							<option value='Boys & Grils'>Boys & Grils</option>
+		         							</select>
+										</div>
+
+										<!-- Edit Groupname -->
+
+										<%if(st.groupname){%>
+											<div class="form-group">
+				         						<select class="form-control" name='groupname'>
+				         							<option value="<%=st.groupname%>"><%=st.groupname%></option>
+				         							<option value="Arts">Arts</option>
+				         							<option value="Commerce">Commerce</option>
+				         							<option value="Science">Science</option>
+				         						</select>
+         									</div>
+										<%}%>
+						       		</div>
+
+						       		<!-- Edit subjectname -->
+
+						       		<div class="col-md-12 mt-2">
+						       			<div class="row">
+						       				
+						       				<div class="col-md-6 form-group">
+							       				<%if(st.subject.subjectname1){%>
+							       					<p> <strong>Name:</strong></p>
+							       					<input class="form-control" type="text" name="subjectname1" value="<%=st.subject.subjectname1%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectname2){%>
+							       					<p> <strong>Name:</strong></p>
+							       					<input class="form-control" type="text" name="subjectname2" value="<%=st.subject.subjectname2%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectname3){%>
+							       					<p> <strong>Name:</strong></p>
+							       					<input class="form-control" type="text" name="subjectname3" value="<%=st.subject.subjectname3%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectname4){%>
+							       					<p> <strong>Name:</strong></p>
+							       					<input class="form-control" type="text" name="subjectname4" value="<%=st.subject.subjectname4%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectname5){%>
+							       					<p> <strong>Name:</strong></p>
+							       					<input class="form-control" type="text" name="subjectname5" value="<%=st.subject.subjectname5%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectname6){%>
+							       					<p> <strong>Name:</strong></p>
+							       					<input class="form-control" type="text" name="subjectname6" value="<%=st.subject.subjectname6%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectname7){%>
+							       					<p> <strong>Name:</strong></p>
+							       					<input class="form-control" type="text" name="subjectname7" value="<%=st.subject.subjectname7%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectname8){%>
+							       					<p> <strong>Name:</strong></p>
+							       					<input class="form-control" type="text" name="subjectname8" value="<%=st.subject.subjectname8%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectname9){%>
+							       					<p> <strong>Name:</strong></p>
+							       					<input class="form-control" type="text" name="subjectname9" value="<%=st.subject.subjectname9%>">
+							       				<%}%>
+
+						       				</div>
+
+						       				<!-- Edit subjectnumber -->
+						       				
+						       				<div class="col-md-6">
+							       				<%if(st.subject.subjectnumber1){%>
+							       					<p> <strong>Number:</strong></p>
+							       					<input class="form-control" type="Number" name="subjectnumber1" value="<%=st.subject.subjectnumber1%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectnumber2){%>
+							       					<p> <strong>Number:</strong></p>
+							       					<input class="form-control" type="Number" name="subjectnumber2" value="<%=st.subject.subjectnumber2%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectnumber3){%>
+							       					<p> <strong>Number:</strong></p>
+							       					<input class="form-control" type="Number" name="subjectnumber3" value="<%=st.subject.subjectnumber3%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectnumber4){%>
+							       					<p> <strong>Number:</strong></p>
+							       					<input class="form-control" type="Number" name="subjectnumber4" value="<%=st.subject.subjectnumber4%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectnumber5){%>
+							       					<p> <strong>Number:</strong></p>
+							       					<input class="form-control" type="Number" name="subjectnumber5" value="<%=st.subject.subjectnumber5%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectnumber6){%>
+							       					<p> <strong>Number:</strong></p>
+							       					<input class="form-control" type="Number" name="subjectnumber6" value="<%=st.subject.subjectnumber6%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectnumber7){%>
+							       					<p> <strong>Number:</strong></p>
+							       					<input class="form-control" type="Number" name="subjectnumber7" value="<%=st.subject.subjectnumber7%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectnumber8){%>
+							       					<p> <strong>Number:</strong></p>
+							       					<input class="form-control" type="Number" name="subjectnumber8" value="<%=st.subject.subjectnumber8%>">
+							       				<%}%>
+
+							       				<%if(st.subject.subjectnumber9){%>
+							       					<p> <strong>Number:</strong></p>
+							       					<input class="form-control" type="Number" name="subjectnumber9" value="<%=st.subject.subjectnumber9%>">
+							       				<%}%>
+						       				</div>
+						       			</div>
+						       		</div>
+
+									<!-- Edit Group name -->
+									
+									<%if(st.groupname){%>
+										<div class="col-md-12">
+											<div class="row">
+												
+												<div class="col-md-6">
+													<%if(st.subject.groupsubject1){%>
+														<p> <strong>Name:</strong></p>
+														<input class="form-control" type="text" name="groupsubject1" value="<%=st.subject.groupsubject1%>">
+													<%}%>
+
+													<%if(st.subject.groupsubject2){%>
+														<p> <strong>Name:</strong></p>
+														<input class="form-control" type="text" name="groupsubject2" value="<%=st.subject.groupsubject2%>">
+													<%}%>
+
+													<%if(st.subject.groupsubject3){%>
+														<p><strong>Name:</strong></p>
+														<input class="form-control" type="text" name="groupsubject3" value="<%=st.subject.groupsubject3%>">
+													<%}%>
+
+													<%if(st.subject.groupsubject4){%>
+														<p> <strong>Name:</strong></p>
+														<input class="form-control" type="text" name="groupsubject4" value="<%=st.subject.groupsubject4%>">
+													<%}%>
+												</div>
+
+												<!-- Edit Group Number -->
+
+												<div class="col-md-6">
+													<%if(st.subject.groupsubjectnumber1){%>
+														<p> <strong>Number:</strong></p>
+														<input class="form-control" type="text" name="groupsubjectnumber1" value="<%=st.subject.groupsubjectnumber1%>">
+													<%}%>
+
+													<%if(st.subject.groupsubjectnumber2){%>
+														<p> <strong>Number:</strong></p>
+														<input class="form-control" type="text" name="groupsubjectnumber2" value="<%=st.subject.groupsubjectnumber2%>">
+													<%}%>
+
+													<%if(st.subject.groupsubjectnumber3){%>
+														<p> <strong>Number:</strong></p>
+														<input class="form-control" type="text" name="groupsubjectnumber3" value="<%=st.subject.groupsubjectnumber3%>">
+													<%}%>
+
+													<%if(st.subject.groupsubjectnumber4){%>
+														<p> <strong>Number:</strong></p>
+														<input class="form-control" type="text" name="groupsubject4" value="<%=st.subject.groupsubjectnumber4%>">
+													<%}%>
+												</div>
+											</div>
+										</div>
+									<%}%>
+					       		</div>
+
+					       		<%if(st.discription){%>
+					       			<textarea class="form-control mt-2"><%=st.discription%></textarea>
+					       		<%}%>
+
+						       <div class="modal-footer">
+						        <input type="submit" value='Submit' class="btn btn-success">
+						        <button type="button" class="btn btn-primary">Save changes</button>
+						      </div>
+					       	</form>
+					      </div>
+					      
+					    </div>
+					  </div>
+					</div>
+
+					<!-- Show Group Name -->
+
+					<%if(st.groupname){%>
+						<p> <strong> GroupName : </strong><span><%=st.groupname%></span> </p>
+					<%}%>
+					<table class="table table-striped table-primary">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Subject Name</th>
+					      <th scope="col">Subject Number</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <th scope="row">1</th>
+					      <td><%=st.subject.subjectname1%></td>
+					      <td><%=st.subject.subjectnumber1%></td>
+					    </tr>
+					    <%if(st.subject.subjectname2){%>
+					    <tr>
+					      <th scope="row">4</th>
+					      <td><%=st.subject.subjectname2%></td>
+					      <td><%=st.subject.subjectnumber2%></td>
+					    </tr>
+					    <%}%>
+
+					    <%if(st.subject.subjectname3){%>
+					    <tr>
+					      <th scope="row">2</th>
+					      <td><%=st.subject.subjectname3%></td>
+					      <td><%=st.subject.subjectnumber3%></td>
+					    </tr>
+					    <%}%>
+
+					    <%if(st.subject.subjectname4){%>
+					    <tr>
+					      <th scope="row">4</th>
+					      <td><%=st.subject.subjectname4%></td>
+					      <td><%=st.subject.subjectnumber4%></td>
+					    </tr>
+					    <%}%>
+					    <%if(st.subject.subjectname5){%>
+					    <tr>
+					      <th scope="row">5</th>
+					      <td><%=st.subject.subjectname5%></td>
+					      <td><%=st.subject.subjectnumber5%></td>
+					    </tr>
+					    <%}%>
+					    <%if(st.subject.subjectname6){%>
+					    <tr>
+					      <th scope="row">6</th>
+					      <td><%=st.subject.subjectname6%></td>
+					      <td><%=st.subject.subjectnumber6%></td>
+					    </tr>
+					    <%}%>
+
+					    <%if(st.subject.subjectname7){%>
+					    <tr>
+					      <th scope="row">7</th>
+					      <td><%=st.subject.subjectname7%></td>
+					      <td><%=st.subject.subjectnumber7%></td>
+					    </tr>
+					    <%}%>
+
+
+					    <%if(st.subject.subjectname8){%>
+					    <tr>
+					      <th scope="row">8</th>
+					      <td><%=st.subject.subjectname8%></td>
+					      <td><%=st.subject.subjectnumber8%></td>
+					    </tr>
+					    <%}%>
+
+					    <%if(st.subject.subjectname9){%>
+					    <tr>
+					      <th scope="row">9</th>
+					      <td><%=st.subject.subjectname9%></td>
+					      <td><%=st.subject.subjectnumber9%></td>
+					    </tr>
+					    <%}%>
+
+					    <%if(st.subject.groupsubject1){%>
+					    <tr>
+					      <th scope="row">10</th>
+					      <td><%=st.subject.groupsubject1%></td>
+					      <td><%=st.subject.groupsubjectnumber1%></td>
+					    </tr>
+					    <%}%>
+
+					     <%if(st.subject.groupsubject2){%>
+					    <tr>
+					      <th scope="row">11</th>
+					      <td><%=st.subject.groupsubject2%></td>
+					      <td><%=st.subject.groupsubjectnumber2%></td>
+					    </tr>
+					    <%}%>
+
+					     <%if(st.subject.groupsubject3){%>
+					    <tr>
+					      <th scope="row">12</th>
+					      <td><%=st.subject.groupsubject3%></td>
+					      <td><%=st.subject.groupsubjectnumber3%></td>
+					    </tr>
+					    <%}%>
+					     <%if(st.subject.groupsubject4){%>
+						    <tr>
+						      <th scope="row">13</th>
+						      <td><%=st.subject.groupsubject4%></td>
+						      <td><%=st.subject.groupsubjectnumber4%></td>
+						    </tr>
+					    <%}%>
+					  </tbody>
+					</table>
+					<%if(st.discription){%>
+						<p><%=st.discription%></p>
+					<%}%>
+				<%}%>
+				<%if(error){%>
+					<h1 class="text-danger"><%=error%></h1>
+				<%}%>
+			</div>
+		</div>
+	</div>
+<%-include('./Partials/footer.ejs')%>

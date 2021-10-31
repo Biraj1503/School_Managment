@@ -1,0 +1,120 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+  <div class="container">
+      <center class='my-3'><h4>Money Recipt</h4></center>
+      <form action="/Examfee" method="post">
+          <div class="row offset-md-2">
+
+            <!--Student Mode-->
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for='name'>Students Name</label>
+                    <input type="text" name="name" placeholder="Student Name..." class="form-control mt-2">
+                </div>
+                  <%if(error.name){%>
+                      <p class="text-warning"><strong><%=error.name%></strong></p>
+                  <%}%>
+                <div class="form-group">
+                    <label for='classname' class="text-danger">Class Name</label>
+                    <input type="Number" name="classname" placeholder="Class name..." class="form-control mt-2">
+                </div>
+
+                 <%if(error.classname){%>
+                      <p class="text-warning"><%=error.classname%></p>
+                  <%}%>
+
+                <div class="form-group">
+                    <label for='roll' class="text-danger"><strong>Class Roll</strong></label>
+                    <input type="Number" name="roll" placeholder="Class Roll..." class="form-control mt-2">
+                </div>
+
+                <%if(error.classroll){%>
+                      <p class="text-warning"><%=error.classroll%></p>
+                  <%}%>
+
+                <div class="form-group">
+                    <label for='year' class="text-success"><strong>Session Year</strong></label>
+                   <select name='year' class="form-control mt-2">
+                          <option selected>Selected Your Year</option>
+                          <option value=2021>2021</option>
+                          <option value=2022>2022</option>
+                          <option value=2023>2023</option>
+                          <option value=2024>2024</option>
+                      </select>
+
+                    <%if(error.year){%>
+                      <p class="text-warning"><%=error.year%></p>
+                    <%}%>
+                </div>
+
+                
+
+                <div class="form-group">
+                      <label for='examtrm' class="text-danger">Examination Tram</label>
+                      <select name='examtrm' class="form-control mt-2">
+                          <option selected>Selected Your Examination</option>
+                          <option value="First Exam">First Exam</option>
+                          <option value="Second Exam">Second Exam</option>
+                          <option value="Final Exam">Final Exam</option>
+                          <option value="Examination">Examination</option>
+                      </select>
+                      <%if(error.examtrm){%>
+                          <p class="text-warning"><%=error.examtrm%></p>
+                      <%}%>
+                  </div>
+
+              </div>
+
+             
+
+                <!--Amount Mode-->
+
+                <div class="col-md-4 mx-5">
+                  <div class="form-group">
+                      <label for='amount'>Payment Amount</label>
+                      <input type="Number" name="amount" placeholder="Amount..." class="form-control mt-2">
+                  </div>
+
+                   <%if(error.amount){%>
+                      <p class="text-warning"><%=error.amount%></p>
+                  <%}%>
+
+                  <div class="form-group">
+                      <label for='paymentmode' class="text-danger">Payment Mode</label>
+                      <select name='paymentmode' class="form-control mt-2">
+                          <option selected>Selected Your Payment Mode</option>
+                          <option value="Hand Cash">Hand Cash</option>
+                          <option value="Bank Draft">Bank Draft</option>
+                          <option value="Bikash">Bikash</option>
+                          <option value="DBL Mobile Banking">DBL Mobile Banking</option>
+                      </select>
+
+                      <%if(error.paymentmode){%>
+                      <p class="text-warning"><%=error.paymentmode%></p>
+                    <%}%>
+
+                  </div>
+
+                  
+                  <div class="form-group">
+                      <label for='paymentdate' class="text-danger"><strong>Payment Date</strong></label>
+                      <input type="datetime-local" name="paymentdate" placeholder="Date..." class="form-control mt-2">
+                  </div>
+
+                  <div class="form-group">
+                      <label for='remarks' class="text-success"><strong>Remarks</strong></label>
+                      <textarea name="remarks" class="form-control" placeholder="Enter Your Opinion As Your Wish.."></textarea>
+                  </div>
+            </div>
+            <div class="col-md-4">
+                <input style="width:287px" type="reset" value="Reset" class="btn btn-danger mt-3">
+            </div>
+
+            <div class="col-md-4">
+                <input style="width:287px; margin-left:50px" type="submit" value="Save" class="btn btn-primary mt-3">
+            </div>
+          </div>
+      </form>
+  </div>
+<%-include('./Partials/footer.ejs')%>

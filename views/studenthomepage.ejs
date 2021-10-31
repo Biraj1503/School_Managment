@@ -1,0 +1,50 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/StudentsNavbar.ejs')%>
+<div>
+	<div class="container my-4">
+		 <div>
+		 	<h1>The app is managed by School</h1>
+             <p>The app is managed by School Administration to schedule Teaching Staff activities according to their classes & provides app access to Parents to access progress reports of their children.This is a complete solution to keep a direct & continuous watch on a child’s progres</p>
+          </div>
+
+          <h4>Find Students</h4>
+
+		<form action='/' method='post'>
+			<input style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="classname" placeholder="ClassName..">
+
+			<input style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="roll" placeholder="Class Roll..">
+
+			<input type="submit"  class="btn btn-outline-success" value='Search'>
+		</form>
+	<div class="mt-5">
+		<%if(search){%>
+			<div class="row">
+				<div class="col-md-5 offset-md-3 card card-body st_data text-light">
+					<center><img style="width:200px;height:200px;border-radius:5px;border:1px solid #ddd"src="<%=st.profilepic%>"></center>
+						<p class="mt-3"> <strong>Name :</strong> <%=st.name%></p>
+						<p class=""><strong>Email :</strong> <%=st.email%></p>
+						<p class=""><strong>Class :</strong> <%=st.classname%></p>
+						<p class=""><strong>Roll :</strong> <%=st.roll%></p>
+						<p class=""><strong>Year :</strong> <%=st.year%></p>
+						<p class=""><strong>Subject :</strong> <%=st.subject%></p>
+						<p class=""><strong>Fathername :</strong> <%=st.fathername%></p>
+						<p class=""><strong>Mothername :</strong> <%=st.mothername%></p>
+						<p class=""><strong>Date Of Birth :</strong> <%=st.birthday%></p>
+						<p class=""><strong>District :</strong> <%=st.district%></p>
+						<p class=""><strong>Phone Number :</strong> <%=st.phonenumber%></p>
+						<p class=""><strong>Religion :</strong> <%=st.religion%></p>
+							<%if(st.description){%>
+								<p class=""><strong>Description:</strong> <%=st.description%></p>
+						<%}%>
+				</div>
+			</div>
+		<%}%>
+	</div>
+
+	<%if(error){%>
+		<h1 class="display-1 text-center text-danger"><%=error%></h1>
+	<%}%>
+	</div>
+</div>
+<%-include('./Partials/footer.ejs')%>
+

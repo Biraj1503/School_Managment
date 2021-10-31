@@ -1,0 +1,29 @@
+<%-include('./Partials/header.ejs')%>
+  <div class="borderimg">
+	  	<div class="container">
+	      <div class="row">
+	      	<div class="col-md-12" style="margin-left: 100px">
+	      		<span style="margin-left:200px">Created By : <%=admit.user%></span>
+	      		<h3 style="margin-left: 30px">Admit Card</h3>
+	      		<h4>Patherhat Jubli High School</h4>
+	      		<p style="margin-left: 70px">Mehendigonj,Barisal</p>
+	      	</div>
+	      	<div class="col-md-6">
+	      		<p style="font-size: 20px"><strong>Name : </strong><%=admit.name%></p>
+	      	</div>
+	      	
+	      	<div class="col-md-6">
+	      		<p style="font-size: 20px"><strong>Roll : </strong><%=admit.roll%></p>
+	      	</div>
+
+	      	<div class="col-md-6">
+	      		<p style="font-size: 20px"><strong>Class : </strong><%=admit.classname%></p>
+	      	</div>
+
+	      	<div class="col-md-6">
+	      		<p style="font-size: 20px"><strong>Examination : </strong><%=admit.examtrm%></p>
+	      	</div>
+	      </div>
+	  </div>
+	</div>	  
+<%-include('./Partials/footer.ejs')%>

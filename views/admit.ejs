@@ -1,0 +1,51 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/StudentsNavbar.ejs')%>
+<h4 style="margin-left:350px;margin-top:10px">Find Your Admitcard</h4>
+	<div class="container mt-3">
+			<form action='/admitcard' method="post">
+				<div class="row">
+					<div class="col-md-2">
+						<div class="form-group">
+							<label>Enter Class Name</label>
+							<input type="Number" name="classname" class="form-control">
+						</div>
+					</div>
+					<div class="form-group col-md-2">
+						<label>Enter Class Roll</label>
+						<input type="Number" name="roll" class="form-control">
+					</div>
+
+					<div class="form-group col-md-2">
+	                    <label for='year' class="text-success"><strong>Session Year</strong></label>
+	                   <select name='year' class="form-control">
+	                          <option selected>Selected Your Year</option>
+	                          <option value=2021>2021</option>
+	                          <option value=2022>2022</option>
+	                          <option value=2023>2023</option>
+	                          <option value=2024>2024</option>
+	                      </select>
+	                </div>
+
+	                <div class="form-group col-md-2">
+	                      <label for='examtrm' class="text-danger">Examination Tram</label>
+	                      <select name='examtrm' class="form-control">
+	                          <option selected>Selected Your Examination</option>
+	                          <option value="First Exam">First Exam</option>
+	                          <option value="Second Exam">Second Exam</option>
+	                          <option value="Final Exam">Final Exam</option>
+	                          <option value="Examination">Examination</option>
+	                      </select>
+                      
+                  	</div>
+	                <div class="col-md-2">
+	                	<input type="submit" value="Preview" class="btn btn-success btn-bg mt-4">
+	                </div>
+				</div>
+			</form>
+
+			<%if(error){%>
+				<h1 class="text-danger"><%=error%></h1>
+			<%}%>
+
+		</div>
+<%-include('./Partials/footer.ejs')%>

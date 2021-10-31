@@ -1,0 +1,136 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+<div style='background:#ddd'>
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<h1>Create Your Students Profile</h1>
+			<form action='/school/students/profile' method='post' enctype="multipart/form-data">
+				<div class="card card-body my-5">
+				<div class="row">
+					<div class="col-md-6">
+							<div class="form-group">
+								<label for='name'>Enter Your Students Name:</label>
+								<input class="form-control my-2" style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="name" placeholder="Students Name.." value=''>
+							</div>
+							<div class="form-group">
+								<label for='classname'>Enter Your Students Email:</label>
+								<input class="form-control my-2" style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="number" name="classname" placeholder="Students Class name.." value=''>
+							</div>
+							<div class="form-group">
+								<label for='roll'>Enter Your Students Roll Number:</label>
+								<input class="form-control my-2" style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="number" name="roll" placeholder="Students Roll Number.." value=''>
+							</div>
+
+							<div class="form-group">
+								<label for='birthday'>Enter Your Students Date Of Birth:</label>
+								<input class="form-control my-2" style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="Date" name="birthday" value=''>
+							</div>
+
+							<div class="form-group">
+								<label for='fathername'>Enter Your Students Father Name:</label>
+								<input class="form-control my-2" style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="fathername" placeholder="Students Father Name.." value=''>
+							</div>
+
+							<div class="form-group">
+								<label for='mothername'>Enter Your Students Father Name:</label>
+								<input class="form-control my-2" style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="mothername" placeholder="Students Mothername Name.." value=''>
+							</div>
+
+							<div class="form-group">
+								<label for='phonenumber'>Enter Your Students Father Name:</label>
+								<input class="form-control my-2" style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="phonenumber" placeholder="Students Phone Number..." value=''>
+							</div>
+
+							<div class="form-group my-2">
+								<label for='description'>Discription Your Students:</label>
+								<textarea name='description' class="form-control" style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" placeholder="Enter Your Discription..."></textarea>
+							</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for='email'>Enter Your Students Email:</label>
+							<input class="form-control my-2" style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="email" name="email" placeholder="Type Your Students Name" value=''>
+						</div>
+						<label for='year'>Choose Your Division</label>
+						<div class="form-group">
+							<select style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" class="my-2" name='year'>
+							<option selected>Selected Students Year</option>
+							<option value=2021>2021</option>
+							<option value=2022>2022</option>
+							<option value=2023>2023</option>
+						</select>
+						</div>
+						
+						<div class="">
+							<label for='District'>Choose Your District</label>
+							<select style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" class="my-2" name='district'>
+							<option selected>
+								Choose Your Students District
+							</option>
+							<option value="Pirojpur">Pirojpur</option>
+							<option value="Vola">Vola</option>
+							<option value="Gopalgonj">Gopalgonj</option>
+							<option value="Madaripur">Madaripur</option>
+							<option value="Chittagong">Chittagong</option>
+							<option value="Dhaka">Dhaka</option>
+							<option value="Khulna">Khulna</option>
+							<option value="Barishal">Barishal</option>
+							<option value="Sylhet">Sylhet</option>
+							<option value="Rajsahi">Rajsahi</option>
+							<option value="Rangpur">Rangpur</option>
+							<option value="Mymensingh">Mymensingh</option>
+						</select>
+						</div>
+						<div class="form-group">
+							<label for='village'>Enter Your Students Village:</label>
+							<input class="form-control my-2" style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="village" placeholder="Type Your Village Name" value=''>
+						</div>
+
+						<div class="form-group">
+							<label for='wordno'>Enter Your Students Word No:</label>
+							<input class="form-control my-2" style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="wordno" placeholder="Type Your Word No..." value=''>
+						</div>
+
+						<div class="">
+							<label for='subject'>Choose Your  Students Subjects</label>
+							<select style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" class="my-2" name='subject'>
+							<option selected>
+								All
+							</option>
+							<option value="Science">Science</option>
+							<option value="Humanatics">Humanatics</option>
+							<option value="Accounting">Accounting</option>
+						</select>
+						</div>
+
+						<div class="">
+							<label for='religion'>Choose Your Students Religion</label>
+							<select style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" class="my-2" name='religion'>
+							<option selected>
+								Choose Your Students Religion
+							</option>
+							<option value="Islam">Islam</option>
+							<option value="Hidu">Hindu</option>
+							<option value="Christians">Christians</option>
+							<option value="Buddhists">Buddhists</option>
+						</select>
+
+						</div>
+							<div class="form-group">
+							    <label for="exampleFormControlFile1">Upload Our Profile Picture</label>
+							    <input type="file" class="form-control-file my-2" id="exampleFormControlFile1" name='profilepic'>
+	  						</div>
+						</div>
+						<div class="form-group mt-3" style="margin-left:120px">
+							<input style="width:190px" type="submit" value="Create Profile" class="btn btn-primary">
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</div>
+<%-include('./Partials/footer.ejs')%>
+

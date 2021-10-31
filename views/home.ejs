@@ -1,0 +1,81 @@
+<%-include('./Partials/header.ejs')%>
+<div class="row my-5 mx-3">
+          <div class="col-md-4 offset-md-3">
+            <h1 class='mx-5 admin text-light'>Admin Singup</h1>
+          <div class="card card-body"> 
+        <form action='/user' method='post'>
+          <div class="form-group">
+            <label for='name'>Type Your name:</label>
+            <input type="text" name="name" placeholder="Type Your Name..." class="form-control">
+          </div>
+           <%if(errors.name){%>
+            <p class="text-danger my-2"><%=errors.Name%></p>
+           <%}%>
+          <div class="form-group">
+            <label for='email'>Type Your Email:</label>
+            <input type="email" name="email" placeholder="Type Your Email..." class="form-control">
+          </div>
+
+            <%if(errors.email){%>
+            <p class="text-danger my-2"><%=errors.email%></p>
+           <%}%>
+
+          <div class="form-group">
+            <label for='password'>Type Your Password:</label>
+            <input type="password" name="password" placeholder="Type Your Password..." class="form-control">
+          </div>
+
+            <%if(errors.password){%>
+            <p class="text-danger my-2"><%=errors.password%></p>
+           <%}%>
+
+          <div class="form-group">
+            <label for='conformpassword'>Type Your ConformPassword:</label>
+            <input type="password" name="conformpassword" placeholder="Type Your conform Password..." class="form-control">
+          </div>
+
+          <%if(errors.conformpassword){%>
+            <p class="text-danger my-2"><%=errors.conformpassword%></p>
+           <%}%>
+
+          <div class="form-group">
+            <label for='date'>Type Your Date Of Birth:</label>
+            <input type="Date" name="birthday" placeholder="22-02-14" class="form-control">
+          </div>
+
+          <%if(errors.birthday){%>
+            <p class="text-danger my-2"><%=errors.birthday%></p>
+           <%}%>
+
+          <div class="">
+            <label for=''>Checked Your Gender</label>
+            <br>
+            <input type="radio" name="gender"  class="" value='Male'>
+            <label for='male'>Male</label>
+          </div>
+
+           <div class="">
+            <input type="radio" name="gender"  class="" value='FeMale'>
+            <label for='female'>FeMale</label>
+          </div>
+
+          <div class="">
+            <input type="radio" name="gender"  class="" value='Other'>
+            <label for='other'>Other</label>
+          </div>
+
+             <%if(errors.gender){%>
+            <p class="text-danger my-2"><%=errors.gender%></p>
+           <%}%>
+
+          <div class="">
+            <input type="submit" class="btn btn-success my-2" value="Create Account">
+          </div>
+          <div class="py-2">
+            <a href="/login" class="mx-3">Already You Have And Account?Login Here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<%-include('./Partials/header.ejs')%>

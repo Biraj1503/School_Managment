@@ -1,0 +1,45 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+  <div class="container">
+      <div>
+          <center><h1>Create Notices</h1></center>
+          <form action="/notice" method="post">
+              <div class="form-group">
+                  <textarea name="notice" style="width:550px;margin-left:280px" rows="8" cols="50" class="form-control" placeholder="Enter Type Anything.."></textarea>
+              </div>
+
+              <input style="width:550px;margin-left:280px" type="submit" value="SUBMIT NOTICES" class="btn btn-primary mt-2">
+          </form>
+      </div>
+
+      <div>
+          <%for(n of notices){%>
+              <ul>
+                <li><p><%=n.notice%></p>
+                    <a href="/notice/<%=n._id%>" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editnotice">Edit</a>
+                    </li>
+                      <div class="modal fade" id="editnotice" tabindex="-1" aria-labelledby="editnotice" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                            <div class="modal-body">
+                                  <form action="/notice/<%=n._id%>" method="post">
+                                      <div class="form-group">
+                                          <textarea name="notice" rows="4" cols="50" class="form-control" 
+                                          ><%=n.notice%></textarea>
+                                      </div>
+
+                                      <input style="width:485px;" type="submit" value="EDIT NOTICES" class="btn btn-success mt-2">
+                                 </form>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                </ul>
+          <%}%>
+      </div>
+  </div>
+<%-include('./Partials/footer.ejs')%>

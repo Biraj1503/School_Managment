@@ -1,0 +1,56 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">School</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-md-3">
+          <a class="nav-link" href="/user">Admin Home</a>
+        </li>
+        <li class="nav-item dropdown mx-md-2">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"  data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            Students
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/school/students/profile">create Student Profile</a></li>
+            <li><a class="dropdown-item" href="/result">Create Result</a></li>
+            <li><a class="dropdown-item" href="/result/adminresult">Students Result</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/Examfee">Examination fees</a></li>
+            <li><a class="dropdown-item" href="/createpoll">Poll Create</a></li>
+          </ul>
+        </li>
+        <!--<li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>-->
+          <li class="nav-item">
+            <a href="/notice" class="nav-link active">Notice</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/" class="nav-link active">Teacher</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/login/logout" class="nav-link ml-5 text-danger">LOgout</a>
+          </li>
+      </ul>
+      <!--<form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>-->
+      <%if(user){%>
+        <div class="ml-auto mx-5">
+          <div class="text-primary">
+             user : <%=user.name%>
+          </div>
+      </div>
+      <%}else{%>
+          <p>Logout Automatice</p>
+      <%}%>
+    </div>
+  </div>
+</nav>
+

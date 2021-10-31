@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Home page</title>
+    <style type="text/css">
+      body{
+        background: rgba(186, 3, 252);
+      }
+
+      .admin{
+        margin-left: 100px;
+        margin-bottom: 50px
+      }
+    </style>
+  </head>
+  <body>
+        <div class="row my-5">
+          <div class="col-md-4 offset-md-4">
+             <h1 class='admin text-light'>Admin Login</h1>
+            <div class="card card-body"> 
+        <form action='/login' method='post'>
+          <div class="form-group">
+            <label for='email'>Type Your Email</label>
+            <input type="email" name="email" class="form-control">
+          </div>
+
+            <%if(errors.email){%>
+            <p class="text-danger my-2"><%=errors.email%></p>
+           <%}%>
+
+            <%if(users){%>
+              <p><%=users%></p>
+            <%}%>
+
+           <div class="form-group">
+            <label for='password'>Type Your Password</label>
+            <input type="password" name="password" class="form-control">
+          </div> 
+
+
+            <%if(errors.password){%>
+            <p class="text-danger my-2"><%=errors.password%></p>
+           <%}%>
+
+            <%if(pass){%>
+              <p><%=pass%></p>
+            <%}%>
+
+          <div class="">
+            <input type="submit" class="btn btn-primary my-2" value="Login">
+          </div>
+          <div class="py-2">
+            <a href="/user" class="mx-3">Don't Have An Account?Create Account Here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    
+  </body>
+</html>
+

@@ -1,0 +1,309 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+<div class="container">
+         <form  action='/result' method='post'>
+         	<div class="row mt-5">
+         		<div class="col">
+         			<%if(typerror){%>
+		         		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		                <strong>Duplicate Value Is Not Save</strong>
+		                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		               </div>		
+         			<%}%>
+         			<div class="row">
+         				<div class="col-md-4">
+         					<div class="">
+         						<h5 for='name'>Enter Your Students Name:</h5>
+         						<input style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="name" placeholder="Students Name..">
+         					</div>
+         						<%if(errors.name){%>
+         							<h5 class="text-danger mt-2"><%=errors.name%></h5>
+         						<%}%>
+         					<div class="">
+         						<h5 for='roll'>Enter Your Students Roll:</h5>
+         						<input style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="number" name="roll" placeholder="Students Roll Number..">
+         					</div>
+         					<%if(errors.roll){%>
+         							<h5 class="text-danger mt-2"><%=errors.roll%></h5>
+         						<%}%>
+
+         					<div class="">
+         						<h5>Selected Your Exam:</h5>
+         						<select id='Extram' name='exatram' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd">
+         							<option selected>Selected Exam</option>
+         							<option value="First Exam">First Exam</option>
+         							<option value="Second Exam">Second Exam</option>
+         							<option value='Final'>Final Exam</option>
+         						</select>
+         					</div>	
+         				</div>
+         				<div class="col-md-4">
+         					<div class="">
+         						<h5>Selected Your Students Class:</h5>
+         						<select id='optionsname' name='classname' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd">
+         							<option selected>Selected Your Students Class</option>
+         							<option value=6>Class Six</option>
+         							<option value=7>Class Seven</option>
+         							<option value=8>Class Eight</option>
+         							<option value=9>Class Nine</option>
+         							<option value=10>Class Ten</option>
+         						</select>
+         					</div>
+         					<%if(errors.name){%>
+         						<h5 class="text-danger mt-2"><%=errors.classname%></h5>
+         					<%}%>
+         					<div class="">
+         						<h5>Selected Your Students Section:</h5>
+         						<select name='section' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd">
+         							<option selected>Selected Your Students Section</option>
+         							<option value='A'>Grils</option>
+         							<option value='B'>Boys</option>
+         							<option value='Boys & Grils'>Boys & Grils</option>
+         						</select>
+         					</div>
+         					<%if(errors.section){%>
+         							<h5 class="text-danger mt-2"><%=errors.section%></h5>
+         					<%}%>
+         					<div id="group">
+         						<h5>Selected Your Students Year:</h5>
+         						<select name='year' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd">
+         							<option selected>Selected Your Students Year</option>
+         							<option value=2021>2021</option>
+         							<option value=2022>2023</option>
+         							<option value=2023>2024</option>
+         						</select>
+         					</div>
+         				</div>
+         				<div class="col-md-4">
+         						<h4>Decribe Your Students Result..</h4>
+         						<textarea rows="4" cols="19" class="form-control mt-3" name='discription' placeholder="Describe Your Students Result..."></textarea>
+         					</div>
+         			</div>
+         			<div  class="row mt-5">
+         				<div class="col-md-4">
+         					<h4>Enter Your Subject Name:</h4>
+         					<input style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="subjectname1" placeholder="Type Subject name...">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="subjectname2" placeholder="Type Subject name...">
+
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="subjectname3" placeholder="Type Subject name...">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="subjectname4" placeholder="Type Subject name...">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="subjectname5" placeholder="Type Subject name...">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="subjectname6" placeholder="Type Subject name...">
+
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="subjectname7" placeholder="Type Subject name...">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="subjectname8" placeholder="Type Subject name...">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="subjectname9" placeholder="Type Subject name...">
+
+         				</div>
+
+         				<div class="col-md-4">
+         					<h4>Enter Your Subject Number:</h4>
+         					<input style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="subjectnumber1" placeholder="Type Subject Number..">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="subjectnumber2" placeholder="Type Subject Number..">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="subjectnumber3" placeholder="Type Subject Number..">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="subjectnumber4" placeholder="Type Subject Number..">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="subjectnumber5" placeholder="type Mathematicsnumber..">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="subjectnumber6" placeholder="Type Subject Number..">
+
+         					<input style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="subjectnumber7" placeholder="Type Subject Number..">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="subjectnumber8" placeholder="Type Subject Number..">
+
+         					<input class='mt-2' style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="subjectnumber9" placeholder="Type Subject Number..">
+         				</div>
+               
+         				<div id='includegroupoptions' class="col-md-4">
+         					
+         				</div>
+         			</div>
+               <div class="row mt-2">
+                 
+                <div id="subjectname" class="col-md-4">
+                   <p id='title' class=""></p>
+                </div>
+               
+                <div id="subjectnumber" class="col-md-4">
+                      <p id='titlenumber' class=""></p>
+                </div>
+               </div>
+         		</div>
+         	</div>
+         	<input style="width:200px; margin-left:150px" type="submit" value="submit" class="btn btn-danger my-2">
+         </form>
+         
+  </div>
+  <script type="text/javascript">
+  	/*function My_functio(nine){
+  		if(nine.value=="Nine" || nine.value=="Ten"){
+  			let subjectname = document.getElementById('subjectname')
+
+            let subjectinput1 = document.createElement('input')
+              subjectinput1.type = 'text'
+              subjectinput1.placeholder='Group Subject name'
+              subjectinput1.name='groupsubject1'
+              subjectinput1.style='width:248px;height:38px;border-radius:5px;border:1px solid #ddd'
+			subjectname.appendChild(subjectinput1)
+  		}
+  	}*/
+  		/*let chnaged = document.getElementById('group')
+  		let option = document.getElementById('options')
+  		chnaged.addEventListener('change',(e)=>{
+  			if(chnaged.value=="Arts"){
+  				let input1 = document.createElement('input')
+  				input1.type='text'
+  				input1.name='gonn'
+  				option.appendChild(input1)
+  			}else{
+  				alert('No Thing Art')
+  			}
+  		})*/
+
+  		let opt = document.getElementById('optionsname')
+  		let group = document.getElementById('includegroupoptions')
+  		opt.addEventListener('change',(e)=>{
+       	 e.preventDefault()
+  			if(e.target.value==9 || e.target.value==9){
+  					let  div = document.createElement('div')
+  					id='show'
+  				let h4 = document.createElement('h4')
+  				let h4textnode = document.createTextNode('Selected Your Students Group') 	
+  				let select = document.createElement('select')
+  					select.name='groupname'
+  					select.style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd"
+  					select.id='selected'
+  				let option1 = document.createElement('option')
+  				option1.selected
+
+  				let textnode = document.createTextNode('Selected Your Students Group..')
+  				let option2 = document.createElement('option')
+  					option2.value="Arts"
+  				let textnode2 = document.createTextNode('Arts')	
+
+  				let option3 = document.createElement('option')
+  					option3.value="Commerce"
+  				let textnode3 = document.createTextNode('Commerce')	
+
+  				let option4 = document.createElement('option')
+  					option4.value="Science"
+  				let textnode4 = document.createTextNode('Science')			
+
+  				group.appendChild(div)
+  				div.appendChild(h4)
+  				h4.appendChild(h4textnode)
+  				div.appendChild(select)	
+  				select.appendChild(option1)
+  				select.appendChild(option2)
+  				select.appendChild(option3)
+  				select.appendChild(option4)
+  				option1.appendChild(textnode)
+  				option2.appendChild(textnode2)
+  				option3.appendChild(textnode3)
+  				option4.appendChild(textnode4)
+
+	  				let selected = document.getElementById('selected')
+	  				let subjectname = document.getElementById('subjectname')
+	         		 let title = document.getElementById('title')
+	         		 let titlenumber = document.getElementById('titlenumber')
+	  				let subjectnumber = document.getElementById('subjectnumber')
+	  				selected.addEventListener('change',(e)=>{
+	            		e.preventDefault()
+	  					let h4 = document.createElement('h4')
+	  					let textnode = document.createTextNode('Student group Subject name...')
+	  					title.appendChild(h4)
+	  					h4.appendChild(textnode)
+
+	           
+
+	            let subjectinput1 = document.createElement('input')
+	              subjectinput1.type = 'text'
+	              subjectinput1.placeholder='Group Subject name'
+	              subjectinput1.name='groupsubject1'
+	              subjectinput1.style='width:248px;height:38px;border-radius:5px;border:1px solid #ddd'
+
+	          let subjectinput2 = document.createElement('input')
+	              subjectinput2.type = 'text'
+	              subjectinput2.placeholder='Group Subject name'
+	              subjectinput2.name='groupsubject2'
+	              subjectinput2.style='width:248px;height:38px;border-radius:5px;border:1px solid #ddd'
+	              subjectinput2.className='mt-2'
+	  				  
+	            let subjectinput3 = document.createElement('input')
+	              subjectinput3.type = 'text'
+	              subjectinput3.placeholder='Group Subject name'
+	              subjectinput3.name='groupsubject3'
+	              subjectinput3.style='width:248px;height:38px;border-radius:5px;border:1px solid #ddd'
+	              subjectinput3.className='mt-2'
+
+
+	              let subjectinput4 = document.createElement('input')
+	              subjectinput4.type = 'text'
+	              subjectinput4.placeholder='Group Subject name'
+	              subjectinput4.name='groupsubject4'
+	              subjectinput4.style='width:248px;height:38px;border-radius:5px;border:1px solid #ddd'
+	              subjectinput4.className='mt-2'
+
+	              subjectname.appendChild(subjectinput1)
+	              subjectname.appendChild(subjectinput2)
+	              subjectname.appendChild(subjectinput3)
+	              subjectname.appendChild(subjectinput4)
+
+
+	              //subject number
+
+	               let num = document.createElement('h4')
+	            let numtextnode = document.createTextNode('Student group Subject Number..')
+	            titlenumber.appendChild(num)
+	            num.appendChild(numtextnode)
+
+
+	              let subjectnumber1 = document.createElement('input')
+	              subjectnumber1.type = 'Number'
+	              subjectnumber1.placeholder='Group Subject Number'
+	              subjectnumber1.name='groupsubjectnumber1'
+	              subjectnumber1.style='width:248px;height:38px;border-radius:5px;border:1px solid #ddd'
+
+	          let subjectnumber2 = document.createElement('input')
+	              subjectnumber2.type = 'Number'
+	              subjectnumber2.placeholder='Group Subject Number'
+	              subjectnumber2.name='groupsubjectnumber2'
+	              subjectnumber2.style='width:248px;height:38px;border-radius:5px;border:1px solid #ddd'
+	              subjectnumber2.className='mt-2'
+	            
+	            let subjectnumber3 = document.createElement('input')
+	              subjectnumber3.type = 'Number'
+	              subjectnumber3.placeholder='Group Subject Number'
+	              subjectnumber3.name='groupsubjectnumber3'
+	              subjectnumber3.style='width:248px;height:38px;border-radius:5px;border:1px solid #ddd'
+	              subjectnumber3.className='mt-2'
+
+
+	              let subjectnumber4 = document.createElement('input')
+	              subjectnumber4.type = 'Number'
+	              subjectnumber4.placeholder='Group Subject Number'
+	              subjectnumber4.name='groupsubjectnumber4'
+	              subjectnumber4.style='width:248px;height:38px;border-radius:5px;border:1px solid #ddd'
+	              subjectnumber4.className='mt-2'
+
+	              subjectnumber.appendChild(subjectnumber1)
+	              subjectnumber.appendChild(subjectnumber2)
+	              subjectnumber.appendChild(subjectnumber3)
+	              subjectnumber.appendChild(subjectnumber4)
+	          })
+
+  			}
+  		})
+  </script>	
+<%-include('./Partials/footer.ejs')%>	
