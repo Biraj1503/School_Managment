@@ -56,11 +56,11 @@ app.use('/',AllstudentsRoute)
 	res.render('home.ejs')
 })*/
 
-app.get('*',(req,res)=>{
+/*app.get('*',(req,res)=>{
 	res.json({
 		message:"404 Not Found"
 	})
-})
+})*/
 
 const PORT = process.env.PORT || 3000
 

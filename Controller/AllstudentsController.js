@@ -16,7 +16,7 @@ module.exports={
 			let match = "Dosen't Match"
 			students.filter(st=>{
 				if (st.classname==classname && st.roll==roll) {
-					console.log(st)
+					//console.log(st)
 					return res.render('studenthomepage.ejs',{st,isLoggIn:{},user:req.session.user,error:"",search:true})
 				}
 				
