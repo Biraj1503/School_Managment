@@ -1,6 +1,6 @@
 const User = require('../Model/UserModel')
 const {singupvalidation,loginValidation} = require('../Validation/Uservalidation')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 module.exports = {
 	async singupGetController(req,res,next){
