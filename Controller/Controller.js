@@ -1,5 +1,4 @@
 const Poll = require('../Model/Pollmodel')
-//const chalk = require('chalk')
 module.exports={
 
 	PollgetController(req,res,next){
@@ -63,8 +62,8 @@ module.exports={
 					parcentage:parcentage ? parcentage : 0
 				})
 			}
-			console.log(chalk.blue.bgRed.bold(Polls))
-			console.log(Poll.options)
+			//console.log(chalk.blue.bgRed.bold(Polls))
+			//console.log(Poll.options)
 			res.render('ViewPolls.ejs',{Polls,result})
 		}catch(err){
 			console.log(err)
@@ -74,7 +73,7 @@ module.exports={
 	async ViewpostPoll(req,res,next){
 		let {id} = req.params
 		let optionId = req.body.option
-		console.log(req.ips)
+		//console.log(req.ips)
 		try{
 			let Polls = await Poll.findById(id)
 			let options = [...Polls.options]
