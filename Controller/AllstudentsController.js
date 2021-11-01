@@ -1,5 +1,5 @@
 const User = require('../Model/UserModel')
-const Students = require("../Model/StudentsMode/StudentsprofileModel")
+const Students = require("../Model/StudentsMode/StudentsProfileModel")
 
 module.exports={
 	async AllUserGetController(req,res,next){
