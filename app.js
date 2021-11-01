@@ -13,7 +13,7 @@ const {bindwithUser} = require('./Authenticate/userAuthenticate');
 const admicardRoute = require('./Router/AdmitcardRoute')
 //const {bindwithUser} = require('./Authenticate/userAuthenticate')
 const routers = require('./Router/Pollroute')
-//const {AllgetPoll,ViewgetPoll,ViewpostPoll} = require('./Controller/Controller')
+const {AllgetPoll,ViewgetPoll,ViewpostPoll} = require('./Controller/Controller')
 const NoticeRoute = require('./Router/NotificationRoute')
 const app = express()
 app.set('views engin','ejs')
@@ -40,17 +40,17 @@ const Midalware = [
 ]
 
 app.use(Midalware)
-//app.use('/notice',NoticeRoute)
-//app.use('/createpoll',routers)
-//app.get('/allpolls',AllgetPoll)
-//app.get('/allpolls/:id',ViewgetPoll)
-//app.post('/allpolls/:id',ViewpostPoll)
-/*app.use('/admitcard',admicardRoute)
+app.use('/notice',NoticeRoute)
+app.use('/createpoll',routers)
+app.get('/allpolls',AllgetPoll)
+app.get('/allpolls/:id',ViewgetPoll)
+app.post('/allpolls/:id',ViewpostPoll)
+app.use('/admitcard',admicardRoute)
 app.use('/examfee',Examfee)
 app.use('/result',studentsResult)
 app.use('/login',loginrouter)
 app.use('/school',studentsRoute)
-app.use('/user',router)*/
+app.use('/user',router)
 app.use('/',AllstudentsRoute)
 /*app.get('/',(req,res)=>{
 	res.render('home.ejs')
