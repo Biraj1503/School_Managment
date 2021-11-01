@@ -1,5 +1,5 @@
 const Poll = require('../Model/Pollmodel')
-const chalk = require('chalk')
+//const chalk = require('chalk')
 module.exports={
 
 	PollgetController(req,res,next){
@@ -88,7 +88,7 @@ module.exports={
 			{$set:{options,totalVote}}
 			)
 			//res.cookie('name', 'tobi', { signed: true })
-			res.cookie('name', 'Cook', {httpOnly: true })
+			//res.cookie('name', 'Cook', {httpOnly: true })
 
 			res.redirect('/allpolls/' +id)
 		}catch(err){

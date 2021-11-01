@@ -1,5 +1,5 @@
 const User = require('../Model/UserModel')
-const Students = require("../Model/StudentsMode/StudentsprofileModel")
+const Students = require("../Model/StudentsMode/StudentsProfileModel")
 exports.schooltHomeController=(req,res,next)=>{
 	res.render('dashboard.ejs',{isLoggIn:req.session.isLoggIn,user:req.session.user})
 }

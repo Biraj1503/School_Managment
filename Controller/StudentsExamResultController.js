@@ -1,6 +1,6 @@
 const Result = require('../Model/StudentsMode/ExamResultModel')
 const User = require('../Model/UserModel')
-const Students = require("../Model/StudentsMode/StudentsprofileModel")
+const Students = require("../Model/StudentsMode/StudentsProfileModel")
 const {resultfileValidation} = require('../Validation/resultvalidation')
 module.exports ={
 	async StudentsGetResult(req,res,next){
