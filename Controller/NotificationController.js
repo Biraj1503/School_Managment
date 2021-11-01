@@ -1,4 +1,4 @@
-const Notice = require('../model/NotificationModel')
+const Notice = require('../Model/NotificationModel')
 exports.NoticeGetController=(req,res,next)=>{
 	Notice.find()
 	.then(notices=>{
