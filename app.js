@@ -40,17 +40,17 @@ const Midalware = [
 ]
 
 app.use(Midalware)
-app.use('/notice',NoticeRoute)
+//app.use('/notice',NoticeRoute)
 //app.use('/createpoll',routers)
 //app.get('/allpolls',AllgetPoll)
 //app.get('/allpolls/:id',ViewgetPoll)
 //app.post('/allpolls/:id',ViewpostPoll)
-app.use('/admitcard',admicardRoute)
+/*app.use('/admitcard',admicardRoute)
 app.use('/examfee',Examfee)
 app.use('/result',studentsResult)
 app.use('/login',loginrouter)
 app.use('/school',studentsRoute)
-app.use('/user',router)
+app.use('/user',router)*/
 app.use('/',AllstudentsRoute)
 /*app.get('/',(req,res)=>{
 	res.render('home.ejs')
