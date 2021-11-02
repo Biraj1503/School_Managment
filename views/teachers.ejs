@@ -1,14 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</body>
-</html>
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+  <div class="container">
+      <center class='my-3'><h4>Money Recipt</h4></center>
+      <form action="/Examfee" method="post">
+          <div class="row offset-md-2">
+
+            <!--Student Mode-->
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for='name'>Teachers Name</label>
+                    <input type="text" name="name" placeholder="Student Name..." class="form-control mt-2">
+                </div>
+
+                <div class="form-group">
+                    <label for='address' class="text-danger"><strong>Address</strong></label>
+                    <input type="text" name="address" placeholder="Class Roll..." class="form-control mt-2">
+                </div>
+
+                 <div class="form-group">
+                    <label for='subject' class="text-danger"><strong>Subject</strong></label>
+                    <input type="text" name="address" placeholder="Class Roll..." class="form-control mt-2">
+                </div>
+
+              </div>
+
+             
+
+                <!--Amount Mode-->
+
+                <div class="col-md-4 mx-5">
+                  <div class="form-group">
+                      <label for='classname' class="text-danger">Teachers Email</label>
+                      <input type="email" name="email" placeholder="Class name..." class="form-control mt-2">
+                  </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Upload Teachers Profile Picture</label>
+                        <input type="file" class="form-control-file my-2" id="exampleFormControlFile1" name='profilepic'>
+                    </div>
+
+                     <input style="width:287px; margin-left:50px" type="submit" value="Save" class="btn btn-primary mt-3">
+                </div>
+          </div>
+      </form>
+  </div>
+<%-include('./Partials/footer.ejs')%>

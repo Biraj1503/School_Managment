@@ -19,6 +19,12 @@ const TeacherSchema = new Schema({
 		trim:true
 	},
 
+	subject:{
+		type:String,
+		required:true,
+		trim:true
+	},
+
 	profilepic:String,
 
 	createTime:{
