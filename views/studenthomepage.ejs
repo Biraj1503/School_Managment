@@ -2,20 +2,29 @@
 <%-include('./Partials/StudentsNavbar.ejs')%>
 <div>
 	<div class="container my-4">
-		 <div>
-		 	<h1>The app is managed by School</h1>
-             <p>The app is managed by School Administration to schedule Teaching Staff activities according to their classes & provides app access to Parents to access progress reports of their children.This is a complete solution to keep a direct & continuous watch on a child’s progres</p>
-          </div>
+		<div class="row">
+			<div class="col-md-8">
+				<div>
+				 	<h1>The app is managed by School</h1>
+		             <p>The app is managed by School Administration to schedule Teaching Staff activities according to their classes & provides app access to Parents to access progress reports of their children.This is a complete solution to keep a direct & continuous watch on a child’s progres</p>
+	         	 </div>
 
-          <h4>Find Students</h4>
+          			<h4>Find Students</h4>
+			</div>
+
+			<div class="col-md-4">
+				<img src="https://res.cloudinary.com/dvvjwexxg/image/upload/v1635842302/boot_cmiatx.png">
+			</div>
+		</div> 
 
 		<form action='/' method='post'>
 			<input style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="classname" placeholder="ClassName..">
 
-			<input style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="roll" placeholder="Class Roll..">
+			<input style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="roll" placeholder="Class Roll.." class="mx-3">
 
 			<input type="submit"  class="btn btn-outline-success" value='Search'>
 		</form>
+
 	<div class="mt-5">
 		<%if(search){%>
 			<div class="row">

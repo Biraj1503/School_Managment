@@ -15,6 +15,8 @@ const admicardRoute = require('./Router/AdmitcardRoute')
 const routers = require('./Router/Pollroute')
 const {AllgetPoll,ViewgetPoll,ViewpostPoll} = require('./Controller/Controller')
 const NoticeRoute = require('./Router/NotificationRoute')
+
+const TeachersR = require('./Router/TeachersRoute')
 const app = express()
 app.set('views engin','ejs')
 const MONGDB_URI = 'mongodb+srv://SM:studentmanagment@newproject.92n8k.mongodb.net/students'
@@ -40,6 +42,7 @@ const Midalware = [
 ]
 
 app.use(Midalware)
+app.use('/teachers',TeachersR)
 app.use('/notice',NoticeRoute)
 app.use('/createpoll',routers)
 app.get('/allpolls',AllgetPoll)
@@ -56,11 +59,11 @@ app.use('/',AllstudentsRoute)
 	res.render('home.ejs')
 })*/
 
-/*app.get('*',(req,res)=>{
+app.get('*',(req,res)=>{
 	res.json({
 		message:"404 Not Found"
 	})
-})*/
+})
 
 const PORT = process.env.PORT || 3000
 
