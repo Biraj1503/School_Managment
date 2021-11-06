@@ -58,5 +58,7 @@ exports.studentsProfilePostController= async(req,res,next)=>{
 		//console.log(students)
 		res.render('StudentsProfile.ejs',{isLoggIn:{},user:req.session.user})
 	}
-	catch(err=>console.log(err))
+	catch(err){
+		console.log(err)
+	}
 }
