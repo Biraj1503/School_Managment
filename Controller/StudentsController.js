@@ -12,7 +12,7 @@ exports.studentsProfileGetController= async (req,res,next)=>{
 
 exports.studentsProfilePostController= async(req,res,next)=>{
 	try{
-		let profilepic = await cloudinary.uploader.upload(req.file.path)
+		let profilepics = await cloudinary.uploader.upload(req.file.path)
 		let {
 			name,
 			classname,
@@ -51,7 +51,7 @@ exports.studentsProfilePostController= async(req,res,next)=>{
 			subject,
 			description,
 			religion,
-			profilepic:profilepic.secure_url
+			profilepic:profilepics.secure_url
 		})
 
 		await student.save()
