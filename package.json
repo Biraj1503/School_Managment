@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Biraj1503/School_Managment#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.27.1",
     "connect-mongodb-session": "^3.1.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",

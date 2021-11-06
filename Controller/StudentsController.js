@@ -1,5 +1,7 @@
 const User = require('../Model/UserModel')
 const Students = require("../Model/StudentsMode/StudentsProfileModel")
+const upload = require('../Midalware/ProfilepicuploadMedalware')
+const cloudinary = require('../Cloudinaryconfig/Cloudinaryconfig')
 exports.schooltHomeController=(req,res,next)=>{
 	res.render('dashboard.ejs',{isLoggIn:req.session.isLoggIn,user:req.session.user})
 }
@@ -9,7 +11,9 @@ exports.studentsProfileGetController= async (req,res,next)=>{
 }
 
 exports.studentsProfilePostController= async(req,res,next)=>{
-	let {
+	try{
+		let profilepic = await cloudinary.uploader.upload(req.file.path)
+		let {
 			name,
 			classname,
 			roll,
@@ -47,10 +51,12 @@ exports.studentsProfilePostController= async(req,res,next)=>{
 			subject,
 			description,
 			religion,
-			profilepic:`/Uploads/${req.file.filename}`
+			profilepic:profilepic.secure_url
 		})
 
-		let students = await student.save()
-		console.log(students)
-	res.render('StudentsProfile.ejs',{isLoggIn:{},user:req.session.user})
+		await student.save()
+		//console.log(students)
+		res.render('StudentsProfile.ejs',{isLoggIn:{},user:req.session.user})
+	}
+	catch(err=>console.log(err))
 }
