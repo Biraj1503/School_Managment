@@ -8,7 +8,7 @@ exports.TeachersGetController=(req,res,next)=>{
 exports.TeachersPostController= async (req,res,next)=>{
 	try{
 		let {name,address,subject,email,teachersprofilepics,description} = req.body
-		let cloudinaryImage = cloudinary.uploader.upload(req.file.path)
+		let cloudinaryImage = await cloudinary.uploader.upload(req.file.path)
 		const teachers = new Teachers({
 			name,
 			address,
@@ -22,6 +22,6 @@ exports.TeachersPostController= async (req,res,next)=>{
 		res.render('teachers.ejs',{user:req.session.user})
 	}
 	catch(err){
-		cosole.log(err)
+		console.log(err)
 	}
 }
