@@ -24,5 +24,4 @@ exports.TeachersPostController= async (req,res,next)=>{
 	catch(err){
 		cosole.log(err)
 	}
-
 }
