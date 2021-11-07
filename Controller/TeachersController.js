@@ -15,7 +15,7 @@ exports.TeachersPostController= async (req,res,next)=>{
 			subject,
 			email,
 			description,
-			profilepic:cloudinaryImage.secure_url
+			profilepic
 		})
 
 		await teachers.save()
