@@ -3,6 +3,6 @@ const {TeachersGetController,TeachersPostController} = require('../Controller/Te
 const {dashboardAthenticate} = require('../Authenticate/userAuthenticate')
 const upload=  require('../Midalware/ProfilepicuploadMedalware')
 router.get('/', dashboardAthenticate,TeachersGetController)
-router.post('/', dashboardAthenticate,upload.single('profilepic'),TeachersPostController)
+router.post('/', dashboardAthenticate,upload.single('teachersprofilepics'),TeachersPostController)
 
 module.exports = router

@@ -7,15 +7,15 @@ exports.TeachersGetController=(req,res,next)=>{
 
 exports.TeachersPostController= async (req,res,next)=>{
 	try{
+		let {name,address,subject,email,teachersprofilepics,description} = req.body
 		let cloudinaryImage = cloudinary.uploader.upload(req.file.path)
-		let {name,address,subject,email,profilepic,description} = req.body
 		const teachers = new Teachers({
 			name,
 			address,
 			subject,
 			email,
 			description,
-			profilepic
+			teachersprofilepics:cloudinaryImage.secure_url
 		})
 
 		await teachers.save()

@@ -25,12 +25,18 @@ const TeacherSchema = new Schema({
 		trim:true
 	},
 
-	profilepic:String,
+	teachersprofilepics:{
+		type:String,
+		required:true,
+	},
+
 	description:String,
+
 	createTime:{
 		type:Date,
 		default: new Date()
 	}
+
 },{timestamps:true})
 
 const Teachers = model('Teachers',TeacherSchema)
