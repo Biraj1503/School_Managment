@@ -1,8 +1,8 @@
 <%-include('./Partials/header.ejs')%>
 <%-include('./Partials/navbar.ejs')%>
   <div class="container">
-      <center class='my-3'><h4>Money Recipt</h4></center>
-      <form action="/Examfee" method="post">
+      <center class='my-3'><h4>Create Teachers Profile..</h4></center>
+      <form action="/Examfee" method="post" enctype="multipart/form-data">
           <div class="row offset-md-2">
 
             <!--Student Mode-->
@@ -20,12 +20,11 @@
 
                  <div class="form-group">
                     <label for='subject' class="text-danger"><strong>Subject</strong></label>
-                    <input type="text" name="address" placeholder="Class Roll..." class="form-control mt-2">
+                    <input type="text" name="subject" placeholder="Class Roll..." class="form-control mt-2">
                 </div>
 
               </div>
 
-             
 
                 <!--Amount Mode-->
 
@@ -35,13 +34,18 @@
                       <input type="email" name="email" placeholder="Class name..." class="form-control mt-2">
                   </div>
 
+
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Upload Teachers Profile Picture</label>
                         <input type="file" class="form-control-file my-2" id="exampleFormControlFile1" name='profilepic'>
                     </div>
 
-                     <input style="width:287px" type="submit" value="Save" class="btn btn-primary mt-3">
+                    <div class="form-group">
+                      <label for='description' class="text-danger">Describe This Teachers</label>
+                      <textarea class="form-control" name="description" placeholder="Enter Your Opinion As Your Wish.."></textarea>
+                  </div>
                 </div>
+                <input style="width:287px;margin-left:160px" type="submit" value="Save" class="btn btn-primary mt-3">
           </div>
       </form>
   </div>

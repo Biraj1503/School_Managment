@@ -26,7 +26,7 @@ const TeacherSchema = new Schema({
 	},
 
 	profilepic:String,
-
+	description:String,
 	createTime:{
 		type:Date,
 		default: new Date()
