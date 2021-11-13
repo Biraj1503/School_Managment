@@ -159,13 +159,13 @@ module.exports ={
 			.then(data=>{
 				Students.find()
 				.then(st=>{
-					st.findIndex(st=>{
-						if(st.name == data.name && st.classname == data.classname && st.roll == data.roll && st.year == data.year && st.schoolname == data.schoolname){
-							return res.render('profile.ejs',{st,nopro:'',pro:true})
+					st.findIndex(std=>{
+						if(std.name == data.name && std.classname == data.classname && std.roll == data.roll && std.year == data.year && std.schoolname == data.schoolname){
+							return res.render('profile.ejs',{std,nopro:'',pro:true})
 						}
 					})
 
-					return res.render('profile.ejs',{st:{},nopro:"No Profile This Students..",pro:false})
+					return res.render('profile.ejs',{std:{},nopro:"No Profile This Students..",pro:false})
 				})
 				.catch(err=>{
 					console.log(err)
