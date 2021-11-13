@@ -14,7 +14,7 @@ module.exports={
 	},
 
 	ExamfeePostController(req,res,next){
-		let {name,classname,roll,year,amount,paymentmode,paymentdate,remarks,examtrm} = req.body
+		let {name,classname,roll,year,amount,paymentmode,paymentdate,remarks,examtrm,schoolname} = req.body
 		const event = new Date()
 		const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 		console.log(event.toLocaleDateString('ar-EG'.options))
@@ -34,6 +34,7 @@ module.exports={
 			paymentmode,
 			paymentdate,
 			remarks,
+			schoolname,
 			user:req.session.user.name
 		}) 
 

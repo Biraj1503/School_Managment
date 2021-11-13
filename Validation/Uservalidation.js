@@ -7,12 +7,14 @@ module.exports = {
 			error.name='Name Is Not Gratherthan 15 Charcters'
 		}
 
-		if(!user.email){
-			error.email="Email Is Not An Empty"
+		if(!user.accountid){
+			error.accountid="AccountId Is Not An Empty && Must Be A Number"
 		}
 
 		if(!user.password){
 			error.password='Password Is Not An Empty'
+		}else if(user.password.length < 8){
+			error.password='Password Must Be Lessthan 8 Char...'
 		}
 
 		if (!user.conformpassword) {

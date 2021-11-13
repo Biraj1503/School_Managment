@@ -12,6 +12,7 @@ module.exports ={
 			name,
 			roll,
 			classname,
+			schoolname,
 			section,
 			year,
 			groupname,
@@ -83,6 +84,7 @@ module.exports ={
 			name,
 			roll,
 			classname,
+			schoolname,
 			section,
 			year,
 			/*groupname,*/
@@ -124,11 +126,11 @@ module.exports ={
 	},
 
 	async SearchResult(req,res,next){
-		let {classname,roll,exatram,year} = req.body
+		let {classname,roll,exatram,year,schoolname} = req.body
 		let findIndex = await Result.find()
 
 			findIndex.findIndex(st=>{
-			if (st.classname==classname && st.roll==roll && st.exatram==exatram && st.year==year) {
+			if (st.classname==classname && st.roll==roll && st.exatram==exatram && st.year==year && st.schoolname==schoolname) {
 					console.log(st)
 					return res.render('PublishResult.ejs',{user:{},st,preview:true,error:''})
 				}				
@@ -158,7 +160,7 @@ module.exports ={
 				Students.find()
 				.then(st=>{
 					st.findIndex(st=>{
-						if(st.name == data.name && st.classname == data.classname && st.roll == data.roll && st.year == data.year){
+						if(st.name == data.name && st.classname == data.classname && st.roll == data.roll && st.year == data.year && st.schoolname == data.schoolname){
 							return res.render('profile.ejs',{st,nopro:'',pro:true})
 						}
 					})
@@ -181,11 +183,11 @@ module.exports ={
 		
 
 		async AdminstudentPostResultEditDElete(req,res,next){
-			let {classname,roll,exatram,year} = req.body
+			let {classname,roll,exatram,year,schoolname} = req.body
 			let findIndex = await Result.find()
 
 			findIndex.findIndex(st=>{
-			if (st.classname==classname && st.roll==roll && st.exatram==exatram && st.year==year) {
+			if (st.classname==classname && st.roll==roll && st.exatram==exatram && st.year==year && st.schoolname==schoolname) {
 					console.log(st)
 					return res.render('AdmineditdeleteResult.ejs',{user:req.session.user,st,addminpreview:true,error:'', edit:''})
 				}				

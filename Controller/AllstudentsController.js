@@ -8,14 +8,14 @@ module.exports={
 	},
 
 	async AllUserPostController(req,res,next){
-		let {roll,classname} = req.body
+		let {roll,classname,schoolname} = req.body
 
 		let students = await Students.find()
 		//console.log(students)
 		try{
 			let match = "Dosen't Match"
 			students.filter(st=>{
-				if (st.classname==classname && st.roll==roll) {
+				if (st.classname==classname && st.roll==roll && st.schoolname==schoolname) {
 					//console.log(st)
 					return res.render('studenthomepage.ejs',{st,isLoggIn:{},user:req.session.user,error:"",search:true})
 				}

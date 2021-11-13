@@ -1,10 +1,14 @@
 <%-include('./Partials/header.ejs')%>
 <%-include('./Partials/StudentsNavbar.ejs')%>
 	<div class="container">
+		<h1 class="my-3">Find Student Result..</h1>
 		<form action='/result/searchresult' method='post' class="my-4">
 			<input style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="classname" placeholder="ClassName..">
 
 			<input class="mx-2" style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="roll" placeholder="Class Roll..">
+
+			<input class="mx-2" style="width:200px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="schoolname" placeholder="Type Schoolname name">
+			
 
 			<select name='exatram' style="width:175px;height:38px;border-radius:5px;border:1px solid #ddd">
 				<option selected>Selected Your Exam...</option>

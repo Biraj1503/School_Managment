@@ -13,7 +13,8 @@ const ExamfeeSchema = new Schema({
 		trim:true
 	},
 
-
+	schoolname:String,
+	
 	roll:{
 		type:Number,
 		require:true,

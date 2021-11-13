@@ -12,7 +12,7 @@ const StudentsProfileSchema= new Schema({
 		required:true,
 		trim:true
 	},
-
+	schoolname:String,
 	classname:{
 		type:Number,
 		required:true,

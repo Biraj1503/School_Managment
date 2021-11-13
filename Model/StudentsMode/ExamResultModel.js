@@ -18,6 +18,7 @@ const studentsExamResultSchema =  new Schema({
 		required:true,
 		trim:true
 	},
+	schoolname:String,
 	section:{
 		type:String,
 		required:true,

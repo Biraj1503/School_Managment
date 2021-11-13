@@ -22,6 +22,8 @@
 
 			<input style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="roll" placeholder="Class Roll.." class="mx-3">
 
+			<input style="width:270px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="schoolname" placeholder="Type School Name.." class="mx-3"> 
+
 			<input type="submit"  class="btn btn-outline-success" value='Search'>
 		</form>
 
@@ -30,7 +32,8 @@
 			<div class="row">
 				<div class="col-md-5 offset-md-3 card card-body st_data text-light">
 					<center><img style="width:200px;height:200px;border-radius:5px;border:1px solid #ddd"src="<%=st.profilepic%>"></center>
-						<p class="mt-3"> <strong>Name :</strong> <%=st.name%></p>
+						<p class="mt-3"><strong>SchoolName :</strong> <%=st.schoolname%></p>
+						<p class=""> <strong>Name :</strong> <%=st.name%></p>
 						<p class=""><strong>Email :</strong> <%=st.email%></p>
 						<p class=""><strong>Class :</strong> <%=st.classname%></p>
 						<p class=""><strong>Roll :</strong> <%=st.roll%></p>

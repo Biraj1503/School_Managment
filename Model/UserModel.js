@@ -32,6 +32,33 @@ const UserSchema = new Schema({
 		trim:true
 	},
 
+	accountid:{
+		type:Number,
+		required:true
+	},
+
+	schoolname:{
+		type:String,
+		required:true
+	},
+
+	village:{
+		type:String,
+		required:true
+	},
+
+	phonenumber:{
+		type:Number,
+		required:true
+	},
+
+	website:String,
+
+	schoollogo:{
+		type:String,
+		required:true
+	},
+
 	profile:{
 		type:Schema.Types.ObjectId,
 		ref:'studentsProfileModel'

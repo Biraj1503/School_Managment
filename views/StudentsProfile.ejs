@@ -45,7 +45,12 @@
 								<label for='description'>Discription Your Students:</label>
 								<textarea name='description' class="form-control" style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" placeholder="Enter Your Discription..."></textarea>
 							</div>
-					</div>
+
+							<div class="form-group">
+							    <label for="schoolname">Upload Our Profile Picture</label>
+							    <input style="width:248px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" class="form-control my-2" id="exampleFormControlFile1" name='schoolname' value="<%=user.schoolname%>" readonly>
+	  						</div>
+						</div>
 
 					<div class="col-md-6">
 						<div class="form-group">
@@ -121,9 +126,10 @@
 							    <label for="exampleFormControlFile1">Upload Our Profile Picture</label>
 							    <input type="file" class="form-control-file my-2" id="exampleFormControlFile1" name='profilepic'>
 	  						</div>
+
+	  						<div class="form-group mt-3">
+							<input style="width:190px" type="submit" value="Create Profile" class="btn btn-primary my-2">
 						</div>
-						<div class="form-group mt-3" style="margin-left:120px">
-							<input style="width:190px" type="submit" value="Create Profile" class="btn btn-primary">
 						</div>
 					</div>
 				</div>

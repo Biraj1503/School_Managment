@@ -1,6 +1,8 @@
 const User = require('../Model/UserModel')
 const {singupvalidation,loginValidation} = require('../Validation/Uservalidation')
 const bcrypt = require('bcryptjs')
+const upload = require('../Midalware/ProfilepicuploadMedalware')
+const cloudinary = require('../Cloudinaryconfig/Cloudinaryconfig')
 
 module.exports = {
 	async singupGetController(req,res,next){
@@ -10,27 +12,52 @@ module.exports = {
 	},
 
 	async singupPostController(req,res,next){
-		let {name,email,password,conformpassword,birthday,gender}= req.body
-		let match = singupvalidation({name,email,password,conformpassword,birthday,gender})
-		if(match.isValid){
-			let {error} = match
-			res.render('home.ejs', {
-				errors:error
+		try{
+			let {
+				name,
+				accountid,
+				password,
+				conformpassword,
+				birthday,
+				gender,
+				schoolname,
+				village,
+				phonenumber,
+				website,
+				email,
+				schoollogo
+			}=req.body
+			let match = singupvalidation({name,accountid,password,conformpassword,birthday,gender})
+			if(match.isValid){
+				let {error} = match
+				return res.render('home.ejs', {
+					errors:error
+				})
+			}
+			let hash = await bcrypt.hash(password,10)
+			console.log(hash)
+			let logo = await cloudinary.uploader.upload(req.file.path);
+			let user = new User({
+				name,
+				email,
+				password:hash,
+				birthday,
+				gender,
+				accountid,
+				schoolname,
+				village,
+				phonenumber,
+				website,
+				schoollogo:logo.secure_url
 			})
-		}
-		let hash = await bcrypt.hash(password,10)
-		console.log(hash)
-		let user = new User({
-			name,
-			email,
-			password:hash,
-			birthday,
-			gender
-		})
 
-		let data = await user.save()
-		console.log(data)
-		res.redirect('/login')
+			let data = await user.save()
+			console.log(data)
+			res.redirect('/login')
+			}
+			catch(err){
+				return next(err)
+			}
 	},
 
 	async loginGetController(req,res,next){
@@ -65,7 +92,6 @@ module.exports = {
 				
 				if(err){
 				 return next(err)
-
 				}
 				res.redirect('/school')	
 			})
@@ -77,7 +103,7 @@ module.exports = {
 		}	
 	},
 
-	async logoutController(req,res,next){
+	logoutController(req,res,next){
 		console.log(req.session.user)
 		if (req.session) {
 			req.session.destroy(err=>{
