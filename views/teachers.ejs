@@ -23,6 +23,11 @@
                     <input type="text" name="subject" placeholder="Enter Type Subject..." class="form-control mt-2">
                 </div>
 
+                <div class="form-group">
+                        <label for="schoolname">School Name..</label>
+                        <input style="background:#ddd" type="text" class="form-control" id="" name='schoolname' value="<%=user.schoolname%>" readonly>
+                    </div>
+
               </div>
 
 
@@ -44,8 +49,11 @@
                       <label for='description' class="text-danger">Describe This Teachers</label>
                       <textarea class="form-control" name="description" placeholder="Enter Your Opinion As Your Wish.."></textarea>
                   </div>
+
+                  <input style="width:287px" type="submit" value="Save" class="btn btn-primary mt-3">
+
                 </div>
-                <input style="width:287px;margin-left:160px" type="submit" value="Save" class="btn btn-primary mt-3">
+              
           </div>
       </form>
   </div>

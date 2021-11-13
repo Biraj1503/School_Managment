@@ -12,7 +12,7 @@ const TeacherSchema = new Schema({
 		required:true,
 		trim:true
 	},
-
+	schoolnamel:String,
 	address:{
 		type:String,
 		required:true,
