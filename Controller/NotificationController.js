@@ -1,10 +1,6 @@
 const Notice = require('../Model/NotificationModel')
 exports.NoticeGetController=(req,res,next)=>{
-	Notice.find()
-	.then(notices=>{
-		res.render('postnotices.ejs',{notices})
-	})
-	.catch(err=>console.log(err))
+		res.render('postnotices.ejs',{user:req.session.user})
 }
 
 exports.NoticePostController = (req,res,next)=>{
@@ -15,13 +11,13 @@ exports.NoticePostController = (req,res,next)=>{
 	})
 
 	notices.save()
-	return res.render('postnotices.ejs',{notices:{}})
+	return res.render('postnotices.ejs',{user:req.session.user})
 }
 
 exports.allnoticesGetController=(req,res,next)=>{
 	Notice.find()
 	.then(notices=>{
-		return res.render('getNotice.ejs',{editNotices:{},notices,edit:false})
+		return res.render('getNotice.ejs',{editNotices:{},user:req.session.user,notices,edit:false})
 	})
 	.catch(err=>{
 		console.log(err)

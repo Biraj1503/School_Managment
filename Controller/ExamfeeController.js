@@ -1,5 +1,6 @@
 const Examfee = require('../Model/ExamfeeModel')
 const {ExamfeeValidation}= require('../Validation/ExamfeeValiadtion') 
+const User = require('../Model/UserModel')
 module.exports={
 	ExamfeeGetController(req,res,next){
 		res.render('Examfee.ejs', {user:req.session.user,error:{}})
@@ -35,6 +36,7 @@ module.exports={
 			paymentdate,
 			remarks,
 			schoolname,
+			village:req.session.user.village,
 			user:req.session.user.name
 		}) 
 
@@ -45,5 +47,30 @@ module.exports={
 		})
 		.catch(err=>console.log(err))
 		console.log(req.body)
+	},
+
+	AllFeesGetController(req,res,next){
+		let {schoolname} = req.session.user
+		console.log(schoolname)
+		Examfee.find({schoolname},(err,result)=>{
+			if (err) {
+					console.log(err)
+				}
+				res.render('allfees.ejs',{user:req.session.user,result})
+		})
+	}, 
+
+	//Don't Use This Controller... 
+
+	AllFeesPostController(req,res,next){
+			let {schoolname} = req.body
+			Examfee.findOne({schoolname},(err,result)=>{
+				if (err) {
+					console.log(err)
+				}
+				console.log(result)
+				res.render('allfees.ejs',{user:req.session.user,result})
+			})
 	}
+
 }

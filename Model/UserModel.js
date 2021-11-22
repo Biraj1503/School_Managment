@@ -62,7 +62,17 @@ const UserSchema = new Schema({
 	profile:{
 		type:Schema.Types.ObjectId,
 		ref:'studentsProfileModel'
-	}
+	},
+
+	Teachers:[{
+		type:Schema.Types.ObjectId,
+		ref:"Teachers"
+	}],
+
+	Notice:[{
+		type:Schema.Types.ObjectId,
+		ref:"Notice"
+	}]
 })
 
 const User = model('User', UserSchema)

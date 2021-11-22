@@ -1,0 +1,46 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/StudentsNavbar.ejs')%>
+<div class="container">
+	<h1>All Teachers List</h1>
+	<form action="/teachers/showteacherslist" method="post">
+		<input type="text" name="schoolname" style="width:250px;height:40px;border: 1px solid #ddd; border-radius: 8px" placeholder="Type Schoolname...">
+		<input type="submit" value="View" class="btn btn-primary">
+	</form>
+
+		<div class="row">
+			<div class="col-sm-12 my-3">
+					<table class="table table-bordered">
+						<thead class="table-light">
+							<tr>
+							   <th scope="col">School Name</th>
+							   <th scope="col">Name</th>
+							   <th scope="col">Email</th>
+							   <th scope="col">Address</th>
+							   <th scope="col">Subject</th>
+							   <th scope="col">ProfilePic</th>
+							   <th scope="col">Description</th>
+							</tr>
+						</thead>
+							<tbody>
+								<%for(t of Teachers){%>
+									<tr>
+									   	<td><%=t.schoolname%></td>
+									     <td><%=t.name%></td>
+									     <td><%=t.email%></td>
+									     <td><%=t.address%></td>
+									     <td><%=t.subject%></td>
+									     <td><img style="width:80px;height:80px" src="<%=t.teachersprofilepics%>" class="card-img-top" alt="..."></td>
+									     <td><%=t.description%></td>
+									  </tr>
+								<%}%>
+							   
+						 </tbody>
+					</table>
+		 	 </div> 
+		</div>
+	</div>	
+<%-include('./Partials/footer.ejs')%>
+
+	
+
+		  	

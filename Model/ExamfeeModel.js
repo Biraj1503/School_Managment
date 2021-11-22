@@ -14,6 +14,7 @@ const ExamfeeSchema = new Schema({
 	},
 
 	schoolname:String,
+	village:String,
 	
 	roll:{
 		type:Number,

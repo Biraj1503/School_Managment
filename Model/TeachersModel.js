@@ -12,7 +12,7 @@ const TeacherSchema = new Schema({
 		required:true,
 		trim:true
 	},
-	schoolnamel:String,
+	schoolname:String,
 	address:{
 		type:String,
 		required:true,
@@ -35,6 +35,12 @@ const TeacherSchema = new Schema({
 	createTime:{
 		type:Date,
 		default: new Date()
+	},
+
+	User:{
+		type:Schema.Types.ObjectId,
+		ref:'User',
+		required:true
 	}
 
 },{timestamps:true})

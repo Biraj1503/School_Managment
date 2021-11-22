@@ -10,6 +10,11 @@ const notificationSchema = new Schema({
 	createedTime:{
 		type:Date,
 		default:new Date()
+	},
+
+	User:{
+		type:Schema.Types.ObjectId,
+		ref:'User'
 	}
 
 },{timestamps:true})

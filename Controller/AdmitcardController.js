@@ -8,9 +8,9 @@ module.exports = {
 	async AdmitCardPostController(req,res,next){		
 		let admit = await Examfee.find()
 			try{
-				let {classname,roll,examtrm,year} = req.body
+				let {classname,roll,examtrm,year,schoolname} = req.body
 				admit.find(admit=>{
-					if (admit.classname==classname && admit.roll==roll && admit.examtrm==examtrm && admit.year==year) {
+					if (admit.classname==classname && admit.roll==roll && admit.examtrm==examtrm && admit.year==year && admit.schoolname == schoolname) {
 						console.log(admit)
 						return res.render('downloadadmit.ejs',{admit})		
 					}
