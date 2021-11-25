@@ -1,0 +1,170 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+  <div class="container">
+      <form action="/routine" method="post" name="frm">
+        <h4 class="text-success text-bold offset-sm-3 justify-content-center">Class Name:</h4>
+          <div class="form-group col-sm-2 offset-sm-3 justify-content-center my-4">
+
+                  <select name="classname" class="form-select">
+                    <option value=""></option>
+                    <option value="6">Class Six</option>
+                    <option value="7">Class Seven</option>
+                    <option value="8">Class Eight</option>
+                    <option value="9">Class Nine</option>
+                    <option value="10">Class Ten</option>
+                  </select>
+          </div>
+
+          <div class="row mt-3">
+              <div class="form-group col-sm-3">
+                  <input class="form-control" type="text" name="option" placeholder="Type Subject..">
+              </div>
+
+              <div class="form-group col-sm-3">
+                  <input class="form-control" type="date" name="option">
+              </div>
+
+              <div class="form-group col-sm-3">
+                  <select name="option" class="form-select">
+                    <option value=""></option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                  </select>
+              </div>
+
+              <div class="form-group col-sm-3">
+                  <input class="form-control" type="text" name="option" placeholder="Type Time..">
+              </div>
+              
+          </div>
+          <div id="showoptions" class="row"></div>
+
+          <div class="col-sm-3 mt-2">
+                  <button id="addoption" class="btn btn-primary">Add Option</button>
+                  <input type="submit" value="Submit" class="btn btn-success">
+          </div>
+
+      </form>
+        <script type="text/javascript">
+            let addoption = document.getElementById("addoption")
+          let showoptions = document.getElementById("showoptions")
+          addoption.addEventListener('click',(e)=>{
+            e.preventDefault()
+
+            // create Subjectdiv
+
+            let Subjectdiv = document.createElement('div')
+                Subjectdiv.className='form-group col-sm-3 my-2'
+
+                //create Subject Input
+
+              let Subjectinput = document.createElement('input')
+                Subjectinput.type="text"
+                Subjectinput.name="option"
+                Subjectinput.className="form-control"
+                Subjectinput.placeholder="Type Subject Name.." 
+
+                // append Child 
+
+                showoptions.appendChild(Subjectdiv)
+                Subjectdiv.appendChild(Subjectinput)
+
+                // create datediv
+
+                let datediv = document.createElement('div')
+                datediv.className='form-group col-sm-3 my-2'
+
+                //create Date Input
+
+              let dateinput = document.createElement('input')
+                dateinput.type="date"
+                dateinput.name="option"
+                dateinput.className="form-control"
+
+                // append Child 
+                 datediv.appendChild(dateinput)
+                //showoptions.appendChild(Subjectdiv,)
+                showoptions.appendChild(datediv)
+               
+
+            //create daydiv 
+
+            let daydiv = document.createElement('div')
+              daydiv.className='form-group col-sm-3 my-2'
+
+              //create dayselect dayselect
+
+             let dayselect1 = document.createElement('select')
+             dayselect1.name = 'option'
+             dayselect1.className='form-select'
+
+             //create classname option1
+             let dayoption1 =  document.createElement('option')
+                  dayoption1.value = ''
+
+              let dayoption2 =  document.createElement('option')
+                  dayoption2.value = 'Saturday'
+                  dayoption2.textContent="Saturday"
+
+              let dayoption3 =  document.createElement('option')
+                  dayoption3.value ="Sunday"
+                  dayoption3.textContent="Sunday"
+
+              let dayoption4 =  document.createElement('option')
+                  dayoption4.value ="Monday"
+                  dayoption4.textContent="Monday"
+
+              let dayoption5 =  document.createElement('option')
+                  dayoption5.value ="Tuesday"
+                  dayoption5.textContent="Tuesday"
+
+              let dayoption6 =  document.createElement('option')
+                  dayoption6.value ="Wednesday"
+                  dayoption6.textContent="Wednesday"
+
+              let dayoption7 =  document.createElement('option')
+                  dayoption7.value ="Thursday"
+                  dayoption7.textContent="Thursday"
+
+              let dayoption8 =  document.createElement('option')
+                  dayoption8.value ="Friday"
+                  dayoption8.textContent="Friday"       
+              // appendOption1
+              dayselect1.appendChild(dayoption1)
+                // appendOption2
+              dayselect1.appendChild(dayoption2)
+              dayselect1.appendChild(dayoption3)
+              dayselect1.appendChild(dayoption4)
+              dayselect1.appendChild(dayoption5)
+              dayselect1.appendChild(dayoption6)  
+              dayselect1.appendChild(dayoption7)
+              dayselect1.appendChild(dayoption8)     
+             daydiv.appendChild(dayselect1)
+             showoptions.appendChild(daydiv)
+
+             //create Time Input
+
+             let timediv = document.createElement('div')
+                timediv.className='form-group col-sm-3 my-2'
+
+                //create Date Input
+
+              let timeinput = document.createElement('input')
+                timeinput.type="text"
+                timeinput.name="option"
+                timeinput.className="form-control"
+                timeinput.placeholder="Type Time..."
+
+                // append Child 
+                 timediv.appendChild(timeinput)
+                //showoptions.appendChild(Subjectdiv,)
+                showoptions.appendChild(timediv)
+          })
+        </script>
+  </div>
+<%-include('./Partials/footer.ejs')%>

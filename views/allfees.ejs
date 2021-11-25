@@ -1,7 +1,7 @@
 <%-include('./Partials/header.ejs')%>
 <%-include('./Partials/navbar.ejs')%>
-<h4 style="margin-left:350px;margin-top:10px">All students Fees</h4>
-		<div class="row">
+<h4 style="margin-left:350px;margin-top:10px"> Find students Fees</h4>
+		<!-- <div class="row">
 			<div class="col-sm-11 my-3">
 					<table class="table table-bordered mx-5">
 						<thead class="table-light">
@@ -37,5 +37,119 @@
 					</table>
 					
 		 	 </div> 
+		</div>-->
+		<form action="/examfee/allfee" method="post">
+			<div class="row container mx-3">
+
+            <!--Student Mode-->
+
+	            <div class="col-md-3">
+	                <div class="form-group">
+	                    <label for='classname' class="text-danger">Class Name</label>
+	                    <input type="Number" name="classname" placeholder="Class name..." class="form-control mt-2">
+	                </div> 
+	            </div>
+                <div class="col-md-3 form-group form-group">
+                      <label for='examtrm' class="text-danger">Examination Tram</label>
+                      <select name='examtrm' class="form-control mt-2">
+                          <option selected>Selected Your Examination</option>
+                          <option value="First Exam">First Exam</option>
+                          <option value="Second Exam">Second Exam</option>
+                          <option value="Final Exam">Final Exam</option>
+                          <option value="Examination">Examination</option>
+                      </select>
+                 </div>
+
+                 <div class=" col-md-3 form-group">
+                    <label for='year' class="text-success"><strong>Session Year</strong></label>
+                   <select name='year' class="form-control mt-2">
+                          <option selected>Selected Your Year</option>
+                          <option value=2021>2021</option>
+                          <option value=2022>2022</option>
+                          <option value=2023>2023</option>
+                          <option value=2024>2024</option>
+                      </select>
+
+                </div>
+
+            <div class="col-md-2">
+                <input style="margin-top:35px" type="submit" value="Previwe" class="btn btn-primary">
+            </div>
+        </div>   
+	</form>
+
+	<div class="row">
+			<div class="col-sm-11 my-3">
+					<table class="table table-bordered mx-5">
+						<thead class="table-light">
+							<tr>
+							   <th scope="col">Name</th>
+							   <th scope="col">ClassName</th>
+							   <th scope="col">Roll</th>
+							   <th scope="col">Examtram</th>
+							   <th scope="col">Year</th>
+							   <th scope="col">Paymentmode</th>
+							   <th scope="col">Paymentdate</th>
+							   <th scope="col">Remarks</th>
+							   <th scope="col">Amount</th>
+							   <th scope="col">Schoolname</th>
+							</tr>
+						</thead>
+							<tbody>
+							<%if(downloadfile){%>
+								<button class="mx-5 my-2" onclick="exportTableToCSV('person.csv')">Download File CSV</button>
+								<%for(r of result){%>	
+									<tr>
+										<td><%=r.name%></td>
+										 <td><%=r.classname%></td>
+										 <td><%=r.roll%></td>
+										 <td><%=r.examtrm%></td>
+										  <td><%=r.year%></td>
+										  <td><%=r.paymentmode%></td>
+										  <td><%=r.paymentdate%></td>
+										  <td><%=r.remarks%></td>
+										  <td><%=r.amount%></td>
+										  <td><%=r.schoolname%></td>
+									 </tr>
+								<%}%> 
+							<%}%>					
+						 </tbody>
+					</table>
+		 	 </div> 
 		</div>
+
+	<script type="text/javascript">
+		//user-defined function to download CSV file  
+	function downloadCSV(csv, filename) {  
+		    var csvFile;  
+		    var downloadLink;  
+		     
+		    //define the file type to text/csv  
+		    csvFile = new Blob([csv], {type: 'text/csv'});  
+		    downloadLink = document.createElement("a");  
+		    downloadLink.download = filename;  
+		    downloadLink.href = window.URL.createObjectURL(csvFile);  
+		    downloadLink.style.display = "none";  
+		  
+		    document.body.appendChild(downloadLink);  
+		    downloadLink.click();  
+		}  
+		  
+		//user-defined function to export the data to CSV file format  
+		function exportTableToCSV(filename) {  
+		   //declare a JavaScript variable of array type  
+		   var csv = [];  
+		   var rows = document.querySelectorAll("table tr");  
+		   
+		   //merge the whole data in tabular form   
+		   for(var i=0; i<rows.length; i++) {  
+		    var row = [], cols = rows[i].querySelectorAll("td, th");  
+		    for( var j=0; j<cols.length; j++)  
+		       row.push(cols[j].innerText);  
+		    	csv.push(row.join(","));  
+		   }   
+		   //call the function to download the CSV file  
+		   downloadCSV(csv.join("\n"), filename);  
+		}  
+	</script>
 <%-include('./Partials/footer.ejs')%>

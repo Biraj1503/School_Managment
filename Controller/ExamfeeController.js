@@ -3,7 +3,7 @@ const {ExamfeeValidation}= require('../Validation/ExamfeeValiadtion')
 const User = require('../Model/UserModel')
 module.exports={
 	ExamfeeGetController(req,res,next){
-		res.render('Examfee.ejs', {user:req.session.user,error:{}})
+		res.render('Examfee.ejs', {user:req.session.user,error:{},duplicate:false})
 		/*Examfee.find()
 		.then(admit=>{
 			res.render('Examfee.ejs', {user:req.session.user,admit})
@@ -23,7 +23,7 @@ module.exports={
 		if(examerror.isvalid){
 			let {error} = examerror
 			console.log(error)
-			 return res.render('Examfee.ejs', {user:req.session.user,error})
+			 return res.render('Examfee.ejs', {user:req.session.user,error,duplicate:false})
 		}
 		let examfee = new Examfee({
 			name,
@@ -39,37 +39,49 @@ module.exports={
 			village:req.session.user.village,
 			user:req.session.user.name
 		}) 
+		Examfee.findOne({classname,roll,year,schoolname},(err,result)=>{
+			if (err) {
+				console.log(err)
+			}
+			if (result) {
+				return res.render('Examfee.ejs', {user:req.session.user,error:{},duplicate:true})
+			}
 
-		examfee.save()
-		.then(data=>{
-			 return res.render('Examfee.ejs', {user:req.session.user,error:{}})
-			console.log(data)
+			examfee.save()
+			.then(data=>{
+				 return res.render('Examfee.ejs', {user:req.session.user,error:{},duplicate:false})
+				console.log(data)
+			})
+			.catch(err=>console.log(err))
 		})
-		.catch(err=>console.log(err))
-		console.log(req.body)
+		
+		//console.log(req.body)
 	},
 
 	AllFeesGetController(req,res,next){
-		let {schoolname} = req.session.user
+		/*let {schoolname} = req.session.user
 		console.log(schoolname)
 		Examfee.find({schoolname},(err,result)=>{
 			if (err) {
 					console.log(err)
 				}
 				res.render('allfees.ejs',{user:req.session.user,result})
-		})
+		})*/
+
+		res.render('allfees.ejs',{user:req.session.user,result:'',downloadfile:false})
 	}, 
 
 	//Don't Use This Controller... 
 
 	AllFeesPostController(req,res,next){
-			let {schoolname} = req.body
-			Examfee.findOne({schoolname},(err,result)=>{
+			let {schoolname} = req.session.user
+			let {classname,year,examtrm} = req.body
+			Examfee.find({schoolname,classname,year,examtrm},(err,result)=>{
 				if (err) {
 					console.log(err)
 				}
 				console.log(result)
-				res.render('allfees.ejs',{user:req.session.user,result})
+				res.render('allfees.ejs',{user:req.session.user,result,downloadfile:true})
 			})
 	}
 
