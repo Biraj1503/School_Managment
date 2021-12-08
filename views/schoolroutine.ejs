@@ -2,9 +2,9 @@
 <%-include('./Partials/navbar.ejs')%>
   <div class="container">
       <form action="/routine" method="post" name="frm">
-        <h4 class="text-success text-bold offset-sm-3 justify-content-center">Class Name:</h4>
-          <div class="form-group col-sm-2 offset-sm-3 justify-content-center my-4">
-
+         <div class="row offset-sm-3">
+             <div class="form-group col-sm-3 justify-content-center my-4">
+              <h6 class="text-danger">Class Name:</h6>
                   <select name="classname" class="form-select">
                     <option value=""></option>
                     <option value="6">Class Six</option>
@@ -13,19 +13,30 @@
                     <option value="9">Class Nine</option>
                     <option value="10">Class Ten</option>
                   </select>
-          </div>
+            </div>
+          <div class="form-group col-sm-3 justify-content-center my-4">
+            <h6 class="text-warning">Examination Tram:</h6>
+                  <select name="extram" class="form-select">
+                    <option value=""></option>
+                    <option value="First Exam">First Exam</option>
+                    <option value="Second Exam">Second Exam</option>
+                    <option value="Final Exam">Final Exam</option>
+                    <option value="Class Test">Class Nine</option>
+                  </select>
+            </div>
+         </div>
 
           <div class="row mt-3">
               <div class="form-group col-sm-3">
-                  <input class="form-control" type="text" name="option" placeholder="Type Subject..">
+                  <input class="form-control" type="text" name="subject" placeholder="Type Subject..">
               </div>
 
               <div class="form-group col-sm-3">
-                  <input class="form-control" type="date" name="option">
+                  <input class="form-control" type="date" name="date">
               </div>
 
               <div class="form-group col-sm-3">
-                  <select name="option" class="form-select">
+                  <select name="day" class="form-select">
                     <option value=""></option>
                     <option value="Saturday">Saturday</option>
                     <option value="Sunday">Sunday</option>
@@ -38,7 +49,7 @@
               </div>
 
               <div class="form-group col-sm-3">
-                  <input class="form-control" type="text" name="option" placeholder="Type Time..">
+                  <input class="form-control" type="text" name="time" placeholder="Type Time..">
               </div>
               
           </div>
@@ -48,7 +59,25 @@
                   <button id="addoption" class="btn btn-primary">Add Option</button>
                   <input type="submit" value="Submit" class="btn btn-success">
           </div>
-
+         <table>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th><%=routine.classname%></th>
+            </tr>
+              <tr>
+                <td>
+                  <%for(let s of routine.subject){%>
+                     <p><%=s.subjectroutin%></p>
+                  <%}%>
+                </td>
+                <td>
+                  <%for(let d of routine.date){%>
+                      <p><%=d.routindate%></p>  
+                  <%}%>
+                </td>
+            </tr> 
+         </table>
       </form>
         <script type="text/javascript">
             let addoption = document.getElementById("addoption")
@@ -65,7 +94,7 @@
 
               let Subjectinput = document.createElement('input')
                 Subjectinput.type="text"
-                Subjectinput.name="option"
+                Subjectinput.name="subject"
                 Subjectinput.className="form-control"
                 Subjectinput.placeholder="Type Subject Name.." 
 
@@ -83,7 +112,7 @@
 
               let dateinput = document.createElement('input')
                 dateinput.type="date"
-                dateinput.name="option"
+                dateinput.name="date"
                 dateinput.className="form-control"
 
                 // append Child 
@@ -100,7 +129,7 @@
               //create dayselect dayselect
 
              let dayselect1 = document.createElement('select')
-             dayselect1.name = 'option'
+             dayselect1.name = 'day'
              dayselect1.className='form-select'
 
              //create classname option1
@@ -156,7 +185,7 @@
 
               let timeinput = document.createElement('input')
                 timeinput.type="text"
-                timeinput.name="option"
+                timeinput.name="time"
                 timeinput.className="form-control"
                 timeinput.placeholder="Type Time..."
 
