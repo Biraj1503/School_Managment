@@ -1,10 +1,16 @@
 const router = require('express').Router()
 const {StudentsGetResult,StudentsPostResult,SearchResult,studentgetProfile,AdminstudentGetResultEditDElete,AdminstudentPostResultEditDElete,editResult,deleteResult} = require("../Controller/StudentsExamResultController")
 const {dashboardAthenticate} = require('../Authenticate/userAuthenticate')
+const User = require('../Model/UserModel')
 router.get('/',dashboardAthenticate,StudentsGetResult)
 router.post('/',dashboardAthenticate,StudentsPostResult)
 router.get('/searchresult',(req,res,next)=>{
-	res.render('PublishResult.ejs',{user:{},st:{},preview:false,error:''})
+	User.find()
+	.then(data=>{
+		res.render('PublishResult.ejs',{user:{},st:{},preview:false,error:'',data})
+	})
+	.catch(err=>console.log(err))
+	
 })
 
 router.post('/searchresult',SearchResult)

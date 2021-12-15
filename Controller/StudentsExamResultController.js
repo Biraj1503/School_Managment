@@ -125,18 +125,37 @@ module.exports ={
 		res.render('result.ejs',{user:req.session.user,errors:{},typerror:false})
 	},
 
-	async SearchResult(req,res,next){
-		let {classname,roll,exatram,year,schoolname} = req.body
+	SearchResult(req,res,next){
+
+		/*let {classname,roll,exatram,year,schoolname} = req.body
 		let findIndex = await Result.find()
 
 			findIndex.findIndex(st=>{
 			if (st.classname==classname && st.roll==roll && st.exatram==exatram && st.year==year && st.schoolname==schoolname) {
 					console.log(st)
-					return res.render('PublishResult.ejs',{user:{},st,preview:true,error:''})
+					return res.render('PublishResult.ejs',{user:{},st,preview:true,error:'',data:''})
 				}				
 			})
 
-			return res.render('PublishResult.ejs',{user:{},st:{},preview:false,error:"Wrong Information"})
+			return res.render('PublishResult.ejs',{user:{},st:{},preview:false,error:"Wrong Information",data:''})*/
+			
+			let {classname,roll,exatram,year,schoolname} = req.body
+			Result.findOne({classname,roll,exatram,year,schoolname},(err,st)=>{
+				if (err) {
+					console.log(err)
+				}
+				if (st) {
+					return res.render('PublishResult.ejs',{user:{},st,preview:true,error:'',data:''})
+				}
+
+				//return res.render('PublishResult.ejs',{user:{},st:{},preview:false,error:"Wrong Information",data:''})
+				User.find()
+				.then(data=>{
+					res.render('PublishResult.ejs',{user:{},st:{},preview:false,error:'Wrong Information',data})
+				})
+				.catch(err=>console.log(err))
+
+			})
 		},
 
 		studentgetProfile(req,res,next){
@@ -286,9 +305,9 @@ module.exports ={
 		deleteResult(req,res,net){
 			let {_id} = req.params
 			Result.findOneAndDelete(_id)
-			.then(st=>{
-				console.log(st)
-				return res.render('AdmineditdeleteResult.ejs',{user:req.session.user,st,addminpreview:true,error:'', edit:'Delete Successfull'})
+			.then(()=>{
+				res.redirect('/result')
+				//return res.render('AdmineditdeleteResult.ejs',{user:req.session.user,st:'',addminpreview:true,error:'', edit:'Delete Successfull'})
 			})
 			.catch(err=>{
 				console.log(err)

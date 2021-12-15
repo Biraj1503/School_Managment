@@ -1,0 +1,179 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+  <div class="container">
+      <div class="row">
+        <div class="col-sm-9">
+          <h4 class="my-2">Find Routine And Modify,As you wish..</h4>
+        </div>
+        <div class="col-sm-6 mt-3">
+           <%-include('./Partials/Dropdown.ejs')%>
+        </div>
+      </div>
+      <form action="/routine/modifyroutine" method="post" name="frm">
+         <div class="row">
+             <div class="form-group col-sm-3 justify-content-center my-4">
+              <h6 class="text-danger">Class Name:</h6>
+                  <select name="classname" class="form-select">
+                    <option value="">Selected Class</option>
+                    <option value="6">Class Six</option>
+                    <option value="7">Class Seven</option>
+                    <option value="8">Class Eight</option>
+                    <option value="9">Class Nine</option>
+                    <option value="10">Class Ten</option>
+                  </select>
+            </div>
+          <div class="form-group col-sm-3 justify-content-center my-4">
+            <h6 class="text-warning">Examination Tram:</h6>
+                  <select name="extram" class="form-select">
+                    <option value="">Selected Examination</option>
+                    <option value="First Exam">First Exam</option>
+                    <option value="Second Exam">Second Exam</option>
+                    <option value="Final Exam">Final Exam</option>
+                    <option value="Class Test">Class Test</option>
+                  </select>
+            </div>
+
+             <div class="col-sm-3 my-5">
+                  <input type="submit" value="Submit" class="btn btn-success">
+            </div>
+
+         </div>         
+      </form>
+      <%if(searchresult){%>
+            <div class="">
+                <div class="my-3">
+                    <a class="btn btn-primary" href="/routine/edit/<%=result._id%>" data-bs-toggle="modal" data-bs-target="#editresult">Edit Routine</a>
+                    <a class="btn btn-danger mx-2" href="/routine/delete/<%=result._id%>">Delete Routine</a>
+                </div>
+            
+                   
+                      <h4>School Name : <%=result.schoolname%></h4>
+                    
+                   
+                      <h4>Class Name : <%=result.classname%></h4>
+                    
+
+                   
+                      <h4>Year: <%=result.extram%></h4>
+                    
+
+                   
+                      <h4>Year: <%=result.year%></h4>
+                    
+
+                   
+                      <h4>Publish Time : <%=moment(result.createTime)%></h4> 
+            </div>
+          <%}%>
+      <div class="row">
+        <div class="col-sm-11 my-3">
+          <table class="table table-bordered table-striped table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Day</th>
+                  <th scope="col">Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td>
+                      <%for(let r of result.subject){%>
+                        <p><%=r.subjectroutin%></p>
+                      <%}%>
+                    </td>
+                    
+                    <td>
+                      <%for(let d of result.date){%>
+                        <p><%=d.routindate%></p>
+                      <%}%>
+                    </td>
+
+                    <td>
+                      <%for(let dy of result.day){%>
+                        <p><%=dy.routinday%></p>
+                      <%}%>
+                    </td>
+
+                    <td>
+                      <%for(let t of result.time){%>
+                        <p><%=t.routintime%></p>
+                      <%}%>
+                    </td>
+                  </tr>
+              </tbody>
+          </table>
+
+           <h1 class="text-danger"><%=error%></h1>
+
+          <div style="width:1500px" class="modal fade" id="editresult" tabindex="-1" aria-labelledby="editresult" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Edit Exam Routine</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+
+                              <div class="modal-body">
+                                <form action="/routine/edit/<%=result._id%>" method='post'>
+                                        
+                                    <div class="row">
+                                        <div class="col-sm-5 form-group">
+                                          <label class="text-primary">Edit Class Name :</label>
+                                            <input type="text" name="classname" value="<%=result.classname%>" class="form-control">
+
+                                            <input style="display:none" type="text" name="id" value="<%=result._id%>" class="form-control">
+                                        </div>
+
+
+                                        <div class="col-sm-5 form-group">
+                                          <label class="text-success">Edit Examination Tram :</label>
+                                            <input type="text" name="extram" value="<%=result.extram%>" class="form-control">
+                                        </div>
+
+                                    </div>
+
+                                      <div class="row">
+                                          <div class="col-sm-4 form-group">
+                                              <label class="text-success">Edit subject Name :</label>
+                                            <%for(let r of result.subject){%>
+                                              <input type="text" name="subject" value="<%=r.subjectroutin%>" class="form-control">
+                                            <%}%>
+                                          </div>
+
+                                          <div class="col-sm-3 form-group">
+                                            <label class="text-primary">Edit Date :</label>
+                                            <%for(let r of result.date){%>
+                                              <input type="text" name="date" value="<%=r.routindate%>" class="form-control">
+                                            <%}%>
+                                          </div>
+
+                                          <div class="col-sm-3 form-group">
+                                            <label class="text-danger">Edit Day :</label>
+                                            <%for(let r of result.day){%>
+                                              <input type="text" name="day" value="<%=r.routinday%>" class="form-control">
+                                            <%}%>
+                                          </div>
+
+                                          <div class="col-sm-2 form-group">
+                                             <label class="text-warning">Time :</label>
+                                            <%for(let r of result.time){%>
+                                              <input type="text" name="time" value="<%=r.routintime%>" class="form-control">
+                                            <%}%>
+                                          </div>
+                                          <div class="col-sm-5 my-2">
+                                              <input type="submit" value="Update" class="btn btn-success">
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+
+                </div>
+        <script type="text/javascript">
+          
+        </script>
+  </div>
+<%-include('./Partials/footer.ejs')%>

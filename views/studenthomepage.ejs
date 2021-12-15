@@ -15,16 +15,34 @@
 			<div class="col-md-4">
 				<img src="https://res.cloudinary.com/dvvjwexxg/image/upload/v1635842302/boot_cmiatx.png">
 			</div>
-		</div> 
-
+		</div>
+		
 		<form action='/' method='post'>
-			<input style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="classname" placeholder="ClassName..">
+			<div class="row">
+				<div class="col-sm-3">
+					<input type="text" name="classname" placeholder="ClassName.." class="form-control">
+				</div>
 
-			<input style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="roll" placeholder="Class Roll.." class="mx-3">
 
-			<input style="width:270px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="schoolname" placeholder="Type School Name.." class="mx-3"> 
+				<div class="col-sm-3">
+					<input type="text" name="roll" placeholder="Class Roll.." class="form-control">
+				</div>
 
-			<input type="submit"  class="btn btn-outline-success" value='Search'>
+				<div class="col-sm-3">
+						<select style="width:270px;height:38px;border-radius:5px;border:1px solid #ddd" name='schoolname' class="custom-select">
+							<option>Selected One</option>
+		                  <%for(let schoolmanagment of data){%>
+		                  	<option value="<%=schoolmanagment.schoolname%>">
+		                  		<%=schoolmanagment.schoolname%>		
+		                  	</option>	
+		                  <%}%>
+		             </select>
+				</div>
+				<div class="col-sm-3">
+					<input type="submit"  class="btn btn-outline-success" value='Preview'>
+				</div>
+			</div>
+
 		</form>
 
 	<div class="mt-5">

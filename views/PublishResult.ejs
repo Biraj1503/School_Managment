@@ -7,9 +7,15 @@
 
 			<input class="mx-2" style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" type="Number" name="roll" placeholder="Class Roll..">
 
-			<input class="mx-2" style="width:200px;height:38px;border-radius:5px;border:1px solid #ddd" type="text" name="schoolname" placeholder="Type Schoolname name">
+			<select style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" name='schoolname' class="custom-select">
+				<option>Selected One</option>
+		            <%for(let schoolmanagment of data){%>
+		                <option value="<%=schoolmanagment.schoolname%>">
+		                  	<%=schoolmanagment.schoolname%>		
+		                 </option>	
+		           	<%}%>
+		     </select>
 			
-
 			<select name='exatram' style="width:175px;height:38px;border-radius:5px;border:1px solid #ddd">
 				<option selected>Selected Your Exam...</option>
 				<option value="First Exam">First Examination</option>

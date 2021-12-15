@@ -1,12 +1,21 @@
 <%-include('./Partials/header.ejs')%>
 <%-include('./Partials/navbar.ejs')%>
   <div class="container">
+      
+      <div class="row">
+        <div class="col-sm-6">
+          <h1 class="my-2">Create Exam Routine..</h1>
+        </div>
+        <div class="col-sm-6 mt-4">
+           <%-include('./Partials/Dropdown.ejs')%>
+        </div>
+      </div>
       <form action="/routine" method="post" name="frm">
          <div class="row offset-sm-3">
              <div class="form-group col-sm-3 justify-content-center my-4">
               <h6 class="text-danger">Class Name:</h6>
                   <select name="classname" class="form-select">
-                    <option value=""></option>
+                    <option value="">Selected Class</option>
                     <option value="6">Class Six</option>
                     <option value="7">Class Seven</option>
                     <option value="8">Class Eight</option>
@@ -17,27 +26,30 @@
           <div class="form-group col-sm-3 justify-content-center my-4">
             <h6 class="text-warning">Examination Tram:</h6>
                   <select name="extram" class="form-select">
-                    <option value=""></option>
+                    <option value="">Selected Examination</option>
                     <option value="First Exam">First Exam</option>
                     <option value="Second Exam">Second Exam</option>
                     <option value="Final Exam">Final Exam</option>
-                    <option value="Class Test">Class Nine</option>
+                    <option value="Class Test">Class Test</option>
                   </select>
             </div>
          </div>
 
           <div class="row mt-3">
               <div class="form-group col-sm-3">
+                  <h6 class="text-primary">Subject Name:</h6>
                   <input class="form-control" type="text" name="subject" placeholder="Type Subject..">
               </div>
 
               <div class="form-group col-sm-3">
+                 <h6 class="text-warning">Examinition Date:</h6>
                   <input class="form-control" type="date" name="date">
               </div>
 
               <div class="form-group col-sm-3">
+                <h6 class="text-success">Examinition Day:</h6>
                   <select name="day" class="form-select">
-                    <option value=""></option>
+                    <option value="">Selected Single Day</option>
                     <option value="Saturday">Saturday</option>
                     <option value="Sunday">Sunday</option>
                     <option value="Monday">Monday</option>
@@ -49,35 +61,17 @@
               </div>
 
               <div class="form-group col-sm-3">
-                  <input class="form-control" type="text" name="time" placeholder="Type Time..">
+                <h6 class="text-danger">Examinition Time:</h6>
+                  <input class="form-control" type="text" name="time" placeholder="Type Time 10PM To 1.00PM...">
               </div>
               
           </div>
           <div id="showoptions" class="row"></div>
 
-          <div class="col-sm-3 mt-2">
+          <div class="col-sm-3 mt-4">
                   <button id="addoption" class="btn btn-primary">Add Option</button>
-                  <input type="submit" value="Submit" class="btn btn-success">
+                  <input type="submit" value="Submit" class="btn btn-success mx-2">
           </div>
-         <table>
-            <tr>
-              <th>Name</th>
-              <th>Date</th>
-              <th><%=routine.classname%></th>
-            </tr>
-              <tr>
-                <td>
-                  <%for(let s of routine.subject){%>
-                     <p><%=s.subjectroutin%></p>
-                  <%}%>
-                </td>
-                <td>
-                  <%for(let d of routine.date){%>
-                      <p><%=d.routindate%></p>  
-                  <%}%>
-                </td>
-            </tr> 
-         </table>
       </form>
         <script type="text/javascript">
             let addoption = document.getElementById("addoption")

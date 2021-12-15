@@ -17,7 +17,14 @@
 
 					<div class="form-group col-md-2">
 						<label>School Name</label>
-						<input type="text" name="schoolname" class="form-control" placeholder="Type School Name...">
+						<select style="width:170px;height:38px;border-radius:5px;border:1px solid #ddd" name='schoolname' class="custom-select">
+							<option>Selected One</option>
+		                  <%for(let schoolmanagment of data){%>
+		                  	<option value="<%=schoolmanagment.schoolname%>">
+		                  		<%=schoolmanagment.schoolname%>		
+		                  	</option>	
+		                  <%}%>
+		             </select>
 					</div>
 
 					<div class="form-group col-md-2">
