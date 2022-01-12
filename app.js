@@ -18,6 +18,10 @@ const NoticeRoute = require('./Router/NotificationRoute')
 
 const TeachersR = require('./Router/TeachersRoute')
 const SchoolRoutineRoute = require('./Router/SchoolRoutineRoute')
+const ClassRoutineRoute = require('./Router/ClassRoutineRoute')
+
+const AdmissionRoute = require('./Router/AdmissionRoute')
+const StudentIDRoute = require('./Router/StudentsIdRouter')
 const app = express()
 app.set('views engin','ejs')
 const MONGDB_URI = 'mongodb+srv://SM:studentmanagment@newproject.92n8k.mongodb.net/students'
@@ -43,6 +47,9 @@ const Midalware = [
 ]
 
 app.use(Midalware)
+app.use('/studentsaccount',StudentIDRoute)
+app.use('/admission',AdmissionRoute)
+app.use('/classroutine',ClassRoutineRoute)
 app.use('/routine',SchoolRoutineRoute)
 app.use('/teachers',TeachersR)
 app.use('/notice',NoticeRoute)

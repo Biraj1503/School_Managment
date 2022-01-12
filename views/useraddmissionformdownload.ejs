@@ -1,0 +1,64 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/StudentsNavbar.ejs')%>
+<div class="container mt-2" style="width:100%">
+	<form class="row" action="/admission/userdownload" method="POST">
+		 <div class="col-md-3">
+		 	 <label for="validationCustom01" class="form-label">Phone Number</label>
+		    <input type="text" name="phone" class="form-control" placeholder="Type Your Phone Number" aria-label="Phone Number">
+		  </div>
+		  <div class="col-md-3">
+		    <label for="validationCustom02" class="form-label">Admission School Name</label>
+		    <select class="form-select" name="admissionschool" id="validationCustom02" required>
+		      <option selected disabled>Selected One</option>
+		      <%for(let s of schoolname){%>
+		      	<option value="<%=s.schoolname%>"><%=s.schoolname%></option>
+		      <%}%>
+		    </select>
+		</div>
+
+		 <div class="col-3">
+		    <input class="btn btn-primary" type="submit" value="Preview" style="margin-top:31px">
+		  </div>
+	</form>
+	
+	<% if(AddmissionsForm){%>
+		<div style="background: #ddd; width:800px">
+			<hr>
+			<div class="d-flex mt-4" style="margin-left:170px">
+				<img style="width:100px;height:100px; border:2px solid #ddd; border-radius:50%" src="<%=schoolinfo.schoollogo%>">
+				<h5 style="margin-top:30px" class="mx-3"><%=schoolinfo.schoolname%></h5>
+				<p style="margin-top:30px">Create Time : <%=moment(addmissionform.createTime)%></p>
+			</div>
+			<hr>
+		</div>
+		<div style="background: #CCCCFF;border:2px solid #ddd;width:800px" class="row mx-1">
+			<div class="col-sm-6 py-3">
+				<h6>Name : <%=addmissionform.firstname%> <%=addmissionform.lastname%></h6>
+				<h6>Email : <%=addmissionform.email%></h6>
+				<h6>Phone : <%=addmissionform.phone%></h6>
+				<h6>City : <%=addmissionform.city%></h6>
+				<h6>District : <%=addmissionform.district%></h6>
+				<h6>NID NO : <%=addmissionform.nidno%></h6>
+				<h6>Previus Schoolname : <%=addmissionform.prevschoolname%></h6>
+				<h6>Admission School : <%=addmissionform.admissionschool%></h6>
+				<h6>Addmission Classname : <%=addmissionform.classname%></h6>
+				<h6>Present Address : <%=addmissionform.presentaddress%></h6>
+
+				<hr>
+
+				<h6>Father Name : <%=addmissionform.fathername%></h6>
+				<h6>Mother Name : <%=addmissionform.mothername%></h6>
+				<h6>Parentsnid: <%=addmissionform.Parentsnid%></h6>
+			</div>
+			<div class="col-sm-6">
+				<img style="width:150px;height:150px; border:2px solid #ddd; border-radius:5%;margin-left: 170px" src="<%=addmissionform.studentimage%>" alt='No IMG..'>
+			</div>
+		</div>
+		<br><br>
+	<%}else{%>
+		<h4 class="text-danger"><%=error%></h4>
+	<%}%>
+
+</div>
+<%-include('./Partials/footer.ejs')%>
+

@@ -1,0 +1,77 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+<div class="container mt-5">
+      <div class='body'>
+          <section>
+              <div class="content">
+                <h6>CreateAccount</h6>
+                <h6>CreateAccount</h6>
+              </div>
+          </section>
+      </div>
+   <form action="/studentsaccount" method="POST" style="background: #ddd; border-radius: 3px; width: 1116px; margin-left:0.40px" class="row g-3 needs-validation py-3" validate>
+      <div class="col-md-3">
+        <label for="name" class="form-label">Students Name</label>
+        <input name="name" type="text" class="form-control" id="name" value="" placeholder="Type Name..." required>
+      </div>
+      <div class="col-md-3">
+        <label for="classname" class="form-label">Students Class Name</label>
+        <input name="classname" type="text" class="form-control" id="classname" value="" placeholder="Type Class Name.." required>
+      </div>
+      <div class="col-md-3">
+        <label for="Roll" class="form-label">Students Roll</label>
+        <input name="roll" type="Number" class="form-control" id="Roll" value="" placeholder="Type Students Roll" required>
+      </div>
+
+      <div class="col-md-3">
+        <label for="Email" class="form-label">Students Email</label>
+        <input name="email" type="email" class="form-control" id="Email" value="" placeholder="Type Students email.." required>
+      </div>
+      <div class="col-md-3">
+        <label for="Password" class="form-label">Password</label>
+        <input name="password" type="password" class="form-control" value="" placeholder="Type Password.." id="Password" required>
+      </div>
+      <div class="col-md-3">
+        <label for="riligion" class="form-label">Selected Riligion</label>
+        <select name="riligion" id="inputState" class="form-select" required>
+            <option selected disabled>Selected One</option>
+            <option value="Islam">Islam</option>
+            <option value="Hidu">Hindu</option>
+            <option value="Christians">Christians</option>
+            <option value="Buddhists">Buddhists</option>
+            <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label for="gender" class="form-label">Selected Gender</label>
+        <select name="gender" id="inputState" class="form-select" required>
+            <option selected disabled>Selected One</option>
+            <option value="Male">Male</option>
+            <option value="FeMale">FeMale</option>
+            <option value="Othe">Othe</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label for="phonenumber" class="form-label">Students Phone Number</label>
+        <input name="phonenumber" type="text" class="form-control" value="" id="phonenumber" placeholder="Type Students Phonenumber.." required>
+      </div>
+
+
+       <div class="col-md-3">
+        <label for="address" class="form-label">Students Address</label>
+        <input name="address" type="text" class="form-control" value="" id="address" placeholder="Type Students Address.." required>
+      </div>
+
+       <div class="col-md-3">
+        <label for="photo" class="form-label">Students Photo</label>
+        <input name="photo" type="file" class="form-control" value="" id="photo"  required>
+      </div>
+      
+      <div class="col-md-3">
+        <button style="width:200px; margin-top:30px" type="submit" class="btn btn-primary">Sign in</button>
+      </div>
+  </form>
+ </div> 
+<%-include('./Partials/footer.ejs')%>

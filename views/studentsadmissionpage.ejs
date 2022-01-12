@@ -1,0 +1,211 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/StudentsNavbar.ejs')%>
+<div class="position-fixed" style="width:100%">
+	<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+	  <div class="carousel-indicators">
+	    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+	    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+	    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+	    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+	    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+	    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+	  </div>
+	  <div class="carousel-inner">
+	    <div class="carousel-item active">
+	      <img style="width:100%;height:500px" src="https://res.cloudinary.com/dvvjwexxg/image/upload/v1641461148/deleece-cook-zzjLGF_6dx4-unsplash_kg026q.jpg" class="d-block w-100" alt="...">
+	      <div class="carousel-caption d-none d-md-block">
+	        <h5>First slide label</h5>
+	        <p>Some representative placeholder content for the first slide.</p>
+	      </div>
+	    </div>
+	    <div class="carousel-item">
+	      <img style="width:100%;height:500px" src="https://res.cloudinary.com/dvvjwexxg/image/upload/v1641461146/kuanish-reymbaev-nyuWugmjXis-unsplash_w5r7oa.jpg" class="d-block w-100" alt="...">
+	      <div class="carousel-caption d-none d-md-block">
+	        <h5>Second slide label</h5>
+	        <p>Some representative placeholder content for the second slide.</p>
+	      </div>
+	    </div>
+	    <div class="carousel-item">
+	      <img style="width:100%;height:500px" src="https://res.cloudinary.com/dvvjwexxg/image/upload/v1641461136/ben-white-4K2lIP0zc_k-unsplash_wudfda.jpg" class="d-block w-100" alt="...">
+	      <div class="carousel-caption d-none d-md-block">
+	        <h5>Third slide label</h5>
+	        <p>Some representative placeholder content for the third slide.</p>
+	      </div>
+	    </div>
+
+	    <div class="carousel-item">
+	      <img style="width:100%;height:500px" src="https://res.cloudinary.com/dvvjwexxg/image/upload/v1641461153/jeshoots-com-5EKw8Z7CgE4-unsplash_og0jc7.jpg" class="d-block w-100" alt="...">
+	      <div class="carousel-caption d-none d-md-block">
+	        <h5>Third slide label</h5>
+	        <p>Some representative placeholder content for the third slide.</p>
+	      </div>
+	    </div>
+
+	    <div class="carousel-item">
+	      <img style="width:100%;height:500px" src="https://res.cloudinary.com/dvvjwexxg/image/upload/v1641461136/carl-jorgensen-leyUrzdwurc-unsplash_hycafx.jpg" class="d-block w-100" alt="...">
+	      <div class="carousel-caption d-none d-md-block">
+	        <h5>Third slide label</h5>
+	        <p>Some representative placeholder content for the third slide.</p>
+	      </div>
+	    </div>
+
+	    <div class="carousel-item">
+	      <img style="width:100%;height:500px" src="https://res.cloudinary.com/dvvjwexxg/image/upload/v1641461134/hand-of-man-holding-light-bulb-concept-of-education-and-creative-idea-picture-id1315109228_xu6ww0.jpg" class="d-block w-100" alt="...">
+	      <div class="carousel-caption d-none d-md-block">
+	        <h5>Third slide label</h5>
+	        <p>Some representative placeholder content for the third slide.</p>
+	      </div>
+	    </div>
+	    </div>
+	  </div>
+	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Previous</span>
+	  </button>
+	  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Next</span>
+	  </button>
+	</div>
+
+<div class="position-relative text-light" style="width:100%; min-height:600px; margin-top:600px; background:SlateBlue;opacity:89.0%">
+		<%if(message){%>
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			    <strong><%=message%></strong>
+			     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		     </div>		
+		<%}%>	
+	<div class="container">
+		<h1 class="py-3">Students Information</h1>
+		<form action="/admission" method="POST" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
+		  <div class="col-md-3">
+		    <label for="validationCustom01" class="form-label">First name</label>
+		    <input placeholder="Type First Name.." name="firstname" type="text" class="form-control" value="" id="validationCustom01" required>
+		  </div>
+		  <div class="col-md-3">
+		    <label for="validationCustom02" class="form-label">Last name</label>
+		    <input placeholder="Type Last Name.." name="lastname" type="text" class="form-control" value="" id="validationCustom02" required>
+		  </div>
+		  <div class="col-md-3">
+		    <label for="validationCustomUsername" class="form-label">Email</label>
+		    <div class="input-group has-validation">
+		      <input placeholder="Type Your Email.." name="email" type="email" class="form-control" value="" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+		    </div>
+		  </div>
+
+		  <div class="col-md-3">
+		    <label for="validationCustomUsername" class="form-label">Phone</label>
+		    <div class="input-group has-validation">
+		      <input placeholder="Type Your Phone Number.." name="phone" type="text" class="form-control" value="" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+		    </div>
+		  </div>
+		  <div class="col-md-3">
+		    <label for="validationCustom03" class="form-label">City</label>
+		    <input placeholder="Type Your City.." name="city" type="text" class="form-control" value="" id="validationCustom03" required>
+		  </div>
+		  <div class="col-md-3">
+		    <label for="validationCustom04" class="form-label">District</label>
+		    <select class="form-select" name="district" id="validationCustom04" required>
+		      <option selected disabled>Selected One</option>
+		      <option value="Barishal">Barishal</option>
+		      <option value="Voal">Vola</option>
+		      <option value="Pirojpur">Pirojpur</option>
+		    </select>
+		  </div>
+
+		  <div class="col-md-3">
+		    <label for="validationCustom05" class="form-label">NID NO:</label>
+		    <input placeholder="Type Your NID NO .." name="nidno" type="text" class="form-control" value="" id="validationCustom05" required>
+		  </div>
+
+		  <div class="col-md-3">
+		    <label for="validationCustom06" class="form-label">Prev School Name</label>
+		    <input placeholder="Type Prev Schoolname.." name="prevschoolname" type="text" class="form-control" value="" id="validationCustom06" required>
+		  </div>
+
+
+		   <div class="col-md-3">
+		    <label for="validationCustom07" class="form-label">Present Address:</label>
+		    <input placeholder="Type Prev Present Address.."  name="presentaddress" type="text" class="form-control" value="" id="validationCustom07" required>
+		  </div>
+
+		  <div class="col-md-3">
+		    <label for="validationCustom08" class="form-label">Admission School Name</label>
+		    <select class="form-select" name="admissionschool" id="validationCustom08" required>
+		      <option selected disabled>Selected One</option>
+		      <%for(let s of schoolname){%>
+		      	<option value="<%=s.schoolname%>"><%=s.schoolname%></option>
+		      <%}%>
+		    </select>
+		</div>
+
+		  <div class="col-md-3">
+		    <label for="validationCustom09" class="form-label">Admission Class Name</label>
+		    <input placeholder="Type Your Classname.." name="classname" type="text" class="form-control" value="" id="validationCustom09" required>
+		  </div>
+
+		  <div class="col-md-3">
+		    <label for="formFile" class="form-label">Students Photo</label>
+  			<input class="form-control" name="studentimage" type="file" id="formFile">
+		  </div>
+		  <hr style="height:1px">
+		  <h1 class="mt-2">Parents Information</h1>
+
+		   <div class="col-md-3">
+		    <label for="validationCustom11" class="form-label">Father Name</label>
+		    <input placeholder="Type Your Fathername.." name="fathername" type="text" class="form-control" value="" id="validationCustom11" required>
+		  </div>
+
+		  <div class="col-md-3">
+		    <label for="validationCustom11" class="form-label">Mother Name</label>
+		    <input placeholder="Type Your Mothername.." name="mothername" type="text" class="form-control" value="" id="validationCustom11" required>
+		  </div>
+
+		  <div class="col-md-3">
+		    <label for="validationCustom12" class="form-label">NID NO : Father Or Mother</label>
+		    <input placeholder="Type NID NO:Father Or Mother.." name="Parentsnid" type="text" class="form-control" value="" id="validationCustom12" required>
+		  </div>
+
+
+		   <div class="col-md-3">
+		    <label for="validationCustom13" class="form-label">Riligion</label>
+		    <select class="form-select" name="riligion" id="validationCustom13" required>
+		      	<option selected disabled>Selected One</option>
+		      	<option value="Islam">Islam</option>
+				<option value="Hidu">Hindu</option>
+				<option value="Christians">Christians</option>
+				<option value="Buddhists">Buddhists</option>
+				<option value="other">Other</option>
+		    </select>
+		  </div>
+		 <hr style="height:1px">
+		 
+		  <div class="col-12">
+		    <div class="form-check">
+		      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+		      <label class="form-check-label" for="invalidCheck">
+		        Agree to terms and conditions
+		      </label>
+		      <div class="invalid-feedback">
+		        You must agree before submitting.
+		      </div>
+		    </div>
+		  </div>
+		  <div class="col-12">
+		    <input class="btn btn-primary" type="submit" value="Submit">
+		  </div>
+		  <!--<hr style="height:1px">
+		   <div>
+		   		<h4>Payment Option</h4>
+		   		<div class="col-md-3 d-flex mb-3">
+			    	<img style="width:130px;height:96px;border-radius:15%" src="https://res.cloudinary.com/dvvjwexxg/image/upload/v1641721472/images_dmx7x5.png">
+
+			    	<img style="width:130px;height:96px; margin-left:40px;border-radius:15%"  src="https://res.cloudinary.com/dvvjwexxg/image/upload/v1641721467/Iks014Ul-atatMhWs8rLbtG7cIZLPfpeMDdkLtmq5o7D5_MlFNu5mmIqRHAY45aOhapp_ppx120.png">
+		  		</div>
+		  		<h5>Payment Number: 01706151414</h5>
+		   </div>-->
+	</form>
+</div>
+</div>
+<%-include('./Partials/footer.ejs')%>
+

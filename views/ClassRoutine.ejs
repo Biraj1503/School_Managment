@@ -1,0 +1,371 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+  <div class="container">
+     <!--<div>
+        <%-include('./Partials/Dropdown.ejs')%>
+     </div>
+     <br><br><br>-->
+
+
+
+
+<!-- Time Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <form name="frm">
+                <div class="row mt-2">
+                    <div class="col-md-4 form-group">
+                      <input class="form-control" placeholder='time' type="text" name="time1"  value="" id='time1'>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                      <input class="form-control" placeholder='time' type="text" name="time2"  value="" id='time2'>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <input class="form-control" placeholder='time' type="text" name="time3"  value="" id='time3'>
+                    </div>
+                 </div>
+                  <div class="row mt-2">
+                       <div class="col-md-4 form-group">
+                         <input  class="form-control" placeholder='BreakeTime' type="text" name="timeb"  value="" id='timeb'>
+                      </div>
+
+                      <div class="col-md-4 form-group">
+                         <input class="form-control" placeholder='time' type="text" name="time4"  value="" id='time4'>
+                      </div>
+
+                       <div class="col-md-4 form-group">
+                          <input  class="form-control"  placeholder='time' type="text" name="time5"  value="" id='time5'>
+                      </div>
+                   </div>
+
+                   <div class="row mt-2">
+                      <div class="col-md-4 form-group">
+                          <input class="form-control" placeholder='time' type="text" name="time6"  value="" id='time6'>
+                      </div>
+                  </div> 
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button id='Addtime'  class="btn btn-danger mx-2 mt-1">Add Time</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+  <!-- Subject Time modal -->
+<button  type="button" class="btn btn-warning mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+ AddSubjectTime
+</button>
+
+  <!-- Button Subject modal -->
+<button  
+    type="button"
+   class="btn btn-primary"
+   data-bs-toggle="modal"
+   data-bs-target="#AddSubject"
+ >
+ AddSubject
+</button>
+  <!-- Modal -->
+<div class="modal fade" id="AddSubject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form name="subjectfrm">
+                <div class="row mt-2">
+                    <div class="col-md-4 form-group">
+                       <input class="form-control" placeholder='subject1' type="text" name="subject1"  value="" id='empty1'>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                       <input class="form-control" placeholder='subject2' type="text" name="subject2"  value="" id='empty2'>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                         <input class="form-control" placeholder='subject3' type="text" name="subject3"  value="" id='empty3'>
+                      </div>
+                  </div>
+
+                  <div class="row mt-2">
+                      <div class="col-md-4 form-group">
+                         <input class="form-control" placeholder='breaktime' type="text" name="breaktime"  value="" id='breaktime'>
+                      </div>
+                
+                      <div class="col-md-4 form-group">
+                          <input class="form-control" placeholder='subject4' type="text" name="subject4"  value="" id='empty4'>
+                      </div>
+
+                    <div class="col-md-4 form-group">
+                            <input class="form-control" placeholder='subject5' type="text" name="subject5"  value="" id='empty5'>
+                    </div>
+
+                </div>
+
+                <div class="row mt-2">
+                      <div class="col-md-4 form-group">
+                          <input class="form-control" placeholder='subject6' type="text" name="subject6"  value="" id='empty6'>
+                      </div>
+                </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+         <button id='Addoption' class="btn btn-primary">Add Subject</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+<button onclick="exportTableToCSV('classroutine.csv')" class="btn btn-secondary mx-3">Import Excel</button>  
+  <br>
+  <br>
+    <!--<img src="tamanna-rumee-vaTsR-ghLog-unsplash.jpg" style="width:100%">-->
+  <table style="width:100%" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>lst Period</th>
+        <th>2nd Period</th>
+        <th>3rd Period</th>
+        <th>TIFIN TIME</th>
+        <th>4th Period</th>
+        <th>5th Period</th>
+        <th>6thPeriod</th>
+      </tr>
+
+      <tr id="time"></tr>
+
+    </thead>
+    <tbody id="Showitem">
+    
+    </tbody>
+    <div id='deleteBtn'></div>
+  </table>
+ <script type="text/javascript">
+    let Addtime = document.getElementById('Addtime')
+    //console.log(classname)
+    Addtime.addEventListener('click', e=>{
+      let time1 = document.frm.time1.value
+      let time2 = document.frm.time2.value
+      let time3 = document.frm.time3.value
+      let time4 = document.frm.time4.value
+      let time5 = document.frm.time5.value
+      let time6 = document.frm.time6.value
+      let timeb = document.frm.timeb.value
+      var times=[]
+      //e.pereventDefault()
+      times.push({
+        time1,
+        time2,
+        time3,
+        time4,
+        time5,
+        time6,
+        timeb,
+        id:Date.now()
+      })
+
+      times.map(r=>{
+        document.getElementById('time1').value=''
+        document.getElementById('time2').value=''
+        document.getElementById('time3').value=''
+        document.getElementById('time4').value=''
+        document.getElementById('time5').value=''
+        document.getElementById('time6').value=''
+        document.getElementById('timeb').value=''
+        
+        // time Entry
+        let time = document.getElementById('time')
+
+        let time1_td= document.createElement('th')
+        let time1_textnode = document.createTextNode(r.time1)
+          time1_td.appendChild( time1_textnode )
+        time.appendChild(time1_td)
+
+
+
+        let time2_td= document.createElement('th')
+        let time2_textnode = document.createTextNode(r.time2)
+          time2_td.appendChild( time2_textnode )
+        time.appendChild(time2_td)
+
+
+
+        let time3_td= document.createElement('th')
+        let time3_textnode = document.createTextNode(r.time3)
+          time3_td.appendChild( time3_textnode )
+        time.appendChild(time3_td)
+
+
+        let timeb_td= document.createElement('th')
+        let timeb_textnode = document.createTextNode(r.timeb)
+          timeb_td.appendChild( timeb_textnode )
+        time.appendChild(timeb_td)
+
+        let time4_td= document.createElement('th')
+        let time4_textnode = document.createTextNode(r.time4)
+          time4_td.appendChild( time4_textnode )
+        time.appendChild(time4_td)
+
+        let time5_td= document.createElement('th')
+        let time5_textnode = document.createTextNode(r.time5)
+          time5_td.appendChild( time5_textnode )
+        time.appendChild(time5_td)
+
+        let time6_td= document.createElement('th')
+        let time6_textnode = document.createTextNode(r.time6)
+          time6_td.appendChild( time6_textnode )
+        time.appendChild(time6_td)
+         
+      })
+    })
+
+
+  let Addoption = document.getElementById('Addoption')
+
+
+    Addoption.addEventListener('click', e=>{
+      let subject1 = document.subjectfrm.subject1.value
+      let subject2 = document.subjectfrm.subject2.value
+      let subject3 = document.subjectfrm.subject3.value
+      let subject4 = document.subjectfrm.subject4.value
+      let subject5 = document.subjectfrm.subject5.value
+      let subject6 = document.subjectfrm.subject6.value
+      let breaktime = document.subjectfrm.breaktime.value
+      var result = []
+      //e.pereventDefault()
+      result.push({
+        subject1,
+        subject2,
+        subject3,
+        subject4,
+        subject5,
+        subject6,
+        breaktime,
+        id:Date.now()
+      })
+
+      result.map(r=>{
+        document.getElementById('empty1').value=''
+        document.getElementById('empty2').value=''
+        document.getElementById('empty3').value=''
+        document.getElementById('empty4').value=''
+        document.getElementById('empty5').value=''
+        document.getElementById('empty6').value=''
+        document.getElementById('breaktime').value=''
+        
+        //Enty Classname
+
+        let Showitem = document.getElementById('Showitem')
+
+        //let deleteBtn = document.getElementById('deleteBtn')
+
+      
+        let routine_tr = document.createElement('tr')
+          
+        let subject1_td= document.createElement('td')
+        let subject1_textnode = document.createTextNode(r.subject1)
+          subject1_td.appendChild(subject1_textnode)
+        routine_tr.appendChild(subject1_td)
+
+        // End Class name
+
+
+        //Enty teachers 
+
+        let subject2_td= document.createElement('td')
+        let subject2_textnode = document.createTextNode(r.subject2)
+          subject2_td.appendChild(subject2_textnode)
+        routine_tr.appendChild(subject2_td)
+
+        //End teachers 
+
+        //Entry Day 
+
+
+        let subject3_td= document.createElement('td')
+        let subject3_textnode = document.createTextNode(r.subject3)
+          subject3_td.appendChild(subject3_textnode)
+        routine_tr.appendChild(subject3_td)
+
+        let breaktime_td= document.createElement('td')
+        let breaktime_textnode = document.createTextNode(r.breaktime)
+          breaktime_td.appendChild(breaktime_textnode)
+        routine_tr.appendChild(breaktime_td)
+
+        let subject4_td= document.createElement('td')
+        let subject4_textnode = document.createTextNode(r.subject4)
+          subject4_td.appendChild(subject4_textnode)
+        routine_tr.appendChild(subject4_td)
+
+        let subject5_td= document.createElement('td')
+        let subject5_textnode = document.createTextNode(r.subject5)
+          subject5_td.appendChild(subject5_textnode)
+        routine_tr.appendChild(subject5_td)
+
+        let subject6_td= document.createElement('td')
+        let subject6_textnode = document.createTextNode(r.subject6)
+          subject6_td.appendChild(subject6_textnode)
+        routine_tr.appendChild(subject6_td)
+
+        /*let button = document.createElement('button')
+        let button_text = document.createTextNode("Delete")
+          button.appendChild(button_text )
+          button.id="btn"
+        routine_tr.appendChild(button)*/
+
+        Showitem.appendChild(routine_tr)
+         
+      })
+    })
+
+
+
+    function downloadCSV(csv, filename) {  
+    var csvFile;  
+    var downloadLink;  
+     
+    //define the file type to text/csv  
+    csvFile = new Blob([csv], {type: 'text/pdf'});  
+    downloadLink = document.createElement("a");  
+    downloadLink.download = filename;  
+    downloadLink.href = window.URL.createObjectURL(csvFile);  
+    downloadLink.style.display = "none";  
+  
+    document.body.appendChild(downloadLink);  
+    downloadLink.click();  
+}  
+  
+//user-defined function to export the data to CSV file format  
+function exportTableToCSV(filename) {  
+   //declare a JavaScript variable of array type  
+   var csv = [];  
+   var rows = document.querySelectorAll("table tr");  
+   
+   //merge the whole data in tabular form   
+   for(var i=0; i<rows.length; i++) {  
+    var row = [], cols = rows[i].querySelectorAll("td, th");  
+    for( var j=0; j<cols.length; j++)  
+       row.push(cols[j].innerText);  
+    csv.push(row.join(","));  
+   }   
+   //call the function to download the CSV file  
+   downloadCSV(csv.join("\n"), filename);  
+}  
+
+  </script>
+  </div>
+<%-include('./Partials/footer.ejs')%>

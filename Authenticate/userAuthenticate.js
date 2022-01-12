@@ -17,7 +17,7 @@ const User = require('../Model/UserModel')
 
 	exports.dashboardAthenticate =async(req,res,next)=>{
 		if (!req.session.isLoggIn) {
-			return res.redirect('/login')
+			return res.redirect('/')
 		}
 		return next()
 	}
