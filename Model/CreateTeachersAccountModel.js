@@ -1,18 +1,18 @@
 const {Schema,model} = require('mongoose')
 
-const StudentsIdSchema = new Schema({
+const TeachersAccountSchema = new Schema({
 	name:{
 		type:String,
 		require:true,
 		trim:true
 	},
 
-	classname:{
+	subject:{
 		type:String,
 		require:true
 	},
 
-	roll:{
+	idno:{
 		type:Number,
 		require:true
 	},
@@ -23,11 +23,6 @@ const StudentsIdSchema = new Schema({
 	},
 
 	password:{
-		type:String,
-		require:true
-	},
-
-	photo:{
 		type:String,
 		require:true
 	},
@@ -59,5 +54,5 @@ const StudentsIdSchema = new Schema({
 
 })
 
-const StudentsId = model("StudentsId",StudentsIdSchema)
-module.exports = StudentsId
+const TeachersAccount = model("TeachersAccount",TeachersAccountSchema)
+module.exports = TeachersAccount

@@ -1,0 +1,249 @@
+<%-include('./Partials/TeachersHeaders.ejs')%>
+<%-include('./Partials/TeachersNavbar.ejs')%>
+<div class="container-fluid margine">
+    <div class="col py-3">
+        <h3 class="my-4 text-center">Find Your Exam Result</h3>
+              <form action="/teachers/findclasstestresult" method="post">
+                 <div class="row">
+                     <div class="form-group col-sm-2 justify-content-center">
+                      <h6 class="text-danger">Class Name:</h6>
+                          <select name="classname" class="form-select" required>
+                            <option value="">Selected Class</option>
+                            <option value="6">Class Six</option>
+                            <option value="7">Class Seven</option>
+                            <option value="8">Class Eight</option>
+                            <option value="9">Class Nine</option>
+                            <option value="10">Class Ten</option>
+                          </select>
+                    </div>
+
+                     <div class="form-group col-sm-2 justify-content-center">
+                    <h6 class="text-warning">Roll Number:</h6>
+                          <input class="form-control" type="text" name="roll" placeholder="Type Exam Name.." required>
+                    </div>
+
+                  <div class="form-group col-sm-2 justify-content-center">
+                    <h6 class="text-warning">Examination Name:</h6>
+                          <input class="form-control" type="text" name="examname" placeholder="Type Exam Name.." required>
+                    </div>
+                      <div class="form-group col-sm-2">
+                          <h6 class="text-primary">Subject Name:</h6>
+                          <input class="form-control" type="text" name="subject" placeholder="Type Subject.." required>
+                      </div>
+
+                      <div class="form-group col-sm-2">
+                         <h6 class="text-warning">Examinition Date:</h6>
+                          <input class="form-control" type="date" name="date" required>
+                      </div>   
+
+                      <div class="form-group col-sm-2 mt-4">
+                          <input type="submit" value="Preview" class="btn btn-outline-success">
+                      </div>   
+                  </div>
+            </form> 
+            <h4 class="text-danger text-center"><%=error%></h4>
+        </div>
+
+ <div class="container">
+    <div class="text-center">
+      <h4><span>School Name:</span><%=teachers.schoolname%></h4>
+      <h4><span>Name:</span><%=result.name%></h4>
+      <h4><span>Class Name:</span><%=result.classname%></h4>
+      <h4><span>Roll Number:</span><%=result.roll%></h4>
+      <h4><span>Subject:</span><%=result.subject%></h4>
+      <h4><span>Date:</span><%=result.date%></h4>
+    </div>
+    <hr>
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <h4>1.<%=result.questionsno1%></h4>
+        <%if(result.options1===result.correctans1){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.options1%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.options1%></p>
+        <%}%>
+
+      </div>
+
+      <div class="col-md-6">
+        <h4>2.<%=result.questionsno2%></h4>
+        <%if(result.qusetionsnotwooption===result.correctans2){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsnotwooption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsnotwooption%></p>
+        <%}%>
+      </div>
+
+      <div class="col-md-6">
+        <h4>3.<%=result.questionsno3%></h4>
+        <%if(result.qusetionsnothreeoption===result.correctans3){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsnothreeoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsnothreeoption%></p>
+        <%}%>
+      </div>
+
+
+      <div class="col-md-6 mt-2">
+        <h4>6.<%=result.questionsno4%></h4>
+        <%if(result.qusetionsnofouroption===result.correctans4){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsnofouroption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsnofouroption%></p>
+        <%}%>
+      </div>
+
+
+
+      <div class="col-md-6 mt-2">
+        <h4>5.<%=result.questionsno5%></h4>
+        <%if(result.qusetionsnofiveoption===result.correctans5){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsnofiveoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsnofiveoption%></p>
+        <%}%>
+      </div>
+
+
+      <div class="col-md-6">
+        <h4>6.<%=result.questionsno6%></h4>
+        <%if(result.qusetionsnosixoption===result.correctans6){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsnosixoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsnosixoption%></p>
+        <%}%>
+      </div>
+
+      <div class="col-md-6 mt-2">
+        <h4>7.<%=result.questionsno7%></h4>
+        <%if(result.qusetionsnosevenoption===result.correctans7){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsnosevenoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsnosevenoption%></p>
+        <%}%>
+      </div>
+
+
+      <div class="col-md-6">
+        <h4>8.<%=result.questionsno8%></h4>
+        <%if(result.qusetionsnoeightnoption===result.correctans8){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsnoeightnoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsnoeightnoption%></p>
+        <%}%>
+      </div>
+
+      <div class="col-md-6 mt-2">
+        <h4>9.<%=result.questionsno9%></h4>
+        <%if(result.qusetionsnoninenoption===result.correctans9){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsnoninenoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsnoninenoption%></p>
+        <%}%>
+      </div>
+
+      <div class="col-md-6">
+        <h4>10.<%=result.questionsno10%></h4>
+        <%if(result.qusetionsnotennoption===result.correctans10){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsnotennoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsnotennoption%></p>
+        <%}%>
+      </div>
+
+
+      <div class="col-md-6 mt-2">
+        <h4>11.<%=result.questionsno11%></h4>
+        <%if(result.qusetionsnoelevennoption===result.correctans11){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsnoelevennoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsnoelevennoption%></p>
+        <%}%>
+      </div>
+
+      <div class="col-md-6">
+        <h4>12.<%=result.questionsno12%></h4>
+        <%if(result.qusetionsno12thnoption===result.correctans12){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsno12thnoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsno12thnoption%></p>
+        <%}%>
+      </div>
+
+
+      <div class="col-md-6">
+        <h4>13.<%=result.questionsno13%></h4>
+        <%if(result.qusetionsno13thnoption===result.correctans13){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsno13thnoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsno13thnoption%></p>
+        <%}%>
+      </div>
+
+      <div class="col-md-6 mt-2">
+        <h4>14.<%=result.questionsno14%></h4>
+        <%if(result.qusetionsno14thnoption===result.correctans14){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsno14thnoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsno14thnoption%></p>
+        <%}%>
+      </div>
+
+      <div class="col-md-6">
+        <h4>15.<%=result.questionsno15%></h4>
+        <%if(result.qusetionsno15thnoption===result.correctans15){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsno15thnoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsno15thnoption%></p>
+        <%}%>
+      </div>
+
+
+      <div class="col-md-6">
+        <h4>16.<%=result.questionsno16%></h4>
+        <%if(result.qusetionsno16thnoption===result.correctans16){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsno16thnoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsno16thnoption%></p>
+        <%}%>
+      </div>
+
+      <div class="col-md-6 mt-2">
+        <h4>17.<%=result.questionsno17%></h4>
+        <%if(result.qusetionsno17thnoption===result.correctans17){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsno17thnoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsno17thnoption%></p>
+        <%}%>
+      </div>
+
+      <div class="col-md-6 mt-2">
+        <h4>18.<%=result.questionsno18%></h4>
+        <%if(result.qusetionsno18thnoption===result.correctans18){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsno18thnoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsno18thnoption%></p>
+        <%}%>
+      </div>
+
+      <div class="col-md-6">
+        <h4>19.<%=result.questionsno19%></h4>
+        <%if(result.qusetionsno19thnoption===result.correctans19){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsno19thnoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsno19thnoption%></p>
+        <%}%>
+      </div>
+
+      <div class="col-md-6  mt-2">
+        <h4>20.<%=result.questionsno20%></h4>
+        <%if(result.qusetionsno20thnoption===result.correctans20){%>
+          <p style="background-color:green; color:white;width:250px">You Ans: <%=result.qusetionsno20thnoption%></p>
+        <%}else{%>
+          <p style="background-color:red; color:white;width:250px">You Ans: <%=result.qusetionsno20thnoption%></p>
+        <%}%>
+      </div>
+    </div>
+  </div>
+    </div>
+<%-include('./Partials/TeachersFooter.ejs')%>

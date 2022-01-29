@@ -1,0 +1,801 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+  <div class="container">
+      
+      <div class="row">
+        <div class="col-sm-6">
+          <h1 class="my-2">Create Test Qusetions</h1>
+        </div>
+      </div>
+      <form action="/classtest" method="post">
+         <div class="row">
+             <div class="form-group col-sm-2 justify-content-center">
+              <h6 class="text-danger">Class Name:</h6>
+                  <select name="classname" class="form-select" required>
+                    <option value="">Selected Class</option>
+                    <option value="6">Class Six</option>
+                    <option value="7">Class Seven</option>
+                    <option value="8">Class Eight</option>
+                    <option value="9">Class Nine</option>
+                    <option value="10">Class Ten</option>
+                  </select>
+            </div>
+          <div class="form-group col-sm-2 justify-content-center">
+            <h6 class="text-warning">Examination Name:</h6>
+                  <input class="form-control" type="text" name="examname" placeholder="Type Exam Name.." required>
+            </div>
+              <div class="form-group col-sm-2">
+                  <h6 class="text-primary">Subject Name:</h6>
+                  <input class="form-control" type="text" name="subject" placeholder="Type Subject.." required>
+              </div>
+
+              <div class="form-group col-sm-3">
+                 <h6 class="text-warning">Examinition Date:</h6>
+                  <input class="form-control" type="date" name="date" required>
+              </div>
+
+              <div class="form-group col-sm-3">
+                <h6 class="text-danger">Examinition Time:</h6>
+                  <input class="form-control" type="text" name="time" placeholder="Type Time 10PM To 1.00PM..." required>
+              </div>    
+          </div>
+
+          <br>
+
+          <!-- Question No One-->
+
+          <div class="row">
+                  <div class="col-md-3">
+                    <div>
+                      <label for='qusetionsnameone'>Qusetion Name:</label>
+                      <textarea name="qusetionsnameone" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnooneoptionone">Option One</label>
+                      <input type="text" name="qusetionsnooneoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnooneoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsnooneoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnooneoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsnooneoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnooneoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsnooneoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="oneNOqusetionsAns">Question Answer</label>
+                      <input type="text" name="oneNOqusetionsAns" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+                </div>
+
+              <!-- End Question No One-->
+
+              <!--Qusetions No Two--> 
+
+            <div class="col-md-3">
+                <div>
+                      <label for='qusetionsnametwo'>Qusetion Name:</label>
+                      <textarea name="qusetionsnametwo" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnotwooptionone">Option One</label>
+                      <input type="text" name="qusetionsnotwooptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnotwooptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsnotwooptionTwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnotwooptionthree">Option Three</label>
+                      <input type="text" name="qusetionsnotwooptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnotwooptionfour">Option Four</label>
+                      <input type="text" name="qusetionsnotwooptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNOtwo">Question Answer</label>
+                      <input type="text" name="ansqusetionsNOtwo" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+            <!--End Question No Two-->
+
+            <!--Qusetions No Three-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsnamethree'>Qusetion Name:</label>
+                      <textarea name="qusetionsnamethree" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnothreeoptionone">Option One</label>
+                      <input type="text" name="qusetionsnothreeoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnothreeoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsnothreeoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnothreeoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsnothreeoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnothreeoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsnothreeoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNOthree">Question Answer</label>
+                      <input type="text" name="ansqusetionsNOthree" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No Three-->
+
+
+
+          <!--Qusetions No Four-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsnamefour'>Qusetion Name:</label>
+                      <textarea name="qusetionsnamefour" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnofouroptionone">Option One</label>
+                      <input type="text" name="qusetionsnofouroptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnofouroptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsnofouroptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnofouroptionthree">Option Three</label>
+                      <input type="text" name="qusetionsnofouroptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnofouroptionfour">Option Four</label>
+                      <input type="text" name="qusetionsnofouroptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNOfour">Question Answer</label>
+                      <input type="text" name="ansqusetionsNOfour" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+            <hr class="mt-3" style="height: 3px; border:2px">
+
+          <!--End Question No Four-->
+
+
+
+          <!--Qusetions No Five-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsnamefive'>Qusetion Name:</label>
+                      <textarea name="qusetionsnamefive" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnofiveoptionone">Option One</label>
+                      <input type="text" name="qusetionsnofiveoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnofiveoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsnofiveoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnofiveoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsnofiveoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnofiveoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsnofiveoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNOfive">Question Answer</label>
+                      <input type="text" name="ansqusetionsNOfive" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No Five-->
+
+
+          <!--Qusetions No Six-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsnamesix'>Qusetion Name:</label>
+                      <textarea name="qusetionsnamesix" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnosixoptionone">Option One</label>
+                      <input type="text" name="qusetionsnosixoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnosixoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsnosixoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnosixoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsnosixoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnosixoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsnosixoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNOsix">Question Answer</label>
+                      <input type="text" name="ansqusetionsNOsix" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No Six-->
+
+
+
+          <!--Qusetions No Seven-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsnameseven'>Qusetion Name:</label>
+                      <textarea name="qusetionsnameseven" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnosevenoptionone">Option One</label>
+                      <input type="text" name="qusetionsnosevenoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnosevenoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsnosevenoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnosevenoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsnosevenoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnosevenoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsnosevenoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNOseven">Question Answer</label>
+                      <input type="text" name="ansqusetionsNOseven" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No Seven-->
+
+
+          <!--Qusetions No Eight-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsnameeight'>Qusetion Name:</label>
+                      <textarea name="qusetionsnameeight" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnoeightoptionone">Option One</label>
+                      <input type="text" name="qusetionsnoeightoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnoeightoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsnoeightoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnoeightoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsnoeightoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnoeightoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsnoeightoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNOeight">Question Answer</label>
+                      <input type="text" name="ansqusetionsNOeight" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+            <hr class="mt-3" style="height: 3px; border:2px">
+          <!--End Question No Eight-->
+
+
+           <!--Qusetions No Nine-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsnamenine'>Qusetion Name:</label>
+                      <textarea name="qusetionsnamenine" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnonineoptionone">Option One</label>
+                      <input type="text" name="qusetionsnonineoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnonineoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsnonineoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnonineoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsnonineoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnonineoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsnonineoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNOnine">Question Answer</label>
+                      <input type="text" name="ansqusetionsNOnine" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No Nine-->
+
+
+           <!--Qusetions No Ten-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsnameten'>Qusetion Name:</label>
+                      <textarea name="qusetionsnameten" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnotenoptionone">Option One</label>
+                      <input type="text" name="qusetionsnotenoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnotenoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsnotenoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnotenoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsnotenoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnotenoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsnotenoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNOten">Question Answer</label>
+                      <input type="text" name="ansqusetionsNOten" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No Ten-->
+
+
+          <!--Qusetions No Eleven-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsnameeleven'>Qusetion Name:</label>
+                      <textarea name="qusetionsnameeleven" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnoelevenoptionone">Option One</label>
+                      <input type="text" name="qusetionsnoelevenoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnoelevenoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsnoelevenoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnoelevenoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsnoelevenoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsnoelevenoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsnoelevenoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNOeleven">Question Answer</label>
+                      <input type="text" name="ansqusetionsNOeleven" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No Eleven-->
+
+
+
+          <!--Qusetions No 12th-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsname12th'>Qusetion Name:</label>
+                      <textarea name="qusetionsname12th" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno12thoptionone">Option One</label>
+                      <input type="text" name="qusetionsno12thoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno12thoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsno12thoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno12thoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsno12thoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno12thoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsno12thoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNO12th">Question Answer</label>
+                      <input type="text" name="ansqusetionsNO12th" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+            <hr class="mt-3" style="height: 3px; border:2px">
+
+          <!--End Question No 12th-->
+
+
+          <!--Qusetions No 13th-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsname13th'>Qusetion Name:</label>
+                      <textarea name="qusetionsname13th" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno13thoptionone">Option One</label>
+                      <input type="text" name="qusetionsno13thoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno13thoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsno13thoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno13thoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsno13thoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno13thoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsno13thoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNO13th">Question Answer</label>
+                      <input type="text" name="ansqusetionsNO13th" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No 13th-->
+
+
+
+          <!--Qusetions No 14th-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsname14th'>Qusetion Name:</label>
+                      <textarea name="qusetionsname14th" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno14thoptionone">Option One</label>
+                      <input type="text" name="qusetionsno14thoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno14thoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsno14thoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno14thoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsno14thoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno14thoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsno14thoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNO14th">Question Answer</label>
+                      <input type="text" name="ansqusetionsNO14th" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No 14th-->
+
+
+
+          <!--Qusetions No 15th-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsname15th'>Qusetion Name:</label>
+                      <textarea name="qusetionsname15th" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno15thoptionone">Option One</label>
+                      <input type="text" name="qusetionsno15thoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno15thoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsno15thoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno15thoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsno15thoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno15thoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsno15thoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNO15th">Question Answer</label>
+                      <input type="text" name="ansqusetionsNO15th" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No 15th-->
+          	
+
+           <!--Qusetions No 16th-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsname16th'>Qusetion Name:</label>
+                      <textarea name="qusetionsname16th" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno16thoptionone">Option One</label>
+                      <input type="text" name="qusetionsno16thoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno16thoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsno16thoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno16thoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsno16thoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno16thoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsno16thoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNO16th">Question Answer</label>
+                      <input type="text" name="ansqusetionsNO16th" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+            <hr class="mt-3" style="height: 3px; border:2px">
+          <!--End Question No 16th-->
+
+
+          <!--Qusetions No 17th-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsname17th'>Qusetion Name:</label>
+                      <textarea name="qusetionsname17th" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno17thoptionone">Option One</label>
+                      <input type="text" name="qusetionsno17thoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno17thoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsno17thoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno17thoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsno17thoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno17thoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsno17thoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNO17th">Question Answer</label>
+                      <input type="text" name="ansqusetionsNO17th" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No 17th-->
+
+
+           <!--Qusetions No 18th-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsname18th'>Qusetion Name:</label>
+                      <textarea name="qusetionsname18th" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno18thoptionone">Option One</label>
+                      <input type="text" name="qusetionsno18thoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno18thoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsno18thoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno18thoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsno18thoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno17thoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsno18thoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNO18th">Question Answer</label>
+                      <input type="text" name="ansqusetionsNO18th" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No 18th-->
+
+
+          <!--Qusetions No 19th-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsname19th'>Qusetion Name:</label>
+                      <textarea name="qusetionsname19th" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno19thoptionone">Option One</label>
+                      <input type="text" name="qusetionsno19thoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno19thoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsno19thoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno19thoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsno19thoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno19thoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsno19thoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNO19th">Question Answer</label>
+                      <input type="text" name="ansqusetionsNO19th" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+
+          <!--End Question No 19th-->
+
+
+          <!--Qusetions No 20th-->
+
+            <div class="col-md-3">
+                <div>
+                    <label for='qusetionsname20th'>Qusetion Name:</label>
+                      <textarea name="qusetionsname20th" class="qusetions form-control" placeholder="Type Your Question" required></textarea>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno20thoptionone">Option One</label>
+                      <input type="text" name="qusetionsno20thoptionone" class="form-control" placeholder="Type option1" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno20thoptiontwo">Option Two</label>
+                      <input type="text" name="qusetionsno20thoptiontwo" class="form-control" placeholder="Type option2" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno20thoptionthree">Option Three</label>
+                      <input type="text" name="qusetionsno20thoptionthree" class="form-control" placeholder="Type option3" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="qusetionsno20thoptionfour">Option Four</label>
+                      <input type="text" name="qusetionsno20thoptionfour" class="form-control" placeholder="Type option4" required>
+                    </div>
+
+                    <div class="mt-2">
+                      <label for="ansqusetionsNO20th">Question Answer</label>
+                      <input type="text" name="ansqusetionsNO20th" class="form-control" placeholder="Type Questions Answer" required>
+                    </div>
+            </div>
+            <hr class="mt-3" style="height: 3px; border:2px ">
+          <!--End Question No 20th-->
+           
+          <div class="col-sm-3 mt-1 mb-2">
+                  <input type="submit" value="Submit" class="btn btn-success mx-2">
+          </div>
+      </div> 
+      </form>
+  </div>
+<%-include('./Partials/footer.ejs')%>

@@ -1,0 +1,589 @@
+<%-include('./Partials/StudentsHeaders.ejs')%>
+<%-include('./Partials/studentsIdNavbar.ejs')%>
+  <div class="col py-3 margine">
+    <div class="container">
+        <h3 class="text-center text-dark my-3 bold">Find Your Exam Questions</h3>
+      <form action="/studentsaccount/findclasstestqu" method="post">
+          <div class="row">
+             <div class="form-group col-sm-2 justify-content-center">
+              <h6 class="text-danger">Class Name:</h6>
+                  <select name="classname" class="form-select" required>
+                    <option value="">Selected Class</option>
+                    <option value="6">Class Six</option>
+                    <option value="7">Class Seven</option>
+                    <option value="8">Class Eight</option>
+                    <option value="9">Class Nine</option>
+                    <option value="10">Class Ten</option>
+                  </select>
+            </div>
+          <div class="form-group col-sm-2 justify-content-center">
+            <h6 class="text-warning">Examination Name:</h6>
+                  <input class="form-control" type="text" name="examname" placeholder="Type Exam Name.." required>
+            </div>
+              <div class="form-group col-sm-2">
+                  <h6 class="text-primary">Subject Name:</h6>
+                  <input class="form-control" type="text" name="subject" placeholder="Type Subject.." required>
+              </div>
+
+              <div class="form-group col-sm-3">
+                 <h6 class="text-warning">Examinition Date:</h6>
+                  <input class="form-control" type="date" name="date" required>
+              </div>
+              <div class="col-sm-3">
+                  <input style="width:100px" type="submit" value="find" class="btn btn-success mt-4">
+              </div>   
+          </div>
+          <%if(error){%>
+            <h1 class="text-danger text-center">No Questions Publish</h1>
+          <%}%>
+
+          <h1 class="text-center text-danger my-2"><%=errors%></h1>
+
+      </form>
+
+      <form class="row mt-2" action="/studentsaccount/studentsquestionsans" method="post">
+            <%if(ans){%>
+
+            <!--One No Qusetions-->
+
+              <div class="col-md-4">
+                  <h4><%=questions.qusetionsnameone%></h4>
+
+                  <div class="form-group">
+                      <input type="radio" name="options1" value="<%=questions.qusetionsnooneoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsnooneoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="options1" value="<%=questions.qusetionsnooneoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsnooneoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="options1" value="<%=questions.qusetionsnooneoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsnooneoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="options1" value="<%=questions.qusetionsnooneoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsnooneoptionfour%></label>
+                  </div>
+                </div>
+
+                <!--Two No Questions-->
+
+                  <div class="col-md-4">
+                  <h4><%=questions.qusetionsnametwo%></h4>
+
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsnotwooption" value="<%=questions.qusetionsnotwooptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsnotwooptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnotwooption" value="<%=questions.qusetionsnotwooptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsnotwooptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnotwooption" value="<%=questions.qusetionsnotwooptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsnotwooptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnotwooption" value="<%=questions.qusetionsnotwooptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsnotwooptionfour%></label>
+                  </div>
+                </div>
+
+                <!--3rd Questions-->
+
+                  <div class="col-md-4">
+                  <h4><%=questions.qusetionsnamethree%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsnothreeoption" value="<%=questions.qusetionsnothreeoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsnothreeoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnothreeoption" value="<%=questions.qusetionsnothreeoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsnothreeoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnothreeoption" value="<%=questions.qusetionsnothreeoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsnothreeoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnothreeoption" value="<%=questions.qusetionsnothreeoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsnothreeoptionfour%></label>
+                  </div>
+                </div>
+
+                <!--4th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 4.<%=questions.qusetionsnamefour%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsnofouroption" value="<%=questions.qusetionsnofouroptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsnofouroptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnofouroption" value="<%=questions.qusetionsnofouroptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsnofouroptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnofouroption" value="<%=questions.qusetionsnofouroptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsnofouroptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnofouroption" value="<%=questions.qusetionsnofouroptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsnofouroptionfour%></label>
+                  </div>
+                </div>
+
+                 <!--5th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 5.<%=questions.qusetionsnamefive%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsnofiveoption" value="<%=questions.qusetionsnofiveoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsnofiveoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnofiveoption" value="<%=questions.qusetionsnofiveoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsnofiveoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnofiveoption" value="<%=questions.qusetionsnofiveoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsnofiveoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnofiveoption" value="<%=questions.qusetionsnofiveoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsnofiveoptionfour%></label>
+                  </div>
+                </div>
+
+
+                <!--6th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 6.<%=questions.qusetionsnamesix%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsnosixoption" value="<%=questions.qusetionsnosixoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsnosixoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnosixoption" value="<%=questions.qusetionsnosixoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsnosixoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnosixoption" value="<%=questions.qusetionsnosixoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsnosixoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnosixoption" value="<%=questions.qusetionsnosixoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsnosixoptionfour%></label>
+                  </div>
+                </div>
+
+                <!--7th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 7.<%=questions.qusetionsnameseven%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsnosevenoption" value="<%=questions.qusetionsnosevenoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsnosevenoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnosevenoption" value="<%=questions.qusetionsnosevenoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsnosevenoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnosevenoption" value="<%=questions.qusetionsnosevenoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsnosevenoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnosevenoption" value="<%=questions.qusetionsnosevenoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsnosevenoptionfour%></label>
+                  </div>
+                </div>
+
+                <!--8th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 8.<%=questions.qusetionsnameeight%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsnoeightnoption" value="<%=questions.qusetionsnoeightoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsnoeightoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnoeightnoption" value="<%=questions.qusetionsnoeightoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsnoeightoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnoeightnoption" value="<%=questions.qusetionsnoeightoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsnoeightoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnoeightnoption" value="<%=questions.qusetionsnoeightoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsnoeightoptionfour%></label>
+                  </div>
+                </div>
+
+                 <!--9th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 9.<%=questions.qusetionsnamenine%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsnoninenoption" value="<%=questions.qusetionsnonineoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsnonineoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnoninenoption" value="<%=questions.qusetionsnonineoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsnonineoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnoninenoption" value="<%=questions.qusetionsnoninenoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsnonineoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnoninenoption" value="<%=questions.qusetionsnonineoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsnonineoptionfour%></label>
+                  </div>
+                </div>
+
+
+                 <!--10th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 10.<%=questions.qusetionsnameten%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsnotennoption" value="<%=questions.qusetionsnotenoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsnotenoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnotennoption" value="<%=questions.qusetionsnotenoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsnotenoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnotennoption" value="<%=questions.qusetionsnotenoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsnotenoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnotennoption" value="<%=questions.qusetionsnotenoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsnotenoptionfour%></label>
+                  </div>
+                </div>
+
+                <!--11th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 11.<%=questions.qusetionsnameeleven%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsnoelevennoption" value="<%=questions.qusetionsnoelevenoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsnoelevenoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnoelevennoption" value="<%=questions.qusetionsnoelevenoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsnoelevenoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnoelevennoption" value="<%=questions.qusetionsnoelevenoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsnoelevenoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsnoelevennoption" value="<%=questions.qusetionsnoelevenoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsnoelevenoptionfour%></label>
+                  </div>
+                </div>
+
+                 <!--12th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 12.<%=questions.qusetionsname12th%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsno12thnoption" value="<%=questions.qusetionsno12thoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsno12thoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno12thnoption" value="<%=questions.qusetionsno12thoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsno12thoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno12thnoption" value="<%=questions.qusetionsno12thoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsno12thoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno12thnoption" value="<%=questions.qusetionsno12thoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsno12thoptionfour%></label>
+                  </div>
+                </div>
+
+
+                <!--13th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 13.<%=questions.qusetionsname13th%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsno13thnoption" value="<%=questions.qusetionsno13thoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsno13thoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno13thnoption" value="<%=questions.qusetionsno13thoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsno13thoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno13thnoption" value="<%=questions.qusetionsno13thoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsno13thoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno13thnoption" value="<%=questions.qusetionsno13thoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsno13thoptionfour%></label>
+                  </div>
+                </div>
+
+                <!--14th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 14.<%=questions.qusetionsname14th%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsno14thnoption" value="<%=questions.qusetionsno14thoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsno14thoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno14thnoption" value="<%=questions.qusetionsno14thoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsno14thoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno14thnoption" value="<%=questions.qusetionsno14thoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsno14thoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno14thnoption" value="<%=questions.qusetionsno14thoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsno14thoptionfour%></label>
+                  </div>
+                </div>
+
+
+                 <!--15th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 15.<%=questions.qusetionsname15th%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsno15thnoption" value="<%=questions.qusetionsno15thoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsno15thoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno15thnoption" value="<%=questions.qusetionsno15thoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsno15thoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno15thnoption" value="<%=questions.qusetionsno15thoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsno15thoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno15thnoption" value="<%=questions.qusetionsno15thoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsno15thoptionfour%></label>
+                  </div>
+                </div>
+
+
+                <!--16th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 16.<%=questions.qusetionsname16th%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsno16thnoption" value="<%=questions.qusetionsno16thoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsno16thoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno16thnoption" value="<%=questions.qusetionsno16thoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsno16thoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno16thnoption" value="<%=questions.qusetionsno16thoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsno16thoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno16thnoption" value="<%=questions.qusetionsno16thoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsno16thoptionfour%></label>
+                  </div>
+                </div>
+
+                 <!--17th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 17.<%=questions.qusetionsname17th%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsno17thnoption" value="<%=questions.qusetionsno17thoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsno17thoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno17thnoption" value="<%=questions.qusetionsno17thoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsno17thoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno17thnoption" value="<%=questions.qusetionsno17thoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsno17thoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno17thnoption" value="<%=questions.qusetionsno17thoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsno17thoptionfour%></label>
+                  </div>
+                </div>
+
+
+                 <!--18th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 18.<%=questions.qusetionsname18th%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsno18thoption" value="<%=questions.qusetionsno18thoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsno18thoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno18thnoption" value="<%=questions.qusetionsno18thoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsno18thoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno18thnoption" value="<%=questions.qusetionsno18thoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsno18thoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno18thnoption" value="<%=questions.qusetionsno18thoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsno18thoptionfour%></label>
+                  </div>
+                </div>
+
+                <!--19th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 19.<%=questions.qusetionsname19th%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsno19thnoption" value="<%=questions.qusetionsno19thoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsno19thoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno19thnoption" value="<%=questions.qusetionsno19thnoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsno19thoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno19thnoption" value="<%=questions.qusetionsno19thoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsno19thoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno19thnoption" value="<%=questions.qusetionsno19thoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsno19thoptionfour%></label>
+                  </div>
+                </div>
+
+                <!--20th Questions-->
+
+                <div class="col-md-4">
+                  <h4> 20.<%=questions.qusetionsname20th%></h4>
+                  <div class="form-group">
+                      <input type="radio" name="qusetionsno20thnoption" value="<%=questions.qusetionsno20thoptionone%>" id="">
+                      <label for="options1"><%=questions.qusetionsno20thoptionone%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno20thnoption" value="<%=questions.qusetionsno20thnoptiontwo%>" id="">
+                      <label for="options1"><%=questions.qusetionsno20thoptiontwo%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno20thnoption" value="<%=questions.qusetionsno20thoptionthree%>" id="">
+                      <label for="options1"><%=questions.qusetionsno20thoptionthree%></label>
+                      
+                      <br>
+
+                      <input type="radio" name="qusetionsno20thnoption" value="<%=questions.qusetionsno20thoptionfour%>" id="">
+                      <label for="options1"><%=questions.qusetionsno20thoptionfour%></label>
+                  </div>
+                </div>
+
+                <div class="col-md-4"></div>
+
+      <div class="col py-3">
+          <div class="container">
+    
+          <div class="row" style="display:none">
+          <div class="form-group col-sm-2 justify-content-center">
+             <div class="form-group col-sm-3">
+                 <h6 class="text-warning">Class Name:</h6>
+                  <input class="form-control" type="text" name="classname" value='<%=questions.classname%>' readonly>
+              </div>
+
+            <h6 class="text-warning">Examination Name:</h6>
+                  <input class="form-control" type="text" name="examname" placeholder="Type Exam Name.."  value='<%=questions.examname%>' readonly>
+            </div>
+              <div class="form-group col-sm-2">
+                  <h6 class="text-primary">Subject Name:</h6>
+                  <input class="form-control" type="text" name="subject"  value='<%=questions.subject%>' placeholder="Type Subject.." readonly>
+              </div>
+
+              <div class="form-group col-sm-3">
+                 <h6 class="text-warning">Examinition Date:</h6>
+                  <input class="form-control" type="text" name="date" value='<%=questions.date%>' readonly>
+              </div>   
+          </div>
+        </div> 
+          <div class="col-sm-3 mt-4">
+                <input style="width:100px" type="submit" value="Submit" class="btn btn-success">
+          </div>
+        <%}%>
+      </form>
+  </div>
+    </div>
+</div>
+<%-include('./Partials/StudentsFooter.ejs')%>

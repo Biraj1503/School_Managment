@@ -1,0 +1,195 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/StudentsNavbar.ejs')%>
+<!--<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Menu</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+                    </li>
+                    <li>
+                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
+                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                        <span class="d-none d-sm-inline mx-1">loser</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col py-3">
+            Content area...
+        </div>
+    </div>
+</div>-->
+
+<section class="h-100 gradient-form" style="background-color:#eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+                	<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid"
+          			alt="Sample image" style="width: 230px;">
+                  <!--<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px;" alt="logo">-->
+                  <h4 class="mt-1 mb-5 pb-1">We are Students</h4>
+                </div>
+
+                <form action="/studentsaccount/login" method="post">
+                  <p>Please login to your account</p>
+
+                  <div class="form-outline mb-2">
+                  	<label class="form-label" for="form2Example11">Username</label>
+                    <input type="email" id="form2Example11" name="email" class="form-control" placeholder="Phone number or email address" required/>
+                  </div>
+                  <%if(!usersemail){%>
+                  		<h6 class="text-danger">Email Address Is Not Valid</h6>
+                  <%}%>
+                  <div class="form-outline mb-2">
+                  	<label class="form-label" for="form2Example22">Password</label>
+                    <input type="password" id="form2Example22" name="password" class="form-control" placeholder="Enter Password.." required/>
+                  </div>
+
+                   <%if(!userspassword){%>
+                  		<h6 class="text-danger">Password Dosen't Match</h6>
+                  <%}%>
+
+                  <div class="mb-5">
+                    <button style="width:319px;background-color:#4842f5" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Log in</button>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2" style="background:#a742f5">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+              	<!--<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px;" alt="logo">-->
+                <h4 class="mb-3">Are You Students? Login </h4>
+                <h5 class="text-bold mb-0 word"></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+	var words = ['Hi My Name Is Biraj Kumar Biswas', 'I Create This Web Application', 'This is A Very Simple School Managment App.'],
+			part,
+			i = 0,
+			offset = 0,
+			len = words.length,
+			forwards = true,
+			skip_count = 0,
+			skip_delay = 15,
+			speed = 70;
+			var wordflick = function () {
+			  setInterval(function () {
+				if (forwards) {
+				  if (offset >= words[i].length) {
+					++skip_count;
+					if (skip_count == skip_delay) {
+					  forwards = false;
+					  skip_count = 0;
+					}
+				  }
+				}
+				else {
+				  if (offset == 0) {
+					forwards = true;
+					i++;
+					offset = 0;
+					if (i >= len) {
+					  i = 0;
+					}
+				  }
+				}
+				part = words[i].substr(0, offset);
+				if (skip_count == 0) {
+				  if (forwards) {
+					offset++;
+				  }
+				  else {
+					offset--;
+				  }
+				}
+				$('.word').text(part);
+			  },speed);
+			};
+
+			$(document).ready(function () {
+			  wordflick();
+			});
+</script>
+<%-include('./Partials/footer.ejs')%>

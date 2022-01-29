@@ -1,13 +1,13 @@
 <%-include('./Partials/header.ejs')%>
 <%-include('./Partials/navbar.ejs')%>
 <div class="container mt-5">
-    <%if(users){%>
+   <%if(users){%>
       <script>
           alert("This Students Allready Entry")
       </script>
     <%}else if(successfull){%>
         <script>
-            alert('Students Id Create Successful..')
+            alert('Account Create Successful..')
         </script>
     <%}%>
 
@@ -20,7 +20,6 @@
             alert("Password Dosen't Match")
         </script>
       <%}%>
-
       <div class='body'>
           <section>
               <div class="content">
@@ -29,24 +28,24 @@
               </div>
           </section>
       </div>
-
-   <form action="/studentsaccount" method="POST" style="background: #ddd; border-radius: 3px; width: 1116px; margin-left:0.40px" class="row g-3 needs-validation py-3" enctype="multipart/form-data" validate>
+      <hr>
+   <form action="/teachers/account" method="POST" style="background: #fefe; border-radius: 3px; width: 1116px; margin-left:0.40px" class="row g-3 needs-validation py-3" validate>
       <div class="col-md-3">
-        <label for="name" class="form-label">Students Name</label>
+        <label for="name" class="form-label">Teachers Name</label>
         <input name="name" type="text" class="form-control" id="name" value="" placeholder="Type Name..." required>
       </div>
       <div class="col-md-3">
-        <label for="classname" class="form-label">Students Class Name</label>
-        <input name="classname" type="text" class="form-control" id="classname" value="" placeholder="Type Class Name.." required>
+        <label for="classname" class="form-label">Subject</label>
+        <input name="subject" type="text" class="form-control" id="subject" value="" placeholder="Type Subject Name.." required>
       </div>
       <div class="col-md-3">
-        <label for="Roll" class="form-label">Students Roll</label>
-        <input name="roll" type="Number" class="form-control" id="Roll" value="" placeholder="Type Students Roll" required>
+        <label for="Roll" class="form-label">Teachers ID</label>
+        <input name="idno" type="Number" class="form-control" id="idno" value="" placeholder="Type Teachers ID" required>
       </div>
 
       <div class="col-md-3">
-        <label for="Email" class="form-label">Students Email</label>
-        <input name="email" type="email" class="form-control" id="Email" value="" placeholder="Type Students email.." required>
+        <label for="Email" class="form-label">Teachers Email</label>
+        <input name="email" type="email" class="form-control" id="Email" value="" placeholder="Type Teachers email.." required>
       </div>
       <div class="col-md-3">
         <label for="Password" class="form-label">Password</label>
@@ -81,23 +80,19 @@
       </div>
 
       <div class="col-md-3">
-        <label for="phonenumber" class="form-label">Students Phone Number</label>
-        <input name="phonenumber" type="text" class="form-control" value="" id="phonenumber" placeholder="Type Students Phonenumber.." required>
+        <label for="phonenumber" class="form-label">Teachers Phone Number</label>
+        <input name="phonenumber" type="text" class="form-control" value="" id="phonenumber" placeholder="Type Teachers Phonenumber.." required>
       </div>
 
 
        <div class="col-md-3">
-        <label for="address" class="form-label">Students Address</label>
-        <input name="address" type="text" class="form-control" value="" id="address" placeholder="Type Students Address.." required>
+        <label for="address" class="form-label">Teachers Address</label>
+        <input name="address" type="text" class="form-control" value="" id="address" placeholder="Type Teachers Address.." required>
       </div>
 
-       <div class="col-md-3">
-        <label for="photo" class="form-label">Students Photo</label>
-        <input name="photo" type="file" class="form-control" id="photo"  required>
-      </div>
       
       <div class="col-md-3">
-        <button style="width:200px; margin-top:30px" type="submit" class="btn btn-primary">Sign in</button>
+        <button style="width:200px; margin-top:30px" type="submit" class="btn btn-primary">Create Account</button>
       </div>
   </form>
  </div> 

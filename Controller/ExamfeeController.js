@@ -82,7 +82,7 @@ module.exports={
 				}
 				console.log(result)
 				res.render('allfees.ejs',{user:req.session.user,result,downloadfile:true})
-			})
+			}).sort({roll:1})
 	}
 
 }

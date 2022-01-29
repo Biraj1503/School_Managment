@@ -22,6 +22,8 @@ const ClassRoutineRoute = require('./Router/ClassRoutineRoute')
 
 const AdmissionRoute = require('./Router/AdmissionRoute')
 const StudentIDRoute = require('./Router/StudentsIdRouter')
+
+const ClassTestRoute = require('./Router/ClassTestRoute')
 const app = express()
 app.set('views engin','ejs')
 const MONGDB_URI = 'mongodb+srv://SM:studentmanagment@newproject.92n8k.mongodb.net/students'
@@ -34,7 +36,7 @@ var store = new MongoDBStore({
 
 const Midalware = [
 	express.static('Public'),
-	express.urlencoded({extened:true}),
+	express.urlencoded({extended:true}),
 	express.json(),
 	session({
 		secret:process.env.SECRET_KEY || 'SECRET_KEY',
@@ -47,6 +49,7 @@ const Midalware = [
 ]
 
 app.use(Midalware)
+app.use('/classtest',ClassTestRoute)
 app.use('/studentsaccount',StudentIDRoute)
 app.use('/admission',AdmissionRoute)
 app.use('/classroutine',ClassRoutineRoute)

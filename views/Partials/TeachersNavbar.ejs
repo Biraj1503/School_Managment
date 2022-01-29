@@ -1,0 +1,104 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    <a class="navbar-brand mx-3" href="/teachers/teachersprofile" style="font-weight: bold;"><%=teachers.schoolname%></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown mx-md-2">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"  data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            Students Result
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+                <a class="dropdown-item" href="/teachers/findstclasstestresult" id="navbarDropdown"  data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                  Classtest Result
+                </a>
+            </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                  <a class="dropdown-item" href="#" id="navbarDropdown"  data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                    Exam Result
+                  </a>
+              </li>
+               <li><hr class="dropdown-divider"></li>
+              <li>
+                  <a class="dropdown-item" href="#" id="navbarDropdown"  data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                    Assignment Result
+                  </a>
+              </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown mx-md-2">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"  data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            Create Questions
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/teachers/teachersclasstest">Create ClassTest Questions</a></li>
+
+               <li><hr class="dropdown-divider"></li>
+
+               <li>
+                  <a class="dropdown-item" href="#" id="navbarDropdown"  data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                   Create Assignment Questions
+                  </a>
+              </li>
+
+                <li><hr class="dropdown-divider"></li>
+
+              <li>
+                  <a class="dropdown-item" href="#" id="navbarDropdown"  data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                   Create Exam Questions
+                  </a>
+              </li>
+            <!----<li><hr class="dropdown-divider"></li>--->
+          </ul>
+        </li>
+        <!--<li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>-->
+          
+
+           <li class="nav-item dropdown mx-md-2">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"  data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            All Questions
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <li>
+            <a href="#" class="dropdown-item active">Class Test Qusetions</a>
+          </li>
+
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a href="#" class="dropdown-item">Assignment Qusetions</a>
+            </li>
+
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a href="#" class="dropdown-item">Others Exam Questions</a>
+            </li>
+          </ul>
+        </li>
+
+          <li class="nav-item">
+            <a href="/teachers/teachersLogout" class="nav-link ml-5 text-danger">LOgout</a>
+          </li>
+      </ul>
+      <!--<form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>-->
+        <div class="ml-auto mx-5">
+          <div class="text-primary">
+             Sir : <%=teachers.name%>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+

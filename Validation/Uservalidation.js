@@ -52,5 +52,26 @@ module.exports = {
 			error,
 			isvalid:Object.keys(error).length > 0 
 		}
+	},
+
+	CreatestudentsIDValidation(user){
+		let error={}
+
+		if(!user.password){
+			error.password='Password Is Not An Empty'
+		}else if(user.password.length < 8){
+			error.password='Password Must Be Lessthan 8 Char...'
+		}
+
+		if (!user.confirmPassword) {
+			error.confirmPassword='conformpassword Is Not An Empty'
+		}else if (user.password !== user.confirmPassword) {
+			error.confirmPassword="Password Dosen't Match"
+		}
+
+		return {
+			error,
+			isValid :Object.keys(error).length > 0 
+		}
 	}
 }

@@ -109,7 +109,7 @@ module.exports = {
 					User.findOne({schoolname:admissionschool})
 					.then(schoolinfo=>{
 						res.render("useraddmissionformdownload.ejs",{schoolname:[],addmissionform,error:'', AddmissionsForm:true,schoolinfo})
-						console.log(schoolinfo)
+						//console.log(schoolinfo)
 					})
 					.catch(err=>console.log(err))
 				//return res.render("useraddmissionformdownload.ejs",{schoolname:[],addmissionform,error:'', AddmissionsForm:true,schoolinfo})

@@ -1,0 +1,19 @@
+ <%if(users){%>
+      <script>
+          alert("This Students Allready Entry")
+      </script>
+    <%}else if(successfull){%>
+        <script>
+            alert('Students Id Create Successful..')
+        </script>
+    <%}%>
+
+     <%if(error.password){%>
+         <script>
+            alert("Password Must Be Greather Than 8 Char...")
+         </script>
+      <%}else if(error.confirmPassword){%>
+          <script>
+            alert("Password Dosen't Match")
+        </script>
+      <%}%>
