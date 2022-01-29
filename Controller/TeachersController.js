@@ -422,7 +422,7 @@ exports.LoginAccountPostController=async (req,res,next)=>{
 		res.render("ClassTestExamPage.ejs",{teachers:req.session.teachers})
 	}
 	exports.ClassTestResultGetController=async(req,res,next)=>{
-		//res.render("TeachersCheckedStudentsClassTest.ejs",{teachers:req.session.teachers,error:"",result:{}})
+		res.render("TeachersFindStudentsClassTest.ejs",{teachers:req.session.teachers,error:"",result:{},find:false})
 	}
 
 	exports.ClassTestResultPostController=(req,res,next)=>{
@@ -439,15 +439,15 @@ exports.LoginAccountPostController=async (req,res,next)=>{
 		const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 		let currentdate = event.toLocaleDateString(options)
 
-		ClasstestResult.findOne({classname,roll,subject,examname,date:currentdate,schoolname:req.session.teachers.schoolname},(err,result)=>{
+		ClasstestResult.findOne({classname,roll,subject,examname,date:currentdate,schoolname:req.session.teachers.schoolname,error:""},(err,result)=>{
 			if (err) {
 				console.log(err)
 			}
 			if (result) {
-				return res.render("TeachersCheckedStudentsClassTest.ejs",{teachers:req.session.teachers,result})
+				return res.render("Showstudentsresultforteachers.ejs",{teachers:req.session.teachers,result})
 			}
 
-			res.render("TeachersCheckedStudentsClassTest.ejs",{teachers:req.session.teachers, error:'No Result...',result:{}})
+			res.render("TeachersFindStudentsClassTest.ejs",{teachers:req.session.teachers, error:'No Result...',result:{},find:false})
 			
 		})
 
