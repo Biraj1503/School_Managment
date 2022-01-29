@@ -115,20 +115,6 @@ module.exports = {
 			ansqusetionsNO20th
 
 		}=req.body
-		
-		/*let {
-			classname,
-			examname,
-			subject,
-			date,
-			time,
-			qusetionsname,
-			option1,
-			option2,
-			option3,
-			option4,
-			qusetionsans
-		}=req.body*/
 
 		let d = new Date()
 		let year = d.getFullYear()

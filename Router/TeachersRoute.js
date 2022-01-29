@@ -36,7 +36,7 @@ router.get('/teachersprofile',TeachersprofilepageAuth,TeachersProfileGetControll
 router.get('/teachersclasstest',TeachersprofilepageAuth, ClassTestGetController)
 router.post('/teachersclasstest',TeachersprofilepageAuth, ClassTestPostController)
 
-router.get('/findstclasstestresult',TeachersprofilepageAuth, ClassTestResultGetController)
+router.get('/findclasstestresult',TeachersprofilepageAuth, ClassTestResultGetController)
 
 router.post('/findclasstestresult',TeachersprofilepageAuth, ClassTestResultPostController)
 
