@@ -14,3 +14,13 @@ exports.StudentsLogOutAuthenticate=(req,res,next)=>{
 
 	return next()
 }
+
+exports.protectedRoute=(req,res,next)=>{
+	if (!req.session.routeprocted) {
+		return res.redirect('/studentsaccount/studentsaccountpage')
+	}else if (req.session.routeprocted) {
+		return res.redirect('/studentsaccount/findclasstestresult')
+	}
+
+	
+}

@@ -452,7 +452,54 @@ exports.LoginAccountPostController=async (req,res,next)=>{
 		})
 
 		
-	}		
+	}
+
+
+	exports.GetFindClassTestQusetions=(req,res,next)=>{
+		res.render("FindClassTestQuestionsForTeachers.ejs",{teachers:req.session.teachers,questions:[],error:false,ans:false, errors:''})
+	}
+
+	exports.PostFindClassTestQusetions=async(req,res,next)=>{
+		try{
+			let {
+				classname,
+				examname,
+				subject,
+				date
+			}=req.body
+
+			const event = new Date(date)
+			const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+			let currentdate = event.toLocaleDateString(options)
+
+
+			//let findclasstestquestions = await ClasstestResult.findOne({classname,roll:req.session.users.roll,subject,examname,date:currentdate,schoolname:req.session.teachers.schoolname})
+
+			//console.log(findclasstestquestions)
+
+			/*if (findclasstestquestions) {
+				return res.render("FindClassTestQuestionsForTeachers.ejs",{teachers:req.session.teachers,questions:[],error:false,ans:false, errors:'Your Exam Is Complete'})
+			}*/
+
+			ClassTest.findOne({classname,examname,subject,date:currentdate,schoolname:req.session.teachers.schoolname},(err,questions)=>{
+				if (err){
+					console.log(err)
+				}
+
+				if(questions) {
+					return res.render("FindClassTestQuestionsForTeachers.ejs",{teachers:req.session.teachers, questions,error:false,ans:true, errors:''})
+
+				}else{
+					return res.render("FindClassTestQuestionsForTeachers.ejs",{teachers:req.session.teachers,questions:[],error:true,ans:false, errors:''})
+				}
+				
+			})
+			
+		}catch(err){
+			console.log(err)
+		}
+	}
+
 
 	exports.LogoutGetController=(req,res,next)=>{
 		if (req.session) {
