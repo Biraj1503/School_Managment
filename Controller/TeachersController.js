@@ -7,6 +7,7 @@ const TeachersAccount = require('../Model/CreateTeachersAccountModel')
 const bcrypt = require('bcryptjs')
 const ClassTest = require('../Model/ClassTestModel')
 const ClasstestResult = require('../Model/ClassTestResultModel')
+const Assigment = require('../Model/AssigmentModel')
 exports.TeachersGetController=(req,res,next)=>{
 	res.render('teachers.ejs',{user:req.session.user})
 }
@@ -500,6 +501,102 @@ exports.LoginAccountPostController=async (req,res,next)=>{
 		}
 	}
 
+	exports.CreateAssigmentGetController=(req,res,next)=>{
+		res.render("CreateAssigment.ejs",{teachers:req.session.teachers})
+
+	}
+
+	exports.CreateAssigmentPostController=(req,res,next)=>{
+
+		let {
+			classname,
+			assigmentno,
+			subject,
+			startingdate,
+			endingdate,
+			//questionstitle,
+			title,
+			questions
+		}=req.body
+	
+		/*questionstitle = questionstitle.map(title=>{
+			return{
+				titlename:title
+			}
+		})*/
+
+		questions = questions.map(name=>{
+			return{
+				questionsname:name
+			}
+		})
+
+		const stdate = new Date(startingdate)
+		const options = { weekday: 'long', year: 'numeric', day: 'numeric', month: 'long'};
+		let strdate = stdate.toLocaleDateString(options)
+
+		const endate = new Date(endingdate)
+		const option = { weekday: 'long', year: 'numeric', day: 'numeric', month: 'long'};
+		let eningdate = endate.toLocaleDateString(option)
+
+		let assigment = new Assigment({
+			classname,
+			assigmentno,
+			subject,
+			startingdate:strdate,
+			endingdate:eningdate,
+			//questionstitle,
+			title,
+			questions,
+			schoolname:req.session.teachers.schoolname
+		})
+
+		assigment.save()
+		.then(()=>{
+			res.render("CreateAssigment.ejs",{teachers:req.session.teachers})
+		})
+		.catch(err=>console.log(err))
+		
+
+	}
+
+
+	exports.ShowAssigmentGetController=(req,res,next)=>{
+		let data = {
+			questions:[{}]
+		}
+		res.render("ShowAssigmentQuestions.ejs",{teachers:req.session.teachers,data,nodata:''})
+	}
+
+	exports.ShowAssigmentPostController=(req,res,next)=>{
+		let {schoolname} = req.session.teachers
+		let {
+			classname,
+			assigmentno,
+			subject,
+			startingdate,
+		}=req.body
+
+
+		const stdate = new Date(startingdate)
+		const options = { weekday: 'long', year: 'numeric', day: 'numeric', month: 'long'};
+		let strdate = stdate.toLocaleDateString(options)
+
+		let data = {
+				questions:[{}]
+			}
+
+		Assigment.findOne({classname,assigmentno,subject,startingdate:strdate,schoolname},(err,data)=>{
+			if (err) console.log(err)
+
+			if (data) {
+				return res.render("ShowAssigmentQuestions.ejs",{teachers:req.session.teachers,data,nodata:''})
+			}
+
+			res.render("ShowAssigmentQuestions.ejs",{teachers:req.session.teachers,data, nodata:'No Result...'})	
+		})
+		
+	}
 
 	exports.LogoutGetController=(req,res,next)=>{
 		if (req.session) {

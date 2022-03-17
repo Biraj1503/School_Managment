@@ -1,0 +1,61 @@
+<%-include('./Partials/StudentsHeaders.ejs')%>
+<%-include('./Partials/studentsIdNavbar.ejs')%>
+  <div class="conatiner col py-3 margine">
+     <h1 class="text-muted text-center"> Show Assigment Qusetions</h1>
+     <hr>
+     <form action="/studentsaccount/assigment" method="POST">
+           <div class="row container mt-2">
+            <div class="col-md-3 mx-2">
+              <label class="text-danger">Class Name:</label>
+               <select name="classname" class="form-control" required>
+                  <option value="">Selected Classname</option>
+                  <option value="6">Class Six</option>
+                  <option value="7">Class Seven</option>
+                  <option value="8">Class Eight</option>
+                  <option value="9">Class Nine</option>
+                  <option value="10">Class Ten</option>
+               </select>
+            </div>
+
+             <div class="col-md-2">
+                 <label class="text-success">Subject Name:</label>
+                <input type="text" name="subject" class="form-control" placeholder="Type Subject..">
+            </div>
+
+             <div class="col-md-2">
+                 <label class="text-success">Assigment No:</label>
+                <input type="Number" name="assigmentno" class="form-control" placeholder="Type Assigment No.." required>
+            </div>
+
+            <div class="col-md-2">
+                <label class="text-warning">Starting Date:</label>
+                <input type="date" name="startingdate" class="form-control" required>
+            </div>
+
+             <div class="col-md-2 mt-4">
+               <input type="submit" value="Submit" class="btn btn-success">
+            </div>
+            
+     </form>
+
+     <%if(nodata){%>
+     <h1 class="text-center text-danger">No Result....</h1>     
+      <%}else{%>
+          <div class="my-3">
+            <h5 class="text-center"><%=data.schoolname%></h5>
+              <h5>Class Name: <span><%=data.classname%></span></h5>
+              <h5>Subject: <span><%=data.subject%></span></h5>
+              <h5>Title: <span><%=data.title%></span></h5>
+              <h5>Assigment No: <span><%=data.assigmentno%></span></h5>
+              <h5>Starting Date: <span><%=data.startingdate%></span></h5>
+              <h5>Ending Date: <span><%=data.endingdate%></span></h5>
+
+              <%for(let question of data.questions){%>
+                  <h4><%=question.questionsname%></h4>
+              <%}%>
+          </div>
+      <%}%>
+
+      
+  </div>
+<%-include('./Partials/StudentsFooter.ejs')%>

@@ -15,7 +15,11 @@ const {
 	ClassTestResultGetController,
 	ClassTestResultPostController,
 	GetFindClassTestQusetions,
-	PostFindClassTestQusetions
+	PostFindClassTestQusetions,
+	CreateAssigmentGetController,
+	CreateAssigmentPostController,
+	ShowAssigmentGetController,
+	ShowAssigmentPostController
 } = require('../Controller/TeachersController')
 const {dashboardAthenticate} = require('../Authenticate/userAuthenticate')
 
@@ -46,5 +50,14 @@ router.get('/findclasstestqu',TeachersprofilepageAuth, GetFindClassTestQusetions
 
 router.post('/findclasstestqu',TeachersprofilepageAuth, PostFindClassTestQusetions)
 
+router.get('/assigment',TeachersprofilepageAuth, CreateAssigmentGetController)
+
+router.post('/assigment',TeachersprofilepageAuth, CreateAssigmentPostController)
+
+router.get('/showassigment',TeachersprofilepageAuth, ShowAssigmentGetController)
+
+router.post('/showassigment',TeachersprofilepageAuth, ShowAssigmentPostController)
+
 router.get('/teachersLogout', LogoutGetController)
+
 module.exports = router

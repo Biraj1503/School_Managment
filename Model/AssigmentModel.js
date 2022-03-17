@@ -26,11 +26,13 @@ const AssigmentSchema= new Schema({
 		required:true
 	},
 
-	questionstitle:{
+	/*questionstitle:{
 		type:[{
-			titlename:String,
+			titlename:String
 		}]
-	},
+	},*/
+
+	title:String,
 
 	questions:{
 		type:[{
@@ -39,7 +41,7 @@ const AssigmentSchema= new Schema({
 				required:true
 			}
 		}]
-	}
+	},
 
 	schoolname:{
 		type:String,
@@ -53,3 +55,5 @@ const AssigmentSchema= new Schema({
 },{timestamps:true})
 
 const Assigment = model('Assigment', AssigmentSchema)
+
+module.exports = Assigment

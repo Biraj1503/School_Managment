@@ -1,0 +1,107 @@
+<%-include('./Partials/TeachersHeaders.ejs')%>
+<%-include('./Partials/TeachersNavbar.ejs')%>
+  <div class="conatiner">
+      <h1 class="text-center">Create Assigment Qusetions</h1>
+      <hr>
+      <form action="/teachers/assigment" method="POST">
+        <div class="row container">
+            <div class="col-md-3">
+              <label class="text-danger">Class Name:</label>
+               <select name="classname" class="form-control" required>
+                  <option value="">Selected Classname</option>
+                  <option value="6">Class Six</option>
+                  <option value="7">Class Seven</option>
+                  <option value="8">Class Eight</option>
+                  <option value="9">Class Nine</option>
+                  <option value="10">Class Ten</option>
+               </select>
+            </div>
+
+             <div class="col-md-2">
+                 <label class="text-success">Subject Name:</label>
+                <input type="text" name="subject" class="form-control" placeholder="Type Subject.." value="<%=teachers.subject%>" readonly>
+            </div>
+
+             <div class="col-md-2">
+                 <label class="text-success">Assigment No:</label>
+                <input type="Number" name="assigmentno" class="form-control" placeholder="Type Assigment No.." required>
+            </div>
+
+            <div class="col-md-2">
+                <label class="text-warning">Starting Date:</label>
+                <input type="date" name="startingdate" class="form-control" required>
+            </div>
+
+            <div class="col-md-2">
+                <label class="text-muted">Ending Date:</label>
+                <input type="date" name="endingdate" class="form-control" required>
+            </div>
+        </div>
+        <hr>
+
+        <div class="my-2" style="width:500px; margin-left: 250px">
+                <label class="text-danger">Questions Title:</label>
+                <textarea class="form-control" name="title" placeholder="Type Questions Title.." required></textarea>
+        </div>
+
+        <div class="row container" id="add">
+            <!--<div class="col-md-4">
+                <label class="text-danger">Questions Title:</label>
+                <textarea class="form-control" name="questionstitle" placeholder="Type Questions.."></textarea>
+            </div>-->
+
+            <div class="col-md-4">
+                <label class="text-warning">Questions:</label>
+                <textarea class="form-control" name="questions" placeholder="Type Questions.." required></textarea>
+            </div>
+
+            <div class="col-md-4">
+                <label class="text-primary">Questions:</label>
+                <textarea class="form-control" name="questions" placeholder="Type Questions.." required></textarea>
+            </div>
+
+            <div class="col-md-4">
+                <label class="text-primary">Questions:</label>
+                <textarea class="form-control" name="questions" placeholder="Type Questions.." required></textarea>
+            </div>
+        </div>
+        <!--<input type="button" class="btn btn-primary mx-4 my-3" id="title" value="Add Title">-->
+        <input type="button" class="btn btn-success my-2 my-3 mx-3" id="questions" value="Add Questions">
+        <input type="submit" value="Submit" class="btn btn-danger">
+    </form>
+    <script type="text/javascript">
+        let title = document.getElementById('title')
+        let questions = document.getElementById('questions')
+
+        let Add = document.getElementById('add')
+
+       /* title.addEventListener("click",(e)=>{
+          e.preventDefault()
+
+          let div = document.createElement('div')
+
+              div.className= 'col-md-4'
+
+          let textarea = document.createElement('textarea')
+                textarea.name = 'questionstitle'
+                textarea.className = 'col-md-4 form-control mt-2'
+                textarea.placeholder='Type Questions Title'
+            Add.appendChild(div)
+            div.appendChild(textarea)  
+        })*/
+
+        questions.addEventListener('click',(e)=>{
+          e.preventDefault()
+          //alert('You Click Questions')
+          let div = document.createElement('div')
+              div.className= 'col-md-4'
+          let textarea = document.createElement('textarea')
+                textarea.name = 'questions'
+                textarea.className = 'col-md-4 form-control mt-2'
+                textarea.placeholder='Type Questions'
+            Add.appendChild(div)
+            div.appendChild(textarea)  
+        })
+    </script>
+  </div>
+<%-include('./Partials/TeachersFooter.ejs')%>

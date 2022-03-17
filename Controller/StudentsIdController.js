@@ -4,6 +4,7 @@ const cloudinary = require('../Cloudinaryconfig/Cloudinaryconfig')
 const {CreatestudentsIDValidation} = require('../Validation/Uservalidation')
 const ClassTest = require('../Model/ClassTestModel')
 const ClasstestResult = require('../Model/ClassTestResultModel')
+const Assigment = require('../Model/AssigmentModel')
 module.exports = {
 	StudentsIDGetCreateController(req,res,next){
 		
@@ -316,6 +317,42 @@ module.exports = {
 			
 		})
 
+		
+	},
+	CreateAssigmentGetController(req,res,next){
+		let data = {
+			questions:[{}]
+		}
+		res.render("StudentsAssigmentQuestions.ejs",{users:req.session.users,data,nodata:''})
+	},
+
+	CreateAssigmentPostController(req,res,next){
+		let {schoolname} = req.session.users
+		let {
+			classname,
+			assigmentno,
+			subject,
+			startingdate,
+		}=req.body
+
+
+		const stdate = new Date(startingdate)
+		const options = { weekday: 'long', year: 'numeric', day: 'numeric', month: 'long'};
+		let strdate = stdate.toLocaleDateString(options)
+
+		let data = {
+				questions:[{}]
+			}
+
+		Assigment.findOne({classname,assigmentno,subject,startingdate:strdate,schoolname},(err,data)=>{
+			if (err) console.log(err)
+
+			if (data) {
+				return res.render("StudentsAssigmentQuestions.ejs",{users:req.session.users,data,nodata:''})
+			}
+
+			res.render("StudentsAssigmentQuestions.ejs",{users:req.session.users,data, nodata:'No Result...'})	
+		})
 		
 	},
 

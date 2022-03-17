@@ -10,7 +10,9 @@ const {
 	PostFindClassTestQusetions,
 	AnsClasstestPostController,
 	ClassTestResultGetController,
-	ClassTestResultPostController
+	ClassTestResultPostController,
+	CreateAssigmentGetController,
+	CreateAssigmentPostController
 } = require('../Controller/StudentsIdController')
 
 const {StudentsLoginAuthenticate,StudentsLogOutAuthenticate} = require('../Authenticate/StudentsAuthenticate')
@@ -39,5 +41,9 @@ router.post('/studentsquestionsans',StudentsLogOutAuthenticate, AnsClasstestPost
 router.get('/findclasstestresult',StudentsLogOutAuthenticate, ClassTestResultGetController)
 
 router.post('/findclasstestresult',StudentsLogOutAuthenticate, ClassTestResultPostController)
+
+router.get('/assigment',StudentsLogOutAuthenticate, CreateAssigmentGetController)
+
+router.post('/assigment',StudentsLogOutAuthenticate, CreateAssigmentPostController)
 
 module.exports = router
