@@ -436,8 +436,6 @@ module.exports = {
 
 			if (list) {
 				 return res.render("publicestudentslist.ejs",{list,error:'',schoolname:[{}]})
-			}else{
-				return res.render("publicestudentslist.ejs",{list:[{}],error:true,schoolname:[{}]})
 			}
 
 		}).sort({roll:1})
