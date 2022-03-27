@@ -1,0 +1,102 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+<h4 style="margin-left:350px;margin-top:10px">All Students List</h4>
+<hr>
+<div class="container">
+	<form action="/studentsaccount/studentslist" method="POST">
+		<div class="row">
+			<div class="col-md-3">
+				<label class="text-primary">Class Name:</label>
+				<input type="Number" name="classname" class="form-control" placeholder="Type  Class Name...">
+			</div>
+
+			<div class="col-md-3">
+					<label class="text-muted">Year:</label>
+	               <select name="year" class="form-control" required>
+	                  <option value="">Selected Year</option>
+	                  <option value="2022">2022</option>
+	                  <option value="2023">2023</option>
+	                  <option value="2024">2024</option>
+	                  <option value="2025">2025</option>
+	                  <option value="2026">2026</option>
+	               </select>
+				</div>
+
+			<div class="col-md-3">
+				<input type="submit" class="btn btn-primary mt-4" value="Preview">
+			</div>
+		</div>
+	</form>	
+	<div class="row">
+			<div class="col-sm-11 my-3">
+					<table class="table table-bordered">
+						<thead class="table-light">
+							<tr>
+							   <th scope="col">Name</th>
+							   <th scope="col">ClassName</th>
+							   <th scope="col">Roll</th>
+							   <th scope="col">Address</th>
+							   <th scope="col">Phone Number</th>
+							   <th scope="col">Year</th>
+							   <th scope="col">Edit</th>
+							   <th scope="col">Delete</th>
+							</tr>
+						</thead>
+							<tbody>
+								<button class="my-2" onclick="exportTableToCSV('StudentsPaymentList.csv')">Emport File CSV</button>
+								<%for(let students of list){%>
+									<tr>
+										<td><%=students.name%></td>
+										 <td><%=students.classname%></td>
+										 <td><%=students.roll%></td>
+										 <td><%=students.address%></td>
+										  <td><%=students.phone%></td>
+										  <td><%=students.year%></td>
+										  <%if(data){%>
+										  	<td><a href="/studentsaccount/Edit/<%=students._id%>">Edit</a></td>
+
+										  	<td><a href="/studentsaccount/delete/<%=students._id%>">Delete</a></td>
+										  <%}%>
+									 </tr>
+								<%}%> 					
+						 </tbody>
+					</table>
+		 	 </div> 
+		</div>
+
+	</div>
+<script type="text/javascript">
+		//user-defined function to download CSV file  
+	function downloadCSV(csv, filename) {  
+		    var csvFile;  
+		    var downloadLink;  
+		     
+		    //define the file type to text/csv  
+		    csvFile = new Blob([csv], {type: 'text/csv'});  
+		    downloadLink = document.createElement("a");  
+		    downloadLink.download = filename;  
+		    downloadLink.href = window.URL.createObjectURL(csvFile);  
+		    downloadLink.style.display = "none";  
+		  
+		    document.body.appendChild(downloadLink);  
+		    downloadLink.click();  
+		}  
+		  
+		//user-defined function to export the data to CSV file format  
+		function exportTableToCSV(filename) {  
+		   //declare a JavaScript variable of array type  
+		   var csv = [];  
+		   var rows = document.querySelectorAll("table tr");  
+		   
+		   //merge the whole data in tabular form   
+		   for(var i=0; i<rows.length; i++) {  
+		    var row = [], cols = rows[i].querySelectorAll("td, th");  
+		    for( var j=0; j<cols.length; j++)  
+		       row.push(cols[j].innerText);  
+		    	csv.push(row.join(","));  
+		   }   
+		   //call the function to download the CSV file  
+		   downloadCSV(csv.join("\n"), filename);  
+		}  
+	</script>
+<%-include('./Partials/footer.ejs')%>

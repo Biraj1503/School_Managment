@@ -7,6 +7,11 @@ const notificationSchema = new Schema({
 		trim:true
 	},
 
+	date:{
+		type:Date,
+		default:new Date()
+	},
+	
 	createedTime:{
 		type:Date,
 		default:new Date()

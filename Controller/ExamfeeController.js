@@ -16,9 +16,15 @@ module.exports={
 
 	ExamfeePostController(req,res,next){
 		let {name,classname,roll,year,amount,paymentmode,paymentdate,remarks,examtrm,schoolname} = req.body
-		const event = new Date()
+		/*const event = new Date()
 		const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-		console.log(event.toLocaleDateString('ar-EG'.options))
+		console.log(event.toLocaleDateString('ar-EG'.options))*/
+
+		const date = new Date()
+		const options = { weekday: 'long', year: 'numeric', day: 'numeric', month: 'long'};
+		let strdate = date.toLocaleDateString(options)
+		//strdate.toUTCString()
+
 		let examerror = ExamfeeValidation({name,classname,roll,year,amount,paymentmode,examtrm})
 		if(examerror.isvalid){
 			let {error} = examerror
@@ -33,7 +39,7 @@ module.exports={
 			examtrm,
 			amount,
 			paymentmode,
-			paymentdate,
+			paymentdate:strdate,
 			remarks,
 			schoolname,
 			village:req.session.user.village,
@@ -75,14 +81,30 @@ module.exports={
 
 	AllFeesPostController(req,res,next){
 			let {schoolname} = req.session.user
-			let {classname,year,examtrm} = req.body
-			Examfee.find({schoolname,classname,year,examtrm},(err,result)=>{
+			let {classname,examtrm,year} = req.body
+
+			/*const begining = new Date(beginingdate)
+			const options = { weekday: 'long', year: 'numeric', day: 'numeric', month: 'long'};
+			let beginingdt = begining.toLocaleDateString(options)
+
+
+			const endining = new Date(endiningdate)
+			const endiningoptions = { weekday: 'long', year: 'numeric', day: 'numeric', month: 'long'};
+			let endiningdt = endining.toLocaleDateString(endiningoptions)*/
+
+			Examfee.find({
+						schoolname,
+						classname,
+						examtrm,
+						year
+			},(err,result)=>{
 				if (err) {
 					console.log(err)
 				}
-				console.log(result)
-				res.render('allfees.ejs',{user:req.session.user,result,downloadfile:true})
-			}).sort({roll:1})
+				if (result) {
+					return res.render('allfees.ejs',{user:req.session.user,result,downloadfile:true})
+				}
+		}).sort({roll:1})
 	}
 
 }

@@ -12,7 +12,15 @@ const {
 	ClassTestResultGetController,
 	ClassTestResultPostController,
 	CreateAssigmentGetController,
-	CreateAssigmentPostController
+	CreateAssigmentPostController,
+	StudentsEntryGetController,
+	StudentsEntryPostController,
+	StudentsListGetController,
+	StudentsListPostController,
+	StudentsDeleteController,
+	StudentsEditController,
+	PublicestudentslistGetController,
+	PublicestudentslistPostController
 } = require('../Controller/StudentsIdController')
 
 const {StudentsLoginAuthenticate,StudentsLogOutAuthenticate} = require('../Authenticate/StudentsAuthenticate')
@@ -46,4 +54,23 @@ router.get('/assigment',StudentsLogOutAuthenticate, CreateAssigmentGetController
 
 router.post('/assigment',StudentsLogOutAuthenticate, CreateAssigmentPostController)
 
-module.exports = router
+router.get('/studentsentry',dashboardAthenticate, StudentsEntryGetController)
+
+
+router.post('/studentsentry',dashboardAthenticate, StudentsEntryPostController)
+
+
+router.get('/studentslist',dashboardAthenticate, StudentsListGetController)
+
+
+router.post('/studentslist',dashboardAthenticate, StudentsListPostController)
+
+router.get('/delete/:id',dashboardAthenticate, StudentsDeleteController)
+
+router.put('/Edit/:id',dashboardAthenticate, StudentsEditController)
+
+router.get('/publicestudentslist', PublicestudentslistGetController)
+
+router.post('/publicestudentslist', PublicestudentslistPostController)
+
+module.exports = router  

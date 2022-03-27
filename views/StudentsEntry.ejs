@@ -1,0 +1,68 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+<h4 style="margin-left:350px;margin-top:10px">Create Students List</h4>
+<hr>
+<%if(success){%>
+     <script>alert('Students Entry SuccessFull')</script> 
+  <%}%>
+
+<div class="container">
+	<form action="/studentsaccount/studentsentry" method="POST">
+		<div class="row">
+			<div class="col-md-3">
+				<label class="text-danger">Class Name:</label>
+               <select name="classname" class="form-control" required>
+                  <option value="">Selected Classname</option>
+                  <option value="6">Class Six</option>
+                  <option value="7">Class Seven</option>
+                  <option value="8">Class Eight</option>
+                  <option value="9">Class Nine</option>
+                  <option value="10">Class Ten</option>
+               </select>
+			</div>
+
+			<div class="col-md-3 mx-2">
+				<label class="text-primary">Roll Number:</label>
+				<input type="Number" name="roll" class="form-control" placeholder="Type Roll.." required>
+			</div>
+
+
+			<div class="col-md-3">
+				<label class="text-success">Students Name:</label>
+				<input type="text" name="name" class="form-control" placeholder="Type Students Name.." required>
+			</div>
+
+
+
+				<div class="col-md-3 mt-2">
+					<label class="text-danger">Address:</label>
+					<input type="text" name="address" class="form-control" placeholder="Type Address.." required>
+				</div>
+
+				<div class="col-md-3 mt-2 mx-2">
+					<label class="text-danger">Phone Number:</label>
+					<input type="text" name="phone" class="form-control" placeholder="Type Phone Number.." required>
+				</div>
+
+				<div class="col-md-3 mt-2 mx-2">
+					<label class="text-muted">Year:</label>
+	               <select name="year" class="form-control" required>
+	                  <option value="">Selected Year</option>
+	                  <option value="2022">2022</option>
+	                  <option value="2023">2023</option>
+	                  <option value="2024">2024</option>
+	                  <option value="2025">2025</option>
+	                  <option value="2026">2026</option>
+	               </select>
+				</div>
+		
+		</div>
+
+		<div class="">
+			<input type="submit"  class="btn btn-primary mt-4" value="Submit">
+		</div>
+
+	</form>
+</div>
+
+<%-include('./Partials/footer.ejs')%>

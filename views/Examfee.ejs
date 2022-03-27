@@ -60,7 +60,8 @@
                           <option value="First Exam">First Exam</option>
                           <option value="Second Exam">Second Exam</option>
                           <option value="Final Exam">Final Exam</option>
-                          <option value="Examination">Examination</option>
+                          <option value="Addmission Fee">Addmission Fee</option>
+                          <option value="Other Examination">Other Examination</option>
                       </select>
                       <%if(error.examtrm){%>
                           <p class="text-warning"><%=error.examtrm%></p>
@@ -102,7 +103,7 @@
                   
                   <div class="form-group">
                       <label for='paymentdate' class="text-danger"><strong>Payment Date</strong></label>
-                      <input type="datetime-local" name="paymentdate" placeholder="Date..." class="form-control mt-2">
+                      <input type="date" name="paymentdate"  class="form-control mt-2" required>
                   </div>
 
                   <div class="form-group">

@@ -56,12 +56,13 @@
                           <option value="First Exam">First Exam</option>
                           <option value="Second Exam">Second Exam</option>
                           <option value="Final Exam">Final Exam</option>
-                          <option value="Examination">Examination</option>
+                           <option value="Addmission Fee">Addmission Fee</option>
+                          <option value="Other Examination">Other Examination</option>
                       </select>
                  </div>
 
                  <div class=" col-md-3 form-group">
-                    <label for='year' class="text-success"><strong>Session Year</strong></label>
+                   <label for='year' class="text-success"><strong>Session Year</strong></label>
                    <select name='year' class="form-control mt-2">
                           <option selected>Selected Your Year</option>
                           <option value=2021>2021</option>
@@ -97,7 +98,7 @@
 						</thead>
 							<tbody>
 							<%if(downloadfile){%>
-								<button class="mx-5 my-2" onclick="exportTableToCSV('person.csv')">Download File CSV</button>
+								<button class="mx-5 my-2" onclick="exportTableToCSV('StudentsPaymentList.csv')">Emport File CSV</button>
 								<%for(r of result){%>
 									<tr>
 										<td><%=r.name%></td>

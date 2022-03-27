@@ -5,6 +5,8 @@ const {CreatestudentsIDValidation} = require('../Validation/Uservalidation')
 const ClassTest = require('../Model/ClassTestModel')
 const ClasstestResult = require('../Model/ClassTestResultModel')
 const Assigment = require('../Model/AssigmentModel')
+const StudentsEnty = require('../Model/StudentsEntyModel')
+const User = require('../Model/UserModel')
 module.exports = {
 	StudentsIDGetCreateController(req,res,next){
 		
@@ -354,6 +356,91 @@ module.exports = {
 			res.render("StudentsAssigmentQuestions.ejs",{users:req.session.users,data, nodata:'No Result...'})	
 		})
 		
+	},
+
+	StudentsEntryGetController(req,res,next){
+		res.render("StudentsEntry.ejs",{user:req.session.user,success:false})
+	},
+
+	StudentsEntryPostController(req,res,next){
+		let {schoolname} = req.session.user
+		let {classname,year,name,roll,phone,address}=req.body
+
+		const studentsEnty = new StudentsEnty({
+			schoolname,
+			classname,
+			year,
+			name,
+			roll,
+			phone,
+			address
+		})
+		studentsEnty.save()
+		.then(()=>{
+			return res.render("StudentsEntry.ejs",{user:req.session.user,success:true})
+		})
+		.catch(err=>console.log(err))
+		
+	},
+
+	StudentsListGetController(req,res,next){
+		res.render("StudentsList.ejs",{user:req.session.user,list:[{}],data:''})
+	},
+
+	StudentsListPostController(req,res,next){
+		let {schoolname} = req.session.user
+		let {classname,year} = req.body 
+
+		StudentsEnty.find({schoolname,classname,year},(err,list)=>{
+			if (err) console.log(errr)
+
+			if (list) {
+				 return res.render("StudentsList.ejs",{user:req.session.user,list,data:true})
+			}
+
+			console.log('No Students...')
+		}).sort({roll:1})
+		
+	},
+
+	StudentsDeleteController(req,res,next){
+
+		let {_id} = req.params
+
+		StudentsEnty.findOneAndDelete(_id)
+		.then(()=>{
+			res.render("StudentsList.ejs",{user:req.session.user,list:[{}],data:false})	
+		})
+		.catch(err=>console.log(err))
+	},
+
+	StudentsEditController(req,res,next){
+		res.render("StudentsList.ejs",{user:req.session.user,list:[{}],data:true})
+	},
+
+	// Publice Search Students List
+	PublicestudentslistGetController(req,res,next){
+		User.find()
+		.then(schoolname=>{
+			res.render("publicestudentslist.ejs",{schoolname,error:'',list:[{}]})
+		})
+
+		.catch(err=>console.log(err))
+	},
+
+	PublicestudentslistPostController(req,res,next){
+		let {classname,year,schoolname} = req.body 
+
+		StudentsEnty.find({classname,year,schoolname},(err,list)=>{
+			if (err) console.log(errr)
+
+			if (list) {
+				 return res.render("publicestudentslist.ejs",{list,error:'',schoolname:[{}]})
+			}else{
+				return res.render("publicestudentslist.ejs",{list:[{}],error:true,schoolname:[{}]})
+			}
+
+		}).sort({roll:1})
 	},
 
 	StudentsGetLogOutController(req,res,next){

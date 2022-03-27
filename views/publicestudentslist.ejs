@@ -1,0 +1,70 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/StudentsNavbar.ejs')%>
+<div class="container mt-3">
+	<form action="/studentsaccount/publicestudentslist" method="POST">
+		<div class="row">
+			<div class="col-md-3">
+				<label class="text-primary">Class Name:</label>
+				<input type="Number" name="classname" class="form-control" placeholder="Type  Class Name...">
+			</div>
+
+			<div class="col-md-3">
+					<label class="text-muted">Year:</label>
+	               <select name="year" class="form-control" required>
+	                  <option value="">Selected Year</option>
+	                  <option value="2022">2022</option>
+	                  <option value="2023">2023</option>
+	                  <option value="2024">2024</option>
+	                  <option value="2025">2025</option>
+	                  <option value="2026">2026</option>
+	               </select>
+				</div>
+
+		<div class="col-md-3">
+		    <label>School Name</label>
+		    <select name="schoolname"  class="form-control" required>
+		      <option selected disabled>Selected One</option>
+		      <%for(let s of schoolname){%>
+		      	<option value="<%=s.schoolname%>"><%=s.schoolname%></option>
+		      <%}%>
+		    </select>
+		</div>
+
+			<div class="col-md-3">
+				<input type="submit" class="btn btn-primary mt-4" value="Preview">
+			</div>
+		</div>
+	</form>	
+	<div class="row">
+			<div class="col-sm-11 my-3">
+					<table class="table table-bordered">
+						<thead class="table-light">
+							<tr>
+							   <th scope="col">Name</th>
+							   <th scope="col">ClassName</th>
+							   <th scope="col">Roll</th>
+							   <th scope="col">Address</th>
+							   <th scope="col">Phone Number</th>
+							   <th scope="col">Year</th>
+							</tr>
+						</thead>
+							<tbody>
+								<%for(let students of list){%>
+									<tr>
+										<td><%=students.name%></td>
+										 <td><%=students.classname%></td>
+										 <td><%=students.roll%></td>
+										 <td><%=students.address%></td>
+										  <td><%=students.phone%></td>
+										  <td><%=students.year%></td>
+										
+									 </tr>
+								<%}%> 					
+						 </tbody>
+					</table>
+		 	 </div> 
+		</div>
+
+	</div>
+<%-include('./Partials/footer.ejs')%>
+
