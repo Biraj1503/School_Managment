@@ -44,7 +44,13 @@ exports.TeachersPostController= async (req,res,next)=>{
 }
 
 exports.ShowTeacherslistGetController=(req,res,next)=>{
-	res.render('AllTeachersList.ejs',{user:req.session.user,Teachers:""})
+	User.find()
+	.then(schoolname=>{
+		res.render('AllTeachersList.ejs',{user:req.session.user,Teachers:"" , schoolname})
+	})
+
+	.catch(err=>console.log(err))
+	
 }
 
 exports.ShowTeacherslistPostController=async(req,res,next)=>{
@@ -63,7 +69,7 @@ exports.ShowTeacherslistPostController=async(req,res,next)=>{
 			let {Teachers} = allteachers
 			//console.log(Teachers)
 			//console.log(teachersSchoolname.schoolname == userSchoolname.schoolname)
-			return res.render('AllTeachersList.ejs',{user:req.session.user,Teachers})
+			return res.render('AllTeachersList.ejs',{user:req.session.user,Teachers,schoolname:""})
 		}
 		console.log("Wrong")
 	}catch(err){

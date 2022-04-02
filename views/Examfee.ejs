@@ -38,13 +38,14 @@
 
                 <div class="form-group">
                     <label for='year' class="text-success"><strong>Session Year</strong></label>
-                   <select name='year' class="form-control mt-2">
+                   <!-- <select name='year' class="form-control mt-2" id="year">
                           <option selected>Selected Your Year</option>
                           <option value=2021>2021</option>
                           <option value=2022>2022</option>
                           <option value=2023>2023</option>
                           <option value=2024>2024</option>
-                      </select>
+                      </select>-->
+                      <input type="text" name="year" class="form-control mt-2" id="year" readonly>
 
                     <%if(error.year){%>
                       <p class="text-warning"><%=error.year%></p>
@@ -103,7 +104,7 @@
                   
                   <div class="form-group">
                       <label for='paymentdate' class="text-danger"><strong>Payment Date</strong></label>
-                      <input type="date" name="paymentdate"  class="form-control mt-2" required>
+                      <input type="text" name="paymentdate" value="" id="currentDate"  class="form-control mt-2" readonly required>
                   </div>
 
                   <div class="form-group">
@@ -127,4 +128,20 @@
           </div>
       </form>
   </div>
+
+ <script type="text/javascript">
+    /* function getDate() {
+      const stdate = new Date()
+        const options = { weekday: 'long', year: 'numeric', day: 'numeric', month: 'long'};
+        let strdate = stdate.toLocaleDateString(options)
+       document.getElementById("date").value=strdate  
+    }*/
+
+    let today = new Date();
+    let date = today.getDate()+'-0'+(today.getMonth()+1)+'-'+today.getFullYear();
+    document.getElementById("currentDate").value = date;
+    document.getElementById("year").value = today.getFullYear();
+
+
+ </script>
 <%-include('./Partials/footer.ejs')%>

@@ -8,13 +8,18 @@ const notificationSchema = new Schema({
 	},
 
 	date:{
-		type:Date,
-		default:new Date()
+		type:String,
+		required:true
 	},
 	
 	createedTime:{
 		type:Date,
 		default:new Date()
+	},
+	
+	schoolname:{
+		type:String,
+		required:true
 	},
 
 	User:{

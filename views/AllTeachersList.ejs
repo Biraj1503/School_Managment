@@ -3,7 +3,13 @@
 <div class="container">
 	<h1>All Teachers List</h1>
 	<form action="/teachers/showteacherslist" method="post">
-		<input type="text" name="schoolname" style="width:250px;height:40px;border: 1px solid #ddd; border-radius: 8px" placeholder="Type Schoolname...">
+		<select name="schoolname" style="width:250px;height:40px;border: 1px solid #ddd; border-radius: 8px">
+			<option selected>Selected Schoolname</option>
+			<%for(let st of schoolname){%>
+				<option value="<%=st.schoolname%>"><%=st.schoolname%></option>
+			<%}%>
+		</select>
+
 		<input type="submit" value="View" class="btn btn-primary">
 	</form>
 

@@ -1,12 +1,40 @@
 <%-include('./Partials/header.ejs')%>
 <%-include('./Partials/StudentsNavbar.ejs')%>
-  <div class="container">
-      <div>
-        <%for(n of notices){%>
-            <p><%=n.notice%></p> <span><strong><%=moment(n.createedTime)%></strong></span>
-        <%}%>
-      </div>
+  <div class="container"> 
+  	<h3 class="text-center my-3">Find Notification</h3>
+      <form action="/notice/allnotice" method="POST">
+      		<div class="row">
+      			<div class="col-md-3">
+      				<label>School Name:</label>
+      				<select name="schoolname" class="form-control">
+      					<option>Selected One</option>
+      					<%for(let st of schoolname){%>
+      						<option value="<%=st.schoolname%>"><%=st.schoolname%></option>
+      					<%}%>
+      				</select>
+      			</div>
+
+      			<div class="col-md-3">
+      				<label>Notification Date:</label>
+      				<input type="text" name="date" class="form-control" id="date">
+      			</div>
+
+      			<div class="col-md-4 mt-4">
+      				<input type="submit" class="btn btn-primary" value="previwe">
+      			</div>
+      		</div>
+      </form>
+
+      <%for(let nt of notices){%>
+      	<p class="my-3"><%=nt.notice%></p>
+      <%}%>
   </div>
+
+  <script>
+  	let today = new Date();
+    let date = today.getDate()+'-0'+(today.getMonth()+1)+'-'+today.getFullYear();
+    document.getElementById("date").value = date;
+  </script>
 <%-include('./Partials/footer.ejs')%>
 
          

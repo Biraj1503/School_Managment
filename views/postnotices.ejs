@@ -8,11 +8,21 @@
                   <textarea name="notice" style="width:550px;margin-left:280px" rows="8" cols="50" class="form-control" placeholder="Enter Type Anything.."></textarea>
               </div>
 
+
               <input style="width:550px;margin-left:280px" type="submit" value="SUBMIT NOTICES" class="btn btn-primary mt-2">
+
+               <input type="text" name="date" style="display:none"  id="date">
           </form>
       </div>
 
       <div>
       </div>
   </div>
+
+<script>
+  let today = new Date();
+    let date = today.getDate()+'-0'+(today.getMonth()+1)+'-'+today.getFullYear();
+    document.getElementById("date").value = date;
+
+</script>
 <%-include('./Partials/footer.ejs')%>

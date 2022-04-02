@@ -20,9 +20,9 @@ module.exports={
 		const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 		console.log(event.toLocaleDateString('ar-EG'.options))*/
 
-		const date = new Date()
+		/*const date = new Date()
 		const options = { weekday: 'long', year: 'numeric', day: 'numeric', month: 'long'};
-		let strdate = date.toLocaleDateString(options)
+		let strdate = date.toLocaleDateString(options)*/
 		//strdate.toUTCString()
 
 		let examerror = ExamfeeValidation({name,classname,roll,year,amount,paymentmode,examtrm})
@@ -39,7 +39,7 @@ module.exports={
 			examtrm,
 			amount,
 			paymentmode,
-			paymentdate:strdate,
+			paymentdate,
 			remarks,
 			schoolname,
 			village:req.session.user.village,

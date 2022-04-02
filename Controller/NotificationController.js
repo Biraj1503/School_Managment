@@ -1,13 +1,17 @@
 const Notice = require('../Model/NotificationModel')
+const User = require('../Model/UserModel')
 exports.NoticeGetController=(req,res,next)=>{
 		res.render('postnotices.ejs',{user:req.session.user})
 }
 
 exports.NoticePostController = (req,res,next)=>{
-	let {notice} = req.body
+	let {schoolname} = req.session.user
+	let {notice,date} = req.body
 
 	const notices = new Notice({
-		notice
+		notice,
+		date,
+		schoolname
 	})
 
 	notices.save()
@@ -15,16 +19,23 @@ exports.NoticePostController = (req,res,next)=>{
 }
 
 exports.allnoticesGetController=(req,res,next)=>{
-	Notice.find()
-	.then(notices=>{
-		return res.render('getNotice.ejs',{editNotices:{},user:req.session.user,notices,edit:false})
+	User.find()
+	.then(schoolname=>{
+		res.render('getNotice.ejs',{user:req.session.user,schoolname,notices:[{}]})
 	})
-	.catch(err=>{
-		console.log(err)
-	})
+	.catch(err=>console.log(err))
+
 	
 }
 
+exports.allnoticesPostController=(req,res,next)=>{
+	let {schoolname,date} = req.body
+	Notice.find({schoolname,date})
+	.then(notices=>{
+		res.render('getNotice.ejs',{user:req.session.user,schoolname:[{}],notices})
+	})
+	.catch(err=>console.log(err))
+}
 exports.editNotices=(req,res,next)=>{
 	const {_id} = req.params
 
