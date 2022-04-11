@@ -7,6 +7,7 @@ const ClasstestResult = require('../Model/ClassTestResultModel')
 const Assigment = require('../Model/AssigmentModel')
 const StudentsEnty = require('../Model/StudentsEntyModel')
 const User = require('../Model/UserModel')
+const Attendance = require('../Model/AttendanceModel')
 module.exports = {
 	StudentsIDGetCreateController(req,res,next){
 		
@@ -440,6 +441,81 @@ module.exports = {
 
 		}).sort({roll:1})
 	},
+
+
+	AttendanceGetController(req,res,next){
+		res.render('Attendance.ejs',{user:req.session.user,duplicate:false})
+
+		//single Studeents Manth Wayes
+		//All Studeents Manth Wayes
+	},
+
+	AttendancePostController(req,res,next){
+		const{schoolname}=req.session.user
+		const {classname,roll,name,year,present,date,month} = req.body
+		Attendance.findOne({classname,roll,year,date,month,schoolname},(err,result)=>{
+			if (err) console.log(err)
+			if (result) {
+				res.render('Attendance.ejs',{user:req.session.user,duplicate:true})
+			}else{
+				const attendance = new Attendance({
+					classname,
+					roll,
+					name,
+					year,
+					present,
+					date,
+					month,
+					schoolname
+				})
+
+				attendance.save()
+				.then(()=>{
+					res.render('Attendance.ejs',{user:req.session.user,duplicate:false})
+				})
+				.catch(err=>console.log(err))
+			}	
+		})
+		
+	},
+
+	AllAttendanceGetController(req,res,next){
+		User.find()
+		.then(schoolname=>{
+			res.render("AllStudentsAttendance.ejs",{schoolname,attendance:[{}],downloadfile:false})
+		})
+
+		.catch(err=>console.log(err))
+	},
+
+	AllAttendancePostController(req,res,next){
+		let {classname,year,month,schoolname} = req.body
+		Attendance.find({classname,year,month,schoolname}).sort({roll:1})
+		.then(attendance=>{
+			res.render("AllStudentsAttendance.ejs",{schoolname:[{}],attendance,downloadfile:true})
+		})
+		.catch(err=>console.log(err))
+
+	},
+
+	SinglestudentsAttendanceGetController(req,res,next){
+		User.find()
+		.then(schoolname=>{
+			res.render("SingleStudnetsAttendance.ejs",{schoolname,downloadfile:false})
+		})
+
+		.catch(err=>console.log(err))
+	},
+
+	SinglestudentsAttendancePostController(req,res,next){
+		let {classname,roll,year,month,schoolname} = req.body
+		Attendance.find({classname,roll,year,month,schoolname})
+		.then(attendance=>{
+			res.render("SingleStudnetsAttendance.ejs",{schoolname:[{}],attendance,downloadfile:true})
+		})
+		.catch(err=>console.log(err))
+	},
+
 
 	StudentsGetLogOutController(req,res,next){
 		if (req.session) {

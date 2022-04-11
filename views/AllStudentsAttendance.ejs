@@ -1,0 +1,128 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/StudentsNavbar.ejs')%>
+  <div class="container"> 
+  	 <center class='my-3'><h4>All Students Attendance List</h4></center>
+     <hr>
+      <form action="/studentsaccount/allstudentsattendance" method="post">
+
+          <div class="row">
+
+            <div class="col-md-2">
+                <label for='classname' class="text-Primary">Class Name:</label>
+                  <select name='classname' class="form-control" required>
+                      <option selected>Selected Class Name</option>
+                      <option value=6>Class Six</option>
+                      <option value=7>Class Seven</option>
+                      <option value=8>Class Eight</option>
+                      <option value=9>Class Nine</option>
+                      <option value=10>Class Ten</option>
+                 </select>
+            </div>
+           
+
+            <div class="col-md-2">
+                <label for='schoolname' class="text-success">School Name:</label>
+                  <select name='schoolname' class="form-control" required>
+                      <option selected>Selected</option>
+                      <%for(let st of schoolname){%>
+                           <option value="<%=st.schoolname%>"><%=st.schoolname%></option>
+                      <%}%>
+                 </select>
+            </div>
+
+
+            <div class="col-md-2">
+                <label  for='present' class="text-danger">year:</label>
+                <input type="text" name="year" class="form-control" id="year" required> 
+            </div>
+
+            <div class="col-md-2">
+                <label for='month' class="text-warning">month:</label>
+                <input type="text" name="month" class="form-control" id="month"  required> 
+            </div>
+
+             <div class="col-md-2 mt-4">
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+            
+        </div>
+                
+      </form>
+      <hr>
+      <div class="row">
+      <div class="col-sm-11 my-3">
+          <table class="table table-bordered">
+            <thead class="table-light">
+              <tr>
+                 <th scope="col">ClassName</th>
+                 <th scope="col">Roll</th>
+                 <th scope="col">Name</th>
+                 <th scope="col">Date</th>  
+                 <th scope="col">Attendance</th>
+                 <th scope="col">Schoolname</th>
+              </tr>
+            </thead>
+              <tbody>
+              <%if(downloadfile){%>
+                <button class="my-2" onclick="exportTableToCSV('StudentsPaymentList.csv')">Emport File CSV</button>
+                <%for(let at of attendance){%>
+                  <tr>
+                     <td><%=at.classname%></td>
+                     <td><%=at.roll%></td>
+                     <td><%=at.name%></td>
+                      <td><%=at.date%></td>
+                      <td><%=at.present%></td>
+                      <td><%=at.schoolname%></td>
+                   </tr>
+                <%}%> 
+              <%}%>         
+             </tbody>
+          </table>
+       </div> 
+    </div>
+
+  </div>
+
+  <script>
+   let today = new Date();
+    /*let date = today.getDate()+'-0'+(today.getMonth()+1)+'-'+today.getFullYear();
+    document.getElementById("currentDate").value = date;*/
+    document.getElementById("year").value = today.getFullYear();
+    document.getElementById("month").value = (today.getMonth()+1);
+
+
+    function downloadCSV(csv, filename) {  
+        var csvFile;  
+        var downloadLink;  
+         
+        //define the file type to text/csv  
+        csvFile = new Blob([csv], {type: 'text/csv'});  
+        downloadLink = document.createElement("a");  
+        downloadLink.download = filename;  
+        downloadLink.href = window.URL.createObjectURL(csvFile);  
+        downloadLink.style.display = "none";  
+      
+        document.body.appendChild(downloadLink);  
+        downloadLink.click();  
+    }  
+      
+    //user-defined function to export the data to CSV file format  
+    function exportTableToCSV(filename) {  
+       //declare a JavaScript variable of array type  
+       var csv = [];  
+       var rows = document.querySelectorAll("table tr");  
+       
+       //merge the whole data in tabular form   
+       for(var i=0; i<rows.length; i++) {  
+        var row = [], cols = rows[i].querySelectorAll("td, th");  
+        for( var j=0; j<cols.length; j++)  
+           row.push(cols[j].innerText);  
+          csv.push(row.join(","));  
+       }   
+       //call the function to download the CSV file  
+       downloadCSV(csv.join("\n"), filename);  
+    }  
+  </script>
+<%-include('./Partials/footer.ejs')%>
+
+         
