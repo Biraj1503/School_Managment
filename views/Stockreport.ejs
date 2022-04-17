@@ -1,0 +1,76 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/navbar.ejs')%>
+  <div class="container">
+      <%if(duplicate){%>
+         <script>alert('This Product Allready Recived')</script> 
+      <%}%>
+      <center class='my-3'><h4>Transffer Producted Received</h4></center>
+      <form action="/stock" method="post">
+
+          <div class="row">
+            <div class="col-md-3">
+                <label for='productname' class="text-primary">Product Name:</label>
+                <input type="text" name="productname" class="form-control" placeholder="Type Product Name..." required>
+            </div>
+
+
+             <div class="col-md-2">
+                <label for='unloaddate' class="text-danger">Unloading date:</label>
+                <input type="text" name="unloaddate" class="form-control" id="currentDate" required> 
+            </div>
+
+            <div class="col-md-2">
+                <label for='trno' class="text-primary">Tr.No:</label>
+                <input type="text" name="trno" class="form-control" placeholder="Type Tr.No..." required>
+            </div>
+
+            <div class="col-md-2">
+                <label for='tbl' class="text-danger">TBL:</label>
+                  <select name='tbl' class="form-control" required>
+                      <option selected>Selected</option>
+                      <option value="Terichala ">Terichala</option>
+                      <option value="Baniarchala">Baniarchala</option>
+                      <option value="Chittagong">Chittagong</option>
+                 </select>
+            </div>
+
+             <div class="col-md-2">
+                <label for='totalcase' class="text-danger">Total Case:</label>
+                <input type="Number" name="totalcase" class="form-control" placeholder="Type Total Case..." required> 
+            </div>
+           
+
+            <div class="col-md-2" style="display:none">
+                <label  for='year' class="text-danger">year:</label>
+                <input type="text" name="year" class="form-control" id="year" readonly required> 
+            </div>
+
+            <div class="col-md-2" style="display:none">
+                <label for='month' class="text-danger">month:</label>
+                <input type="text" name="month" class="form-control" id="month" readonly required> 
+            </div>
+
+             <div class="col-md-3 mt-4">
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+            
+        </div>
+                
+      </form>
+  </div>
+
+ <script type="text/javascript">
+    /* function getDate() {
+      const stdate = new Date()
+        const options = { weekday: 'long', year: 'numeric', day: 'numeric', month: 'long'};
+        let strdate = stdate.toLocaleDateString(options)
+       document.getElementById("date").value=strdate  
+    }*/
+
+    let today = new Date();
+    let date = today.getDate()+'-0'+(today.getMonth()+1)+'-'+today.getFullYear();
+    document.getElementById("currentDate").value = date;
+    document.getElementById("year").value = today.getFullYear();
+    document.getElementById("month").value = (today.getMonth()+1);
+ </script>
+<%-include('./Partials/footer.ejs')%>

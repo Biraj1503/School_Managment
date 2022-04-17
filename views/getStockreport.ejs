@@ -1,0 +1,98 @@
+<%-include('./Partials/header.ejs')%>
+<%-include('./Partials/StudentsNavbar.ejs')%>
+  <div class="container"> 
+      <div class="center my-5">
+          <!--<span><a href="stock/stockreport/productedname" class="mx-4">Monthly Received Producted</a></span>-->
+          <h4 class="text-center" style="font-weight:bold; text-decoration:underline;">Daily Received Producted</h4>
+          <%if(prolength){%>
+               <h5 class="text-center text-warning">Today Received <%=prolength%> Items</h5>
+               <h5 class="text-center text-primary font-weight-bold">Total Received <%=total%> Case</h5>
+          <%}%>
+          <form action="/stock/stockreport/dailystock" method="post">
+          <div class="row mx-4 offset-md-6">
+            <div class="col-md-3">
+              <label>Date Of Month :</label>
+              <input type="text" name="unloaddate" class="form-control" id="unloaddate" required>
+            </div>
+
+            <div class="col-md-3">
+              <input type="submit" value="Preview" class="btn btn-primary mt-4">
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+      <div class="col-sm-11 my-3">
+          <table class="table table-bordered mx-4">
+            <thead class="table-light">
+              <tr>
+                 <th scope="col">Product Name</th>
+                 <th scope="col">Unload Date</th>
+                 <th scope="col">TBL</th>
+                 <th scope="col">Tr. No</th>
+                 <th scope="col" id="totalcase">Total Case</th>
+              </tr>
+            </thead>
+              <tbody>
+              <%if(downloadfile){%>
+                <button class="mx-4 my-2" onclick="exportTableToCSV('DailyStock.csv')">Emport File CSV</button>
+                <%for(producted of pro){%>
+                  <tr>
+                    <td><%=producted.productname%></td>
+                     <td><%=producted.unloaddate%></td>
+                     <td><%=producted.tbl%></td>
+                     <td><%=producted.trno%></td>
+                     <td><%=producted.totalcase%></td>
+                   </tr>
+                <%}%> 
+              <%}%>         
+             </tbody>
+          </table>
+       </div> 
+    </div>
+  </div>
+
+  <script>
+      let d = new Date()
+
+      let today = d.getDate()+'-0'+(d.getMonth()+1)+'-'+d.getFullYear()
+
+      document.getElementById('unloaddate').value =  today
+
+
+      function downloadCSV(csv, filename) {  
+        var csvFile;  
+        var downloadLink;  
+         
+        //define the file type to text/csv  
+        csvFile = new Blob([csv], {type: 'text/csv'});  
+        downloadLink = document.createElement("a");  
+        downloadLink.download = filename;  
+        downloadLink.href = window.URL.createObjectURL(csvFile);  
+        downloadLink.style.display = "none";  
+      
+        document.body.appendChild(downloadLink);  
+        downloadLink.click();  
+    }  
+      
+    //user-defined function to export the data to CSV file format  
+    function exportTableToCSV(filename) {  
+       //declare a JavaScript variable of array type  
+       var csv = [];  
+       var rows = document.querySelectorAll("table tr");  
+       
+       //merge the whole data in tabular form   
+       for(var i=0; i<rows.length; i++) {  
+        var row = [], cols = rows[i].querySelectorAll("td, th");  
+        for( var j=0; j<cols.length; j++)  
+           row.push(cols[j].innerText);  
+          csv.push(row.join(","));  
+       }   
+       //call the function to download the CSV file  
+       downloadCSV(csv.join("\n"), filename);  
+    }  
+
+  </script>
+<%-include('./Partials/footer.ejs')%>
+
+         

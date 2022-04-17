@@ -24,6 +24,8 @@ const AdmissionRoute = require('./Router/AdmissionRoute')
 const StudentIDRoute = require('./Router/StudentsIdRouter')
 
 const ClassTestRoute = require('./Router/ClassTestRoute')
+
+const StockRoute = require('./Router/StockRoute')
 const app = express()
 app.set('views engin','ejs')
 const MONGDB_URI = 'mongodb+srv://SM:studentmanagment@newproject.92n8k.mongodb.net/students'
@@ -49,6 +51,7 @@ const Midalware = [
 ]
 
 app.use(Midalware)
+app.use('/stock', StockRoute)
 app.use('/classtest',ClassTestRoute)
 app.use('/studentsaccount',StudentIDRoute)
 app.use('/admission',AdmissionRoute)
