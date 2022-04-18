@@ -36,7 +36,6 @@ module.exports = {
 	StockreportGetController(req,res,next){
 		Stock.find()
 		.then(productedname=>{
-			//console.log(productedname)
 			const totalcase = productedname.map(item => item.totalcase).reduce((prev, curr) => prev + curr, 0);
 			let pro = productedname.length
 			res.render("individualStock.ejs",{productedname,downloadfile:true,pro,totalcase})
