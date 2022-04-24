@@ -27,6 +27,7 @@ const {
 	AllAttendancePostController,
 	SinglestudentsAttendanceGetController,
 	SinglestudentsAttendancePostController,
+	StudentsEditPostController
 } = require('../Controller/StudentsIdController')
 
 const {StudentsLoginAuthenticate,StudentsLogOutAuthenticate} = require('../Authenticate/StudentsAuthenticate')
@@ -85,11 +86,15 @@ router.post('/singlestudentsattendance', SinglestudentsAttendancePostController)
 
 router.get('/delete/:id',dashboardAthenticate, StudentsDeleteController)
 
-router.put('/Edit/:id',dashboardAthenticate, StudentsEditController)
+router.get('/Edit/:id',dashboardAthenticate, StudentsEditController)
+
+router.post('/Edit/:id',dashboardAthenticate, StudentsEditPostController)
 
 router.get('/publicestudentslist', PublicestudentslistGetController)
 
 router.post('/publicestudentslist', PublicestudentslistPostController)
+
+
 
 
 module.exports = router  

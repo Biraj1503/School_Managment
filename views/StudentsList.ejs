@@ -30,40 +30,88 @@
 	<div class="row">
 			<div class="col-sm-11 my-3">
 					<table class="table table-bordered">
-						<thead class="table-light">
-							<tr>
-							   <th scope="col">Name</th>
-							   <th scope="col">ClassName</th>
-							   <th scope="col">Roll</th>
-							   <th scope="col">Address</th>
-							   <th scope="col">Phone Number</th>
-							   <th scope="col">Year</th>
-							   <th scope="col">Edit</th>
-							   <th scope="col">Delete</th>
-							</tr>
-						</thead>
-							<tbody>
 								<button class="my-2" onclick="exportTableToCSV('StudentsPaymentList.csv')">Emport File CSV</button>
-								<%for(let students of list){%>
-									<tr>
-										<td><%=students.name%></td>
-										 <td><%=students.classname%></td>
-										 <td><%=students.roll%></td>
-										 <td><%=students.address%></td>
-										  <td><%=students.phone%></td>
-										  <td><%=students.year%></td>
-										  <%if(data){%>
-										  	<td><a href="/studentsaccount/Edit/<%=students._id%>">Edit</a></td>
 
-										  	<td><a href="/studentsaccount/delete/<%=students._id%>">Delete</a></td>
-										  <%}%>
-									 </tr>
-								<%}%> 					
+								<%if(edit){%>
+									<thead class="table-light">
+										<tr>
+										   <th scope="col">Name</th>
+										   <th scope="col">ClassName</th>
+										   <th scope="col">Roll</th>
+										   <th scope="col">Address</th>
+										   <th scope="col">Phone Number</th>
+										   <th scope="col">Year</th>
+										   <th scope="col">Save</th>
+										</tr>
+									</thead>
+									<form action="/studentsaccount/Edit/<%=editdata._id%>" method="POST">
+									<tbody>	
+										<tr>
+											<td><input type="text" name="name" value="<%=editdata.name%>"></td>
+											 <td><input type="text" name="classname" value="<%=editdata.classname%>"></td>
+											 <td><input type="text" name="roll" value="<%=editdata.roll%>"></td>
+											 <td><input type="text" name="address" value="<%=editdata.address%>"></td>
+											  <td><input type="text" name="phone" value="<%=editdata.phone%>"></td>
+											  <td><input type="text" name="year" value="<%=editdata.year%>" readonly></td>
+											  <td><input type="submit" class="btn btn-primary" value="Save"></td>
+										</tr>
+										</tbody>
+										 <input style="display:none" type="text" name="id" value="<%=editdata._id%>">
+									</form>
+								<%}else{%>
+									<thead class="table-light">
+										<tr>
+										   <th scope="col">Name</th>
+										   <th scope="col">ClassName</th>
+										   <th scope="col">Roll</th>
+										   <th scope="col">Address</th>
+										   <th scope="col">Phone Number</th>
+										   <th scope="col">Year</th>
+										   <th scope="col">Edit</th>
+										   <th scope="col">Delete</th>
+										</tr>
+									</thead>
+								<tbody>
+									<%for(let students of list){%>
+										<tr>
+											<td><%=students.name%></td>
+											 <td><%=students.classname%></td>
+											 <td><%=students.roll%></td>
+											 <td><%=students.address%></td>
+											  <td><%=students.phone%></td>
+											  <td><%=students.year%></td>
+											  <%if(data){%>
+											  	<td><a href="/studentsaccount/Edit/<%=students._id%>">Edit</a></td>
+											  	
+											  	<!--<td><a href="/studentsaccount/Edit/<%=students._id%>" data-bs-toggle="modal" data-bs-target="#editstudents">Edit</a></td>-->
+
+											  	<td><a href="/studentsaccount/delete/<%=students._id%>">Delete</a></td>
+											  <%}%>
+										 </tr>
+									<%}%> 	
+								<%}%>
+												
 						 </tbody>
 					</table>
 		 	 </div> 
 		</div>
 
+			<!--<div style="width:1500px" class="modal fade" id="editstudents" tabindex="-1" aria-labelledby="editstudents" aria-hidden="true">
+                     <div class="modal-dialog">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+
+                              <div class="modal-body">
+                                <form action="" method='post'>
+
+                                 </form>
+                             </div>
+                         </div>
+                  </div>
+           </div>-->
 	</div>
 <script type="text/javascript">
 		//user-defined function to download CSV file  
@@ -97,6 +145,6 @@
 		   }   
 		   //call the function to download the CSV file  
 		   downloadCSV(csv.join("\n"), filename);  
-		}  
+		}
 	</script>
 <%-include('./Partials/footer.ejs')%>

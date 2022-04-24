@@ -385,7 +385,7 @@ module.exports = {
 	},
 
 	StudentsListGetController(req,res,next){
-		res.render("StudentsList.ejs",{user:req.session.user,list:[{}],data:''})
+		res.render("StudentsList.ejs",{user:req.session.user,list:[{}],data:'',edit:false,editdata:{}})
 	},
 
 	StudentsListPostController(req,res,next){
@@ -396,27 +396,75 @@ module.exports = {
 			if (err) console.log(errr)
 
 			if (list) {
-				 return res.render("StudentsList.ejs",{user:req.session.user,list,data:true})
+				 return res.render("StudentsList.ejs",{user:req.session.user,list,data:true,edit:false,editdata:{}})
 			}
 
-			console.log('No Students...')
+			//console.log('No Students...')
 		}).sort({roll:1})
 		
 	},
 
 	StudentsDeleteController(req,res,next){
-
-		let {_id} = req.params
-
-		StudentsEnty.findOneAndDelete(_id)
+		let {id} = req.params
+		//console.log(id)
+		StudentsEnty.findById(id)
+		.then(data=>{
+			//console.log(data)
+			StudentsEnty.findByIdAndDelete(data._id)
+			.then(on=>{
+				
+				StudentsEnty.find({schoolname:req.session.user.schoolname,classname:on.classname}).sort({roll:1})
+				//console.log(on)
+				//console.log(data+'ok')
+				.then(list=>{
+					res.render("StudentsList.ejs",{user:req.session.user,list,data:true,edit:false,editdata:{}})
+				})
+				.catch(err=>console.log(err))
+			})
+			.catch(err=>console.log(err))
+			
+		})
+		.catch(err=>console.log(err))
+		/*StudentsEnty.deleteOne(_id)
 		.then(()=>{
 			res.render("StudentsList.ejs",{user:req.session.user,list:[{}],data:false})	
 		})
-		.catch(err=>console.log(err))
+		.catch(err=>console.log(err))*/
 	},
 
 	StudentsEditController(req,res,next){
-		res.render("StudentsList.ejs",{user:req.session.user,list:[{}],data:true})
+		let {id} = req.params
+		//console.log(id)
+		StudentsEnty.findById(id)
+		.then(editdata=>{
+			res.render("StudentsList.ejs",{user:req.session.user,list:[{}],data:true,edit:true,editdata})
+			/*StudentsEnty.findOneAndUpdate(ok._id,{$set:{
+
+			}},{new:true})*/
+
+			/*.then(()=>{
+						
+			})
+			.catch(err=>console.log(err))*/
+		})
+		.catch(err=>console.log(err))
+		
+	},
+
+	StudentsEditPostController(req,res,next){
+		let {id}=req.body
+	
+		StudentsEnty.findByIdAndUpdate({_id:id},{$set:req.body},{new:true})
+
+		.then((nice)=>{
+
+			StudentsEnty.find({schoolname:req.session.user.schoolname,classname:nice.classname})
+			.then(list=>{
+				res.render("StudentsList.ejs",{user:req.session.user,list,data:true,edit:false,editdata:{}})
+			})
+			.catch(err=>console.log(err))
+		})
+		.catch(err=>console.log(err))
 	},
 
 	// Publice Search Students List
