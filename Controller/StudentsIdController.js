@@ -409,7 +409,7 @@ module.exports = {
 		//console.log(id)
 		StudentsEnty.findById(id)
 		.then(data=>{
-			//console.log(data)
+			console.log(data)
 			StudentsEnty.findByIdAndDelete(data._id)
 			.then(on=>{
 				
