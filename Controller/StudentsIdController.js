@@ -319,8 +319,6 @@ module.exports = {
 			res.render("StudentsClassTestResult.ejs",{users:req.session.users, error:'No Result...'})
 			
 		})
-
-		
 	},
 	CreateAssigmentGetController(req,res,next){
 		let data = {
